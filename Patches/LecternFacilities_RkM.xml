@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Make the vanilla lectern accept linked facilities for visuals and counting -->
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='Lectern']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
+        <value>
+          <li Class="CompProperties_AffectedByFacilities">
+            <linkableFacilities>
+              <li>Blackboard</li>
+              <li>RKM_CustomBlackboard</li>
+              <li>Stool</li>
+              <li>DiningChair</li>
+              <li>Armchair</li>
+              <li>Couch</li>
+            </linkableFacilities>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <!-- Patch Ratkin custom blackboard so it links like a facility -->
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='RKM_CustomBlackboard']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='RKM_CustomBlackboard']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>3</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <!-- Patch vanilla blackboard (Biotech) if loaded -->
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='Blackboard']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Blackboard']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>3</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <!-- Link common seats so lines appear between audience seating and lectern -->
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='Stool']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Stool']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>1</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='DiningChair']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='DiningChair']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>1</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='Armchair']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>1</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>/Defs/ThingDef[defName='Couch']</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>3</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <!-- Ghost facility def so we can track linked seats explicitly -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs</xpath>
+    <value>
+      <ThingDef ParentName="BuildingBase">
+        <defName>RKM_LecternSeatFacility</defName>
+        <label>lecture seating anchor</label>
+        <description>Invisible helper used to count seat links for lecterns.</description>
+        <drawerType>RealtimeOnly</drawerType>
+        <useHitPoints>false</useHitPoints>
+        <comps>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>16</maxSimultaneous>
+          </li>
+        </comps>
+      </ThingDef>
+    </value>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    RkM: Base/abstract teaching ritual precept.
+    NOTES / assumptions:
+    - This precept is marked abstract so it won't produce ConfigErrors if a ritualPatternBase
+      isn't chosen yet. Change abstract to "false" and set ritualPatternBase to a concrete
+      RitualPatternDef (from Core or Odyssey) when you pick which pattern to use.
+    - Role ids used by the planned worker: "teacher" and "student". You can rename them
+      later to match whichever RitualPattern/RitualBehavior you choose.
+  -->
+
+  <PreceptDef ParentName="SpeechPreceptBase">
+    <defName>RKM_TeachingRitual_Base</defName>
+    <label>teaching ritual</label>
+    <description>A teaching ritual that grants skill XP to participants.</description>
+  <!-- Use our modded teaching pattern so the lectern/podium is guaranteed to be the start spot. -->
+  <ritualPatternBase>RKM_TeachingPattern</ritualPatternBase>
+  <!-- RitualOutcomeEffect is defined on the RitualPatternDef (the pattern links to the outcome). -->
+  </PreceptDef>
+</Defs>

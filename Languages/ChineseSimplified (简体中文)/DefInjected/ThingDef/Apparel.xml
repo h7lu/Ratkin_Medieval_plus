@@ -2,23 +2,23 @@
 <LanguageData>
   
   <!-- EN: 帝国之花铠甲 -->
-  <diguokaijia.label>TODO</diguokaijia.label>
+  <RkM_landsknecht_armor.label>TODO</RkM_landsknecht_armor.label>
   <!-- EN: 帝国之花铠甲 -->
-  <diguokaijia.description>TODO</diguokaijia.description>
+  <RkM_landsknecht_armor.description>TODO</RkM_landsknecht_armor.description>
   
   <!-- EN: 帝国之花羽毛长帽 -->
-  <diguomaozi.label>TODO</diguomaozi.label>
+  <RkM_landsknecht_hat.label>TODO</RkM_landsknecht_hat.label>
   <!-- EN: 鼠族贵族千草·凤尾仙茶定做的蕾丝头饰，她出手向来阔绰，颇有古堡贵人的感觉 -->
-  <diguomaozi.description>TODO</diguomaozi.description>
+  <RkM_landsknecht_hat.description>TODO</RkM_landsknecht_hat.description>
   
   <!-- EN: 棉甲军服 -->
-  <mianjia.label>TODO</mianjia.label>
+  <RkM_gambeson.label>TODO</RkM_gambeson.label>
   <!-- EN: 厚重棉花与布料填充制成，舒适方便出行必备 -->
-  <mianjia.description>TODO</mianjia.description>
+  <RkM_gambeson.description>TODO</RkM_gambeson.description>
   
   <!-- EN: 锁甲 -->
-  <suojia.label>TODO</suojia.label>
+  <RkM_chainmail.label>TODO</RkM_chainmail.label>
   <!-- EN: 由金属煅烧穿环，一层一层在鼠族灵巧的工匠手中编制成坚固的锁甲 -->
-  <suojia.description>TODO</suojia.description>
+  <RkM_chainmail.description>TODO</RkM_chainmail.description>
   
 </LanguageData>

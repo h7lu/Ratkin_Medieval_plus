@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>  
      <ApparelLayerDef>
-        <defName>suojia</defName>
+        <defName>RkM_chainmail</defName>
         <label>贴身护甲</label>
         <drawOrder>200</drawOrder>
       </ApparelLayerDef>
 
 <!--================= 帝国铠甲 ================-->
      <ThingDef ParentName="ApparelMakeableBase">
-    <defName>diguokaijia</defName>
+    <defName>RkM_landsknecht_armor</defName>
 	<label>帝国之花铠甲</label>
     <description>帝国之花铠甲</description>
 	<techLevel>Medieval</techLevel>
@@ -26,7 +26,7 @@
 			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
     </recipeMaker>
     <graphicData>
-      <texPath>Things/Apparel/diguokaijia/diguokaijia</texPath>
+      <texPath>Things/Apparel/RkM_landsknecht_armor/RkM_landsknecht_armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <shaderType>CutoutComplex</shaderType>
     </graphicData>
@@ -62,7 +62,7 @@
 				<li>Arms</li>
 				<li>Legs</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Apparel/diguokaijia/diguokaijia</wornGraphicPath>
+      <wornGraphicPath>Things/Apparel/RkM_landsknecht_armor/RkM_landsknecht_armor</wornGraphicPath>
 	  <useWornGraphicMask>true</useWornGraphicMask>
       <layers>
 		<li>Shell</li>
@@ -79,7 +79,7 @@
 <!--================= 帝国帽子 ================-->
  
   <ThingDef ParentName="ApparelMakeableBase">
-    <defName>diguomaozi</defName>
+    <defName>RkM_landsknecht_hat</defName>
     <label>帝国之花羽毛长帽</label>
     <description>鼠族贵族千草·凤尾仙茶定做的蕾丝头饰，她出手向来阔绰，颇有古堡贵人的感觉</description>
 	<techLevel>Medieval</techLevel>
@@ -100,7 +100,7 @@
          <li>ApparelNoble</li>
       </thingCategories>
     <graphicData>
-      <texPath>Things/Apparel/diguomaozi/diguomaozi</texPath>
+      <texPath>Things/Apparel/RkM_landsknecht_hat/RkM_landsknecht_hat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <shaderType>CutoutComplex</shaderType>
     </graphicData>
@@ -134,7 +134,7 @@
       <bodyPartGroups>
 				<li>UpperHead</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Apparel/diguomaozi/diguomaozi</wornGraphicPath>
+      <wornGraphicPath>Things/Apparel/RkM_landsknecht_hat/RkM_landsknecht_hat</wornGraphicPath>
 	  <useWornGraphicMask>true</useWornGraphicMask>
       <layers>
         <li>Overhead</li>
@@ -151,7 +151,7 @@
  <!--================= 棉甲 ================-->
   
   <ThingDef ParentName="ApparelMakeableBase">
-    <defName>mianjia</defName>
+    <defName>RkM_gambeson</defName>
 	<label>棉甲军服</label>
     <description>厚重棉花与布料填充制成，舒适方便出行必备</description>
 	<techLevel>Medieval</techLevel>
@@ -169,7 +169,7 @@
 			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
     </recipeMaker>
     <graphicData>
-      <texPath>Things/Apparel/mianjia/mianjia</texPath>
+      <texPath>Things/Apparel/RkM_gambeson/RkM_gambeson</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <shaderType>CutoutComplex</shaderType>
     </graphicData>
@@ -205,7 +205,7 @@
 				<li>Arms</li>
 				<li>Legs</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Apparel/mianjia/mianjia</wornGraphicPath>
+      <wornGraphicPath>Things/Apparel/RkM_gambeson/RkM_gambeson</wornGraphicPath>
 	  <useWornGraphicMask>true</useWornGraphicMask>
       <layers>
 		<li>OnSkin</li>
@@ -220,7 +220,7 @@
 <!--================= 锁甲 ================-->
   
   <ThingDef ParentName="ApparelMakeableBase">
-    <defName>suojia</defName>
+    <defName>RkM_chainmail</defName>
 	<label>锁甲</label>  
     <description>由金属煅烧穿环，一层一层在鼠族灵巧的工匠手中编制成坚固的锁甲</description>
 	<techLevel>Medieval</techLevel>
@@ -238,7 +238,7 @@
 			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
     </recipeMaker>
     <graphicData>
-      <texPath>Things/Apparel/suojia/suojia</texPath>
+      <texPath>Things/Apparel/RkM_chainmail/RkM_chainmail</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <shaderType>CutoutComplex</shaderType>
     </graphicData>
@@ -278,10 +278,10 @@
 				<li>Arms</li>
 				<li>Legs</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Apparel/suojia/suojia</wornGraphicPath>
+      <wornGraphicPath>Things/Apparel/RkM_chainmail/RkM_chainmail</wornGraphicPath>
 	  <useWornGraphicMask>true</useWornGraphicMask>
       <layers>
-		<li>suojia</li>
+		<li>RkM_chainmail</li>
 		<li MayRequire="RKK.RatKnights.Core">ChainMail</li>
       </layers>
 	  <defaultOutfitTags>

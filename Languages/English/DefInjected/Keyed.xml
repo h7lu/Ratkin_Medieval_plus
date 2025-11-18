@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <KeyedDefs>
+    <RkM.AbilityPrayerServiceCooldown>
+      <AbilityPrayerServiceCooldown>Prayer service is on cooldown for {0}.</AbilityPrayerServiceCooldown>
+      <AbilityPrayerServiceDisabledAlreadyGivingPrayerService>Cannot start prayer service: already conducting prayer service.</AbilityPrayerServiceDisabledAlreadyGivingPrayerService>
+      <AbilityPrayerServiceNoPulpit>Cannot start prayer service: no available pulpit.</AbilityPrayerServiceNoPulpit>
+      <AbilityPrayerServiceDisabledDrafted>Cannot start prayer service while drafted.</AbilityPrayerServiceDisabledDrafted>
+    </RkM.AbilityPrayerServiceCooldown>
+  </KeyedDefs>
+</Defs>

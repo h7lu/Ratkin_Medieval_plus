@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- RkM: Teaching ritual behavior (copied/tweaked from DateRitualBehavior) -->
+  <RitualBehaviorDef Name="RKM_TeachingBehavior">
+    <defName>RKM_TeachingBehavior</defName>
+  <workerClass>RkM.RitualBehaviorWorker_Teaching</workerClass>
+  <!-- 4 in-game hours = 4 * 2500 ticks = 10000 ticks -->
+  <durationTicks>10000</durationTicks>
+    <roles>
+      <li Class="RitualRoleTag">
+        <label>lecturer</label>
+        <id>teacher</id>
+        <required>True</required>
+        <substitutable>True</substitutable>
+        <maxCount>1</maxCount>
+        <countsAsParticipant>False</countsAsParticipant>
+        <allowChild>false</allowChild>
+        <mustBeAbleToReachTarget>True</mustBeAbleToReachTarget>
+      </li>
+    </roles>
+    <spectatorsLabel>Students</spectatorsLabel>
+    <spectatorGerund>attend</spectatorGerund>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <essential>True</essential>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage">
+            <percentage>1.0</percentage>
+          </li>
+        </endTriggers>
+        <postAction Class="RitualStageAction_Message">
+          <text>{0}: The teaching session is over, and the group is dispersing.</text>
+          <messageTypeDef>NeutralEvent</messageTypeDef>
+        </postAction>
+        <roleBehaviors>
+          <li>
+            <roleId>teacher</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_DateRitual</speakerInteraction>
+            <customPositions>
+              <li Class="RitualPosition_Lectern">
+                <maxDistanceToFocus>5</maxDistanceToFocus>
+              </li>
+            </customPositions>
+          </li>
+        </roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+
+</Defs>

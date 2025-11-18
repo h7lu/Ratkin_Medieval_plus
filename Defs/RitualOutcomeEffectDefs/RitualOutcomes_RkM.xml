@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Ritual outcome that awards classroom XP. Worker is in RkM namespace; update assembly name if your compiled assembly differs. -->
+  <RitualOutcomeEffectDef>
+    <defName>RKM_RitualOutcome_GiveClassXP</defName>
+    <label>teaching outcome (RkM)</label>
+    <description>Gives XP to participants in a teaching ritual according to configured skill and environment.</description>
+    <workerClass>RkM.RitualOutcomeEffectWorker_GiveClassXP</workerClass>
+
+    <!-- Mod extension holds configurable props for the worker -->
+    <modExtensions>
+      <li Class="RkM.RitualGiveClassXPProps">
+        <!-- Default skill is Social for teaching rituals. Change to a different SkillDef defName if desired. -->
+        <skill>Social</skill>
+        <baseXp>1500</baseXp>
+        <teacherMultiplier>1.5</teacherMultiplier>
+        <studentMultiplier>1.0</studentMultiplier>
+
+  <!-- Per-outcome tuning (matches fields in RitualGiveClassXPProps) -->
+  <terribleLossFraction>0.5</terribleLossFraction>
+  <boringLossFraction>0.2</boringLossFraction>
+  <funMultiplier>1.0</funMultiplier>
+  <unforgettableMultiplier>2.0</unforgettableMultiplier>
+  <unforgettableInspirationChance>0.02</unforgettableInspirationChance>
+
+        <!-- Podium is always present as the ritual starts on a lectern; no need to list podiumThingDefs. -->
+
+        <!-- Blackboard / school desk placeholders (Biotech): Blackboard and SchoolDesk. Add your custom names too. -->
+        <blackboardThingDefs>
+          <li>Blackboard</li>
+          <li>RKM_CustomBlackboard</li>
+        </blackboardThingDefs>
+        
+        <!-- Additional tunables exposed for designers -->
+        <!-- Room impressiveness threshold and mapping -->
+        <impressivenessThreshold>60</impressivenessThreshold>
+        <impressivenessPerPoint>0.01</impressivenessPerPoint>
+        <impressivenessMinClamp>-0.2</impressivenessMinClamp>
+        <impressivenessMaxClamp>0.5</impressivenessMaxClamp>
+
+        <!-- Course/theme and social skill thresholds and per-level bonuses -->
+        <themeSkillThreshold>8</themeSkillThreshold>
+        <themePerLevel>0.05</themePerLevel>
+        <socialSkillThreshold>8</socialSkillThreshold>
+        <socialPerLevel>0.02</socialPerLevel>
+
+        <!-- Blackboard tuning: max counted and per-blackboard bonus -->
+        <blackboardMaxCount>3</blackboardMaxCount>
+        <blackboardPerCount>0.10</blackboardPerCount>
+
+        <!-- Required attendance for full effectiveness -->
+        <attendanceRequired>3</attendanceRequired>
+  </li>
+    </modExtensions>
+
+    <!-- Outcome possibilities: terrible / boring / fun / unforgettable.
+         The worker (RitualOutcomeEffectWorker_GiveClassXP) will look at the chosen outcome label
+         and apply reductions or bonuses accordingly. These chances should sum to 1.0. -->
+    <startingQuality>0.35</startingQuality>
+    <minQuality>0</minQuality>
+    <maxQuality>1</maxQuality>
+    <!-- Empty comps list prevents Dialog_BeginRitual from NREing when it iterates outcome.comps.
+      Add RitualOutcomeComp entries here if you want building/blackboard/podium bonuses. -->
+    <comps>
+      <li Class="RkM.RitualOutcomeComp_Blackboard, Ratkin Medieval+" />
+      <li Class="RkM.RitualOutcomeComp_RoomBeauty, Ratkin Medieval+" />
+      <li Class="RkM.RitualOutcomeComp_Attendance, Ratkin Medieval+" />
+      <li Class="RkM.RitualOutcomeComp_TeacherSkill, Ratkin Medieval+" />
+      <li Class="RkM.RitualOutcomeComp_SocialSkill, Ratkin Medieval+" />
+      <li Class="RkM.RitualOutcomeComp_SeatingRate, Ratkin Medieval+" />
+    </comps>
+    <extraPredictedOutcomeDescriptions>
+      <li>Blackboards and desks in the area make lessons easier to follow and increase learning.</li>
+      <li>Higher room impressiveness and more attending students will generally raise the expected quality.</li>
+      <li>The skill level of the lecturer (theme and social) modifies expected quality — a more skilled teacher improves results.</li>
+    </extraPredictedOutcomeDescriptions>
+
+    <outcomeChances>
+      <li>
+        <label>terrible</label>
+        <description>Participants found the lesson terrible.</description>
+        <chance>0.10</chance>
+        <positivityIndex>-2</positivityIndex>
+      </li>
+      <li>
+        <label>boring</label>
+        <description>The lesson was dull and uninspiring.</description>
+        <chance>0.20</chance>
+        <positivityIndex>-1</positivityIndex>
+      </li>
+      <li>
+        <label>fun</label>
+        <description>Participants enjoyed the lesson and learned from it.</description>
+        <chance>0.60</chance>
+        <positivityIndex>1</positivityIndex>
+      </li>
+      <li>
+        <label>unforgettable</label>
+        <description>An unforgettable class — big XP plus a small chance for inspiration.</description>
+        <chance>0.10</chance>
+        <positivityIndex>2</positivityIndex>
+      </li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+</Defs>

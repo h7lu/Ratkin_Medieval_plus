@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  
+  <!-- Base Melee Weapon Polearm - Common properties for polearm weapons -->
+  <ThingDef Name="BaseMeleeWeapon_Polearm" Abstract="True" ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <equippedStatOffsets>
+      <MoveSpeed>-0.1</MoveSpeed>
+    </equippedStatOffsets>
+    <weaponTags>
+      <li>Polearm</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+  </ThingDef>
+
+  <!-- Ratkin Vexillum - Banner -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>RkM_Vexillum</defName>
+    <label>Ratkin Vexillum</label>
+    <description>A carefully crafted ratkin banner that flies clearly on the battlefield, guiding companions and greatly boosting morale.</description>
+<graphicData>
+      <texPath>Things/Weapons/RkM_Vexillum</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_Vexillum</li>
+    </weaponTags>
+    <statBases>
+      <Mass>2</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.3</SocialImpact>
+      <TradePriceImprovement>0.3</TradePriceImprovement>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Ceremonial Polearm -->
+  <ThingDef ParentName="BaseMeleeWeapon_Polearm">
+    <defName>RkM_CeremonialPolearm</defName>
+    <label>Ratkin Ceremonial Polearm</label>
+    <description>A luxurious polearm made with fine materials. Beneath its gorgeous appearance lies an extremely dangerous weapon.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_CeremonialPolearm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_CeremonialPolearm</li>
+    </weaponTags>
+    <costList>
+      <Steel>80</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>3</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.3</SocialImpact>
+      <TradePriceImprovement>0.3</TradePriceImprovement>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Forge Hammer -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>RkM_ForgeHammer</defName>
+    <label>Ratkin Forge Hammer</label>
+    <description>A useful blacksmith hammer that can improve forging efficiency.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_ForgeHammer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_ForgeHammer</li>
+    </weaponTags>
+    <statBases>
+      <Mass>2.5</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <WorkSpeedGeneral>0.25</WorkSpeedGeneral>
+    </equippedStatOffsets>
+    <costList>
+      <Steel>60</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <tools>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>5</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Lucerne Hammer -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>RkM_Lucerne</defName>
+    <label>Ratkin Lucerne</label>
+    <description>A terrifying weapon with a heavy hammer head and armor-piercing spike. Its powerful strikes can dent even the strongest plate armor.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_Lucerne</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_Lucerne</li>
+    </weaponTags>
+    <costList>
+      <Steel>100</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>4</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.1</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>hammer</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+      <li>
+        <label>spike</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Halberd -->
+  <ThingDef ParentName="BaseMeleeWeapon_Polearm">
+    <defName>RkM_Halberd</defName>
+    <label>Ratkin Halberd</label>
+    <description>A classic polearm that cleverly combines the thrusting of a spear tip, the chopping of an axe blade, and the hooking of a rear spike.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_Halberd</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_Halberd</li>
+    </weaponTags>
+    <costList>
+      <Steel>90</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>3.5</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.1</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+      <li>
+        <label>blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Spear -->
+  <ThingDef ParentName="BaseMeleeWeapon_Polearm">
+    <defName>RkM_Spear</defName>
+    <label>Ratkin Spear</label>
+    <description>A simple but extremely effective polearm. Its long shaft can pierce enemies before they can reach you.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_Spear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_Spear</li>
+    </weaponTags>
+    <costList>
+      <Steel>70</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>2.5</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.1</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Rapier -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>RkM_Rapier</defName>
+    <label>Ratkin Rapier</label>
+    <description>A one-handed weapon with a slender blade and complex guard. Its elegant form is both a weapon and a status symbol.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_Rapier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.1</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_Rapier</li>
+    </weaponTags>
+    <statBases>
+      <Mass>1.2</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeDodgeChance>0.2</MeleeDodgeChance>
+      <SocialImpact>0.15</SocialImpact>
+    </equippedStatOffsets>
+    <costList>
+      <Steel>40</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+      <li>
+        <label>guard</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>4</power>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Steam Hammer -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>RkM_SteamHammer</defName>
+    <label>Ratkin Steam Hammer</label>
+    <description>A massive steam-powered hammer created by the ratkin. Each strike is accompanied by the hiss of steam and the tremor of the ground.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_SteamHammer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_SteamHammer</li>
+    </weaponTags>
+    <costList>
+      <Steel>120</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>6</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.4</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>hammer</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>2.8</cooldownTime>
+      </li>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Zweihander -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>RkM_Zweihander</defName>
+    <label>Ratkin Zweihander</label>
+    <description>A carefully crafted two-handed longsword with a flame-like twisted blade designed to cause more terrible tearing wounds.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_Zweihander</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_Zweihander</li>
+    </weaponTags>
+    <costList>
+      <Steel>110</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>4</Mass>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.2</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+      <li>
+        <label>pommel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Ratkin Magic Wand -->
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>RkM_MagicStaff</defName>
+    <label>Ratkin Magic Staff</label>
+    <description>A long staff embedded with mysterious crystals. The caster must concentrate to drive the energy within.</description>
+    <graphicData>
+      <texPath>Things/Weapons/RkM_MagicStaff</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.1</drawSize>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <weaponTags>
+      <li>RkM_MagicWand</li>
+    </weaponTags>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <Mass>1</Mass>
+      <AccuracyTouch>0.8</AccuracyTouch>
+      <AccuracyShort>0.7</AccuracyShort>
+      <AccuracyMedium>0.5</AccuracyMedium>
+      <AccuracyLong>0.3</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_MagicMissile</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>25</range>
+        <forcedMiss>false</forcedMiss>
+        <soundCast>Shot_MagicWand</soundCast>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>5</power>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- Magic Missile Projectile -->
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_MagicMissile</defName>
+    <label>magic missile</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/MagicMissile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.0</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Energy</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <speed>30</speed>
+    </projectile>
+  </ThingDef>
+
+<!-- Test Items for Texture Testing -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>Item_lavender_a</defName>
+    <label>lavender a</label>
+    <description>Test item for lavender texture.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Item_Lavender_a</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Mass>0.1</Mass>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>wheat_powder</defName>
+    <label>wheat powder</label>
+    <description>Test item for wheat powder texture.</description>
+    <graphicData>
+      <texPath>Graybox/Things/wheat_powder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Mass>0.1</Mass>
+    </statBases>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Append our ritual-starter comp to the existing Lectern ThingDef without replacing it. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
+    <value>
+      <li Class="RkM.CompProperties_RitualStarter">
+        <ritualDefName>RKM_TeachingRitual_Base</ritualDefName>
+      </li>
+    </value>
+  </Operation>
+</Patch>

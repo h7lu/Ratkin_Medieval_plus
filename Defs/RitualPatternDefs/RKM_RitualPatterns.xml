@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- RkM: Teaching ritual pattern that uses the lectern-focused behavior and our outcome def -->
+  <RitualPatternDef>
+    <defName>RKM_TeachingPattern</defName>
+    <ritualExpectedDesc>You can hold a teaching session for {PAWN_nameDef}.</ritualExpectedDesc>
+    <ritualExpectedDescNoAdjective>You can hold a teaching session for {PAWN_nameDef}.</ritualExpectedDescNoAdjective>
+    <ritualBehavior>RKM_TeachingBehavior</ritualBehavior>
+    <ritualOutcomeEffect>RKM_RitualOutcome_GiveClassXP</ritualOutcomeEffect>
+  </RitualPatternDef>
+
+</Defs>

@@ -73,6 +73,12 @@
     <Compile Include="MentalState\MentalStateWorker_RomanceAttempt.cs" />
     <Compile Include="ThingComps\CompGiveHediffNearby.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="Rituals\RitualGiveClassXPProps.cs" />
+    <Compile Include="Rituals\RitualOutcomeEffectWorker_GiveClassXP.cs" />
+    <Compile Include="Rituals\RitualBehaviorWorker_Teaching.cs" />
+    <Compile Include="Rituals\CompRitualStarter.cs" />
+    <Compile Include="Rituals\RitualOutcomeComps.cs" />
+    <Compile Include="RkMDefOf.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

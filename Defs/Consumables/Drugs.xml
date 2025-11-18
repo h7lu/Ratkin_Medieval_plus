@@ -6,7 +6,7 @@
     <label>ratkin recovery potion</label>
     <description>A viscous potion glowing with a soft grass-green light, emitting the gentle aroma of sage and licorice. When consumed, it feels like a warm current spreads from the stomach to the limbs, accelerating the body's natural recovery.</description>
     <graphicData>
-      <texPath>Graybox/Things/Item_Potion_Recovery</texPath>
+      <texPath>Things/Drugs/Potion_Recovery</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <color>(1.0, 1.0, 1.0)</color>
     </graphicData>
@@ -18,7 +18,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.40</joy>
@@ -61,7 +61,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.20</joy>
@@ -108,7 +108,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.40</joy>
@@ -155,7 +155,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.60</joy>
@@ -203,7 +203,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.50</joy>
@@ -246,7 +246,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.80</joy>
@@ -277,7 +277,7 @@
     <description>A potion black as the abyss, yet flickering with phosphorescent light, this ominous brew desecrates the laws of death, forcibly calling back the souls of the departed. The resurrected often suffer from severe disorientation and memory loss, struggling to reconnect with their former lives.</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <texPath>Graybox/Things/Item_Potion_Resurrection</texPath>
+      <texPath>Things/Drugs/Potion_Resurrection</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <color>(1.0, 1.0, 1.0)</color>
     </graphicData>
@@ -334,7 +334,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>-1.0</joy>
@@ -378,7 +378,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.30</joy>
@@ -419,7 +419,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.60</joy>
@@ -464,7 +464,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.10</joy>
@@ -505,7 +505,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.60</joy>
@@ -547,7 +547,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.50</joy>
@@ -589,7 +589,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.50</joy>
@@ -632,7 +632,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>0.70</joy>
@@ -662,7 +662,7 @@
     <label>ratkin berserk potion</label>
     <description>A black-red potion that seems to be boiling, emitting sulfur and bloody scents. After consumption, it completely unleashes the inner beast, attacking friend and foe alike.</description>
     <graphicData>
-      <texPath>Graybox/Things/Item_Potion_Berserk</texPath>
+      <texPath>Things/Drugs/Potion_Berserk</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <color>(1.0, 1.0, 1.0)</color>
     </graphicData>
@@ -674,7 +674,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>1.0</joy>
@@ -716,7 +716,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>-2.0</joy>
@@ -757,7 +757,7 @@
     </statBases>
     <techLevel>Medieval</techLevel>
     <ingestible>
-      <useDuration>180</useDuration>
+       
       <foodType>Processed, Fluid</foodType>
       <joyKind>Chemical</joyKind>
       <joy>-0.20</joy>
