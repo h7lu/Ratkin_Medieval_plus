@@ -81,8 +81,12 @@
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_GiveOrRemoveHediffWithConditions.cs" />
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_GiveRandomInspiration.cs" />
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_RemoveSpecificHediffs.cs" />
+    <Compile Include="Jobs\JobDriver_PlaySong.cs" />
     <Compile Include="MentalState\MentalStateWorker_RomanceAttempt.cs" />
     <Compile Include="ThingComps\CompGiveHediffNearby.cs" />
+    <Compile Include="ThingComps\CompSongAbility.cs" />
+    <Compile Include="ThingComps\CompProperties_GetEquipmentGizmo.cs" />
+    <Compile Include="ThingComps\EquipmentBase.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Rituals\RitualGiveClassXPProps.cs" />
     <Compile Include="Rituals\RitualOutcomeEffectWorker_GiveClassXP.cs" />

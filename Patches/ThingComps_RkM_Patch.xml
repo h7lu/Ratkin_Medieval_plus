@@ -9,4 +9,25 @@
       </li>
     </value>
   </Operation>
+  <Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		<li Class="PatchOperationTest">
+			<xpath>/Defs/ThingDef[@Name="BasePawn"]/comps</xpath>
+			<success>Invert</success>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[@Name="BasePawn"]</xpath>
+			<value>
+			<comps />
+			</value>
+		</li>
+		</operations>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name="BasePawn"]/comps</xpath>
+		<value>
+			<li Class="RkM.CompProperties_GetEquipmentGizmo"/>
+		</value>
+	</Operation>
 </Patch>
