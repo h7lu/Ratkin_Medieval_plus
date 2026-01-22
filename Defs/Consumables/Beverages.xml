@@ -31,6 +31,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>621</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- ========== 热茶 / Hot Tea ========== -->
@@ -66,6 +71,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>622</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- ========== 简易莓果酒 / Simple Berry Wine ========== -->
@@ -115,7 +125,7 @@
         <minToleranceToAddict>0.25</minToleranceToAddict>
         <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
         <needLevelOffset>0.9</needLevelOffset>
-        <listOrder>10</listOrder>
+        <listOrder>623</listOrder>
       </li>
     </comps>
   </ThingDef>
@@ -167,7 +177,7 @@
         <minToleranceToAddict>0.25</minToleranceToAddict>
         <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
         <needLevelOffset>0.9</needLevelOffset>
-        <listOrder>10</listOrder>
+        <listOrder>624</listOrder>
       </li>
     </comps>
   </ThingDef>
@@ -219,7 +229,7 @@
         <minToleranceToAddict>0.25</minToleranceToAddict>
         <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
         <needLevelOffset>0.9</needLevelOffset>
-        <listOrder>10</listOrder>
+        <listOrder>625</listOrder>
       </li>
     </comps>
   </ThingDef>
@@ -270,7 +280,7 @@
         <minToleranceToAddict>0.25</minToleranceToAddict>
         <existingAddictionSeverityOffset>0.15</existingAddictionSeverityOffset>
         <needLevelOffset>0.9</needLevelOffset>
-        <listOrder>10</listOrder>
+        <listOrder>626</listOrder>
       </li>
     </comps>
   </ThingDef>

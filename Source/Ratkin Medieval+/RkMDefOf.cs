@@ -1,8 +1,17 @@
-// This file is kept for potential future use but currently empty
+using RimWorld;
+using Verse;
+
 namespace RkM
 {
-    public static class RkMDefOf
+    [DefOf]
+    public static class RkM_JobDefOf
     {
-        // Empty - teaching ability system removed in favor of lectern gizmo approach
+        public static JobDef RkM_EatFromBigPot;
+        public static JobDef RkM_FillBigPot;
+
+        static RkM_JobDefOf()
+        {
+            DefOfHelper.EnsureInitializedInCtor(typeof(RkM_JobDefOf));
+        }
     }
 }

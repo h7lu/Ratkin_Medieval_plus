@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 大木锅 UI 字符串 -->
+  <RkM_VegNutrition>蔬菜营养</RkM_VegNutrition>
+  <RkM_ProteinNutrition>蛋白营养</RkM_ProteinNutrition>
+  <RkM_CookingStew>正在烹饪{0}</RkM_CookingStew>
+  <RkM_NeedsFuel>需要燃料才能烹饪</RkM_NeedsFuel>
+  <RkM_NeedsIngredients>需要食材</RkM_NeedsIngredients>
+  <RkM_EatFromPot>从锅中取食</RkM_EatFromPot>
+  <RkM_CannotEatFromPot>无法从锅中取食</RkM_CannotEatFromPot>
+  <RkM_NotReady>尚未准备好</RkM_NotReady>
+  <RkM_AddIngredients>向锅中添加食材</RkM_AddIngredients>
+  
+  <!-- 炖菜类型名称 -->
+  <RkM_StewType_Vegetable>素炖菜</RkM_StewType_Vegetable>
+  <RkM_StewType_Meat>肉炖菜</RkM_StewType_Meat>
+  <RkM_StewType_Mixed>混合炖菜</RkM_StewType_Mixed>
+
+</LanguageData>

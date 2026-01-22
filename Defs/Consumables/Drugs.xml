@@ -40,7 +40,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
-
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>601</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
 
@@ -87,7 +91,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
-
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>602</listOrder>
+		</li>
+	</comps>
   </ThingDef>
  
   
@@ -134,7 +142,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
-
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>603</listOrder>
+		</li>
+	</comps>
   </ThingDef>
  
 
@@ -181,7 +193,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
-
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>604</listOrder>
+		</li>
+	</comps>
   </ThingDef>
  
 
@@ -225,7 +241,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
-
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>605</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 万灵 -->
@@ -268,6 +288,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>606</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 复活药水 -->
@@ -313,6 +338,9 @@
         <moteDef>Mote_ResurrectFlash</moteDef>
         <addsHediff>RatkinResurrectionSickness</addsHediff>
       </li>
+	  <li Class="CompProperties_Drug">
+		<listOrder>607</listOrder>
+	  </li>
     </comps>
   </ThingDef>
 
@@ -358,6 +386,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>608</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 解毒 -->
@@ -399,6 +432,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>609</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 灵感 -->
@@ -444,6 +482,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>611</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 圣 -->
@@ -485,6 +528,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>612</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 灵智 -->
@@ -527,6 +575,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>613</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 大力 -->
@@ -569,6 +622,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>614</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 隐身 -->
@@ -610,8 +668,13 @@
           <!-- <toleranceChemical>RatkinInvisibilityPotion</toleranceChemical> -->
         </li>
       </outcomeDoers>
+	  
     </ingestible>
-
+    <comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>615</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 情爱 -->
@@ -654,6 +717,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>616</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 狂暴 -->
@@ -696,6 +764,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>617</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 洗脑 -->
@@ -737,6 +810,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>618</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- 抗火药 -->
@@ -778,6 +856,11 @@
         </li>
       </outcomeDoers>
     </ingestible>
+	<comps>
+		<li Class="CompProperties_Drug">
+			<listOrder>619</listOrder>
+		</li>
+	</comps>
   </ThingDef>
 
 </Defs>

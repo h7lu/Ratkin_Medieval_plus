@@ -7,12 +7,13 @@
   <ThingDef ParentName="BuildingBase">
     <defName>RkM_BigWoodenPot</defName>
     <label>big wooden pot</label>
-    <description>A large wooden pot placed over a fire pit. Used for making soups and stews. Primitive but effective for handling large quantities of liquid food. Requires wood as fuel.</description>
-    <thingClass>Building_WorkTable</thingClass>
+    <tickerType>Normal</tickerType>
+    <description>A large wooden pot placed over a fire pit. Add raw food ingredients and fuel, and it will slowly cook them into appetizing stews containing vegetables and meat. Colonists can eat directly from the pot.\n\nRequires wood as fuel.</description>
+    <thingClass>RkM.Building_BigPot</thingClass>
     <graphicData>
-      <texPath>Graybox/Things/Building/BigWoodenPot</texPath>
+      <texPath>Things/Building/BigWoodenPot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.5,1.5)</drawSize>
+      <drawSize>(2,2)</drawSize>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -23,28 +24,26 @@
     <castEdgeShadows>true</castEdgeShadows>
     <staticSunShadowHeight>0.20</staticSunShadowHeight>
     <costList>
-      <WoodLog>50</WoodLog>
-      <Steel>10</Steel>
+      <WoodLog>100</WoodLog>
+      <Steel>20</Steel>
     </costList>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
     <useHitPoints>True</useHitPoints>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
-      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>200</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <WorkTableWorkSpeedFactor>0.8</WorkTableWorkSpeedFactor>
+      <Mass>50</Mass>
     </statBases>
-    <size>(1,1)</size>
+    <size>(2,2)</size>
     <designationCategory>Production</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
     <comps>
       <li Class="CompProperties_Refuelable">
         <fuelConsumptionRate>10.0</fuelConsumptionRate>
@@ -57,15 +56,19 @@
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
-      <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_HeatPusher">
         <heatPerSecond>2</heatPerSecond>
         <heatPushMaxTemperature>23</heatPushMaxTemperature>
       </li>
+      <li Class="RkM.CompProperties_AutoCookDispenser">
+        <nutritionCapacity>15.0</nutritionCapacity>
+        <vegetableStewDef>RkM_VegetableStew</vegetableStewDef>
+        <meatStewDef>RkM_MeatStew</meatStewDef>
+        <mixedStewDef>RkM_MixedStew</mixedStewDef>
+        <ticksPerUnit>2000</ticksPerUnit>
+        <allowDirectConsumption>true</allowDirectConsumption>
+      </li>
     </comps>
-    <building>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-    </building>
   </ThingDef>
 
   <!-- ========== 铁锅 / Iron Pot ========== -->
@@ -75,7 +78,7 @@
     <description>A sturdy iron pot that retains heat well. Allows for more precise temperature control and faster cooking. Ideal for preparing complex medieval dishes and medicinal syrups.</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
-      <texPath>Graybox/Things/Building/IronPot</texPath>
+      <texPath>Things/Building/IronPot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.5,1.5)</drawSize>
     </graphicData>
@@ -137,7 +140,7 @@
     <label>woven basket</label>
     <description>A simple basket woven from dried reeds or straw. Used for storing small items or simply as rural decoration.</description>
     <graphicData>
-      <texPath>Graybox/Things/Building/Basket</texPath>
+      <texPath>Things/Building/Basket</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1,1)</drawSize>
     </graphicData>
@@ -227,7 +230,7 @@
     <description>A simple iron grill placed over a fire pit. Perfect for grilling meat and vegetables directly over open flames. Adds a distinctive smoky flavor to food.</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
-      <texPath>Graybox/Things/Building/Grill</texPath>
+      <texPath>Things/Building/Grill</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.5,1.5)</drawSize>
     </graphicData>

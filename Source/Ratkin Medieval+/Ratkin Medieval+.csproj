@@ -72,6 +72,10 @@
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_RemoveSpecificHediffs.cs" />
     <Compile Include="MentalState\MentalStateWorker_RomanceAttempt.cs" />
     <Compile Include="ThingComps\CompGiveHediffNearby.cs" />
+    <Compile Include="ThingComps\CompAutoCookDispenser.cs" />
+    <Compile Include="Buildings\Building_BigPot.cs" />
+    <Compile Include="Jobs\JobDriver_EatFromBigPot.cs" />
+    <Compile Include="Jobs\JobDriver_FillBigPot.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Rituals\RitualGiveClassXPProps.cs" />
     <Compile Include="Rituals\RitualOutcomeEffectWorker_GiveClassXP.cs" />
