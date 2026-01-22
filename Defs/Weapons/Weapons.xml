@@ -43,6 +43,10 @@
     <weaponTags>
       <li>RkM_Vexillum</li>
     </weaponTags>
+    <costList>
+      <WoodLog>50</WoodLog>
+      <Cloth>30</Cloth>
+    </costList>
     <statBases>
       <Mass>2</Mass>
     </statBases>
@@ -116,6 +120,8 @@
     <graphicData>
       <texPath>Things/Weapons/RkM_ForgeHammer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
       <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
@@ -125,7 +131,7 @@
       <Mass>2.5</Mass>
     </statBases>
     <equippedStatOffsets>
-      <WorkSpeedGeneral>0.25</WorkSpeedGeneral>
+      <GeneralLaborSpeed>0.25</GeneralLaborSpeed>
     </equippedStatOffsets>
     <costList>
       <Steel>60</Steel>
@@ -161,6 +167,8 @@
     <graphicData>
       <texPath>Things/Weapons/RkM_Lucerne</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
       <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
@@ -206,6 +214,8 @@
     <graphicData>
       <texPath>Things/Weapons/RkM_Halberd</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
       <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
@@ -259,6 +269,8 @@
     <graphicData>
       <texPath>Things/Weapons/RkM_Spear</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
       <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
@@ -304,6 +316,8 @@
     <graphicData>
       <texPath>Things/Weapons/RkM_Rapier</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
       <drawSize>1.1</drawSize>
     </graphicData>
     <weaponTags>
@@ -395,6 +409,8 @@
     <graphicData>
       <texPath>Things/Weapons/RkM_Zweihander</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
       <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
@@ -440,7 +456,7 @@
     </tools>
   </ThingDef>
 
-  <!-- Ratkin Magic Wand -->
+<!-- 
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>RkM_MagicStaff</defName>
     <label>Ratkin Magic Staff</label>
@@ -476,8 +492,7 @@
         <defaultProjectile>Bullet_MagicMissile</defaultProjectile>
         <warmupTime>1.0</warmupTime>
         <range>25</range>
-        <forcedMiss>false</forcedMiss>
-        <soundCast>Shot_MagicWand</soundCast>
+        <soundCast>Shot_ChargeBlaster</soundCast>
       </li>
     </verbs>
     <tools>
@@ -491,23 +506,25 @@
       </li>
     </tools>
   </ThingDef>
+-->
 
-  <!-- Magic Missile Projectile -->
+<!-- 
   <ThingDef ParentName="BaseBullet">
     <defName>Bullet_MagicMissile</defName>
     <label>magic missile</label>
     <thingClass>Projectile_Explosive</thingClass>
     <graphicData>
-      <texPath>Things/Projectile/MagicMissile</texPath>
+      <texPath>Things/Projectile/Charge_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>1.0</drawSize>
     </graphicData>
     <projectile>
-      <damageDef>Energy</damageDef>
+      <damageDef>Burn</damageDef>
       <damageAmountBase>15</damageAmountBase>
       <speed>30</speed>
     </projectile>
   </ThingDef>
+-->
 
 <!-- Test Items for Texture Testing -->
   <ThingDef ParentName="ResourceBase">

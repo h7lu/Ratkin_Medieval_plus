@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 沙拉配方 / Salad Recipes ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookSalad</defName>
+    <label>cook ratkin salad</label>
+    <description>Cook a ratkin salad from vegetarian ingredients.</description>
+    <jobString>Cooking ratkin salad.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <customSummary>vegetarian ingredients</customSummary>
+          <categories>
+            <li>PlantFoodRaw</li>
+            <li>AnimalProductRaw</li>
+          </categories>
+        </filter>
+        <count>0.5</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_Salad>1</RkM_Salad>
+    </products>
+    <fixedIngredientFilter>
+      <disallowedCategories>
+        <li>MeatRaw</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookSaladBulk</defName>
+    <label>cook ratkin salads x4</label>
+    <description>Cook 4 ratkin salads from vegetarian ingredients.</description>
+    <jobString>Cooking 4 ratkin salads.</jobString>
+    <workAmount>1200</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <customSummary>vegetarian ingredients</customSummary>
+          <categories>
+            <li>PlantFoodRaw</li>
+            <li>AnimalProductRaw</li>
+          </categories>
+        </filter>
+        <count>2.0</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_Salad>4</RkM_Salad>
+    </products>
+    <fixedIngredientFilter>
+      <disallowedCategories>
+        <li>MeatRaw</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 杂烩粥配方 / Mixed Congee Recipes ========== -->
+
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookMixedCongee</defName>
+    <label>cook mixed congee</label>
+    <description>Cook one bowl of mixed congee from any raw food.</description>
+    <jobString>Cooking mixed congee.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>FoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.3</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_MixedCongee>1</RkM_MixedCongee>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookMixedCongeeBulk</defName>
+    <label>cook mixed congee x4</label>
+    <description>Cook 4 bowls of mixed congee from any raw food.</description>
+    <jobString>Cooking 4 bowls of mixed congee.</jobString>
+    <workAmount>1200</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>FoodRaw</li>
+          </categories>
+        </filter>
+        <count>1.2</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_MixedCongee>4</RkM_MixedCongee>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 面包配方 / Bread Recipes ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookBread</defName>
+    <label>bake ratkin bread</label>
+    <description>Bake bread from flour or plant-based ingredients.</description>
+    <jobString>Baking ratkin bread.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.5</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_Bread>1</RkM_Bread>
+    </products>
+    <fixedIngredientFilter>
+      <disallowedCategories>
+        <li>MeatRaw</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 素炖菜配方 / Vegetable Stew Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookVegetableStew</defName>
+    <label>cook vegetable stew</label>
+    <description>Cook a hearty vegetable stew.</description>
+    <jobString>Cooking vegetable stew.</jobString>
+    <workAmount>450</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.75</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_VegetableStew>1</RkM_VegetableStew>
+    </products>
+    <fixedIngredientFilter>
+      <disallowedCategories>
+        <li>MeatRaw</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 肉炖菜配方 / Meat Stew Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookMeatStew</defName>
+    <label>cook meat stew</label>
+    <description>Cook a rich meat stew.</description>
+    <jobString>Cooking meat stew.</jobString>
+    <workAmount>450</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>0.75</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_MeatStew>1</RkM_MeatStew>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 混合炖菜配方 / Mixed Stew Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookMixedStew</defName>
+    <label>cook mixed stew</label>
+    <description>Cook a balanced stew with meat and vegetables.</description>
+    <jobString>Cooking mixed stew.</jobString>
+    <workAmount>500</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>0.4</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.4</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_MixedStew>1</RkM_MixedStew>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 莓果派配方 / Berry Pie Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookBerryPie</defName>
+    <label>bake berry pie</label>
+    <description>Bake a delicious berry pie.</description>
+    <jobString>Baking berry pie.</jobString>
+    <workAmount>500</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+          </thingDefs>
+        </filter>
+        <count>0.5</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.25</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_BerryPie>1</RkM_BerryPie>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 蜜饯配方 / Candied Fruit Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookCandiedFruit</defName>
+    <label>make candied fruit</label>
+    <description>Preserve fruits in honey or sugar to make candied fruit.</description>
+    <jobString>Making candied fruit.</jobString>
+    <workAmount>400</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+          </thingDefs>
+        </filter>
+        <count>0.4</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_CandiedFruit>1</RkM_CandiedFruit>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 烤鸡配方 / Roast Chicken Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookRoastChicken</defName>
+    <label>roast chicken</label>
+    <description>Roast a whole chicken for a festive meal.</description>
+    <jobString>Roasting chicken.</jobString>
+    <workAmount>800</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>1.0</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_RoastChicken>1</RkM_RoastChicken>
+    </products>
+    <skillRequirements>
+      <Cooking>6</Cooking>
+    </skillRequirements>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 香料烤鱼配方 / Spicy Fish Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookSpicyFish</defName>
+    <label>cook spicy roast fish</label>
+    <description>Roast fish with aromatic spices.</description>
+    <jobString>Cooking spicy fish.</jobString>
+    <workAmount>600</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>0.75</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.15</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_SpicyFish>1</RkM_SpicyFish>
+    </products>
+    <skillRequirements>
+      <Cooking>4</Cooking>
+    </skillRequirements>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 康复药膳配方 / Recovery Meal Recipe ========== -->
+  
+  <RecipeDef ParentName="CookMealBase">
+    <defName>RkM_CookRecoveryMeal</defName>
+    <label>cook recovery meal</label>
+    <description>Cook a nutritious medicinal meal to aid recovery.</description>
+    <jobString>Cooking recovery meal.</jobString>
+    <workAmount>600</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.5</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineHerbal</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_RecoveryMeal>1</RkM_RecoveryMeal>
+    </products>
+    <skillRequirements>
+      <Cooking>5</Cooking>
+    </skillRequirements>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+</Defs>

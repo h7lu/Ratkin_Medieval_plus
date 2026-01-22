@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 热水 / Hot Water ========== -->
+  <ThingDef ParentName="DrugBase">
+    <defName>RkM_HotWater</defName>
+    <label>hot water</label>
+    <description>Simple boiled water that has been heated. Drinking it provides warmth and may help reduce the chance of getting sick.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_HotWater/RkM_HotWater</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>100</WorkToMake>
+      <MarketValue>3</MarketValue>
+      <Mass>0.3</Mass>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <ingestible>
+      <foodType>Fluid</foodType>
+      <nurseable>true</nurseable>
+      <drugCategory>None</drugCategory>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RkM_Warmed</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 热茶 / Hot Tea ========== -->
+  <ThingDef ParentName="DrugBase">
+    <defName>RkM_HotTea</defName>
+    <label>hot tea</label>
+    <description>A fragrant herbal tea brewed from dried leaves. Provides a slight boost to work efficiency and lifts the mood.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_HotTea/RkM_HotTea</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>200</WorkToMake>
+      <MarketValue>8</MarketValue>
+      <Mass>0.3</Mass>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <ingestible>
+      <foodType>Fluid</foodType>
+      <joy>0.10</joy>
+      <joyKind>Chemical</joyKind>
+      <nurseable>true</nurseable>
+      <drugCategory>Social</drugCategory>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <tasteThought>RkM_DrankHotTea</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RkM_TeaHigh</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 简易莓果酒 / Simple Berry Wine ========== -->
+  <ThingDef ParentName="DrugBase">
+    <defName>RkM_SimpleBerryWine</defName>
+    <label>simple berry wine</label>
+    <description>A crudely fermented berry wine. Not very refined, but it does the job.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_SimpleBerryWine/RkM_SimpleBerryWine</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>300</WorkToMake>
+      <MarketValue>10</MarketValue>
+      <Mass>0.3</Mass>
+      <Nutrition>0.08</Nutrition>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <ingestible>
+      <foodType>Fluid, Processed</foodType>
+      <joy>0.15</joy>
+      <joyKind>Chemical</joyKind>
+      <nurseable>true</nurseable>
+      <drugCategory>Social</drugCategory>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <tasteThought>RkM_DrankSimpleBerryWine</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholHigh</hediffDef>
+          <severity>0.12</severity>
+          <toleranceChemical>Alcohol</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholTolerance</hediffDef>
+          <severity>0.012</severity>
+          <divideByBodySize>true</divideByBodySize>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Alcohol</chemical>
+        <addictiveness>0.010</addictiveness>
+        <minToleranceToAddict>0.25</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>10</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ========== 莓果酒 / Berry Wine ========== -->
+  <ThingDef ParentName="DrugBase">
+    <defName>RkM_BerryWine</defName>
+    <label>berry wine</label>
+    <description>A well-aged berry wine with a rich fruity aroma. A refined drink for special occasions.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_BerryWine/RkM_BerryWine</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>500</WorkToMake>
+      <MarketValue>20</MarketValue>
+      <Mass>0.3</Mass>
+      <Nutrition>0.10</Nutrition>
+    </statBases>
+    <techLevel>Medieval</techLevel>
+    <ingestible>
+      <foodType>Fluid, Processed</foodType>
+      <joy>0.20</joy>
+      <joyKind>Chemical</joyKind>
+      <nurseable>true</nurseable>
+      <drugCategory>Social</drugCategory>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <tasteThought>RkM_DrankBerryWine</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholHigh</hediffDef>
+          <severity>0.15</severity>
+          <toleranceChemical>Alcohol</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholTolerance</hediffDef>
+          <severity>0.015</severity>
+          <divideByBodySize>true</divideByBodySize>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Alcohol</chemical>
+        <addictiveness>0.010</addictiveness>
+        <minToleranceToAddict>0.25</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>10</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ========== 鼠麦酒 / Rat Wheat Ale ========== -->
+  <ThingDef ParentName="DrugBase">
+    <defName>RkM_RatWheatAle</defName>
+    <label>rat wheat ale</label>
+    <description>A traditional ale brewed from rat wheat. Has a distinctive malty flavor beloved by ratkin.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_RatWheatAle/RkM_RatWheatAle</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>400</WorkToMake>
+      <MarketValue>12</MarketValue>
+      <Mass>0.3</Mass>
+      <Nutrition>0.08</Nutrition>
+    </statBases>
+    <techLevel>Medieval</techLevel>
+    <ingestible>
+      <foodType>Fluid, Processed</foodType>
+      <joy>0.17</joy>
+      <joyKind>Chemical</joyKind>
+      <nurseable>true</nurseable>
+      <drugCategory>Social</drugCategory>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <tasteThought>RkM_DrankRatWheatAle</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholHigh</hediffDef>
+          <severity>0.14</severity>
+          <toleranceChemical>Alcohol</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholTolerance</hediffDef>
+          <severity>0.014</severity>
+          <divideByBodySize>true</divideByBodySize>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Alcohol</chemical>
+        <addictiveness>0.010</addictiveness>
+        <minToleranceToAddict>0.25</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>10</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ========== 草药酒 / Herbal Wine ========== -->
+  <ThingDef ParentName="DrugBase">
+    <defName>RkM_HerbalWine</defName>
+    <label>herbal wine</label>
+    <description>A medicinal wine infused with various herbs. Provides healing benefits along with a mild buzz.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_HerbalWine/RkM_HerbalWine</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>600</WorkToMake>
+      <MarketValue>30</MarketValue>
+      <Mass>0.3</Mass>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <techLevel>Medieval</techLevel>
+    <ingestible>
+      <foodType>Fluid, Processed</foodType>
+      <joy>0.15</joy>
+      <joyKind>Chemical</joyKind>
+      <nurseable>true</nurseable>
+      <drugCategory>Medical</drugCategory>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <tasteThought>RkM_DrankHerbalWine</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholHigh</hediffDef>
+          <severity>0.10</severity>
+          <toleranceChemical>Alcohol</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RkM_HerbalWineEffect</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Alcohol</chemical>
+        <addictiveness>0.008</addictiveness>
+        <minToleranceToAddict>0.25</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.15</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>10</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 肠道阻塞 / Intestinal Blockage ========== -->
+  <HediffDef>
+    <defName>RkM_IntestinalBlockage</defName>
+    <label>intestinal blockage</label>
+    <description>A blockage in the intestines caused by consuming indigestible materials. Causes pain and reduced movement until it passes.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.6, 0.4)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>true</isBad>
+    <tendable>true</tendable>
+    <stages>
+      <li>
+        <label>minor</label>
+        <minSeverity>0.0</minSeverity>
+        <painOffset>0.10</painOffset>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+        <hungerRateFactor>0.8</hungerRateFactor>
+      </li>
+      <li>
+        <label>moderate</label>
+        <minSeverity>0.4</minSeverity>
+        <painOffset>0.20</painOffset>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+        <hungerRateFactor>0.6</hungerRateFactor>
+      </li>
+      <li>
+        <label>severe</label>
+        <minSeverity>0.7</minSeverity>
+        <painOffset>0.35</painOffset>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.40</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <hungerRateFactor>0.4</hungerRateFactor>
+        <vomitMtbDays>0.5</vomitMtbDays>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.5</severityPerDay>
+      </li>
+      <li Class="HediffCompProperties_TendDuration">
+        <tendAllAtOnce>true</tendAllAtOnce>
+        <baseTendDurationHours>24</baseTendDurationHours>
+        <severityPerDayTended>-0.3</severityPerDayTended>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ========== 温暖效果 / Warmed Effect (from hot water) ========== -->
+  <HediffDef>
+    <defName>RkM_Warmed</defName>
+    <label>warmed</label>
+    <description>Feeling warm after drinking hot water. Provides slight comfort and may help resist illness.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1.0, 0.8, 0.6)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statOffsets>
+          <ComfortableTemperatureMin>-3</ComfortableTemperatureMin>
+          <ImmunityGainSpeed>0.02</ImmunityGainSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>5000~7500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ========== 茶的效果 / Tea High ========== -->
+  <HediffDef>
+    <defName>RkM_TeaHigh</defName>
+    <label>tea buzz</label>
+    <description>Feeling alert and focused after drinking tea. Provides a modest boost to work speed.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.8, 0.5)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statOffsets>
+          <WorkSpeedGlobal>0.05</WorkSpeedGlobal>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>7500~11250</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ========== 草药酒效果 / Herbal Wine Effect ========== -->
+  <HediffDef>
+    <defName>RkM_HerbalWineEffect</defName>
+    <label>herbal remedy</label>
+    <description>The medicinal herbs in the wine are working, boosting immunity and regeneration.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.5, 0.9, 0.5)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statOffsets>
+          <ImmunityGainSpeed>0.05</ImmunityGainSpeed>
+        </statOffsets>
+        <naturalHealingFactor>1.1</naturalHealingFactor>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ========== 康复药膳效果 / Recovery Meal Boost ========== -->
+  <HediffDef>
+    <defName>RkM_RecoveryBoost</defName>
+    <label>recovery boost</label>
+    <description>The nutritious medicinal meal is aiding recovery, boosting immunity and natural healing.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4, 1.0, 0.4)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statOffsets>
+          <ImmunityGainSpeed>0.08</ImmunityGainSpeed>
+        </statOffsets>
+        <naturalHealingFactor>1.15</naturalHealingFactor>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>30000~45000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

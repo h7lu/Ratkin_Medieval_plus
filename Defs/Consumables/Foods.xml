@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 沙拉 / Salad ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_Salad</defName>
+    <label>ratkin salad</label>
+    <description>Made with freshly picked vegetables and wild berries, simply mixed for a refreshing and light taste.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_Salad</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <WorkToMake>300</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealSimple</preferability>
+      <tasteThought>RkM_AteSalad</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <optimalityOffsetFeedingAnimals>-25</optimalityOffsetFeedingAnimals>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 杂烩粥 / Mixed Congee ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_MixedCongee</defName>
+    <label>ratkin mixed congee</label>
+    <description>Food to fill the stomach during hard times, tossing whatever is available into a pot to make a random stew.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_MixedCongee</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <WorkToMake>300</WorkToMake>
+      <Nutrition>0.7</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealSimple</preferability>
+      <tasteThought>RkM_AteMixedCongee</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <optimalityOffsetFeedingAnimals>-25</optimalityOffsetFeedingAnimals>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 鼠麦面包 / Rat Wheat Bread ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_Bread</defName>
+    <label>ratkin bread</label>
+    <description>Simple bread made from rat wheat flour. A staple food that fills the belly without any special effects.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_Bread/RkM_Bread</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>12</MarketValue>
+      <WorkToMake>250</WorkToMake>
+      <Nutrition>0.85</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealSimple</preferability>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <optimalityOffsetFeedingAnimals>-20</optimalityOffsetFeedingAnimals>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 康复药膳 / Recovery Meal ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_RecoveryMeal</defName>
+    <label>recovery meal</label>
+    <description>A nutritious medicinal meal that promotes healing and boosts the immune system. Made with herbs and quality ingredients.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_RecoveryMeal/RkM_RecoveryMeal</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>35</MarketValue>
+      <WorkToMake>600</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteRecoveryMeal</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RkM_RecoveryBoost</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 素炖菜 / Vegetable Stew ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_VegetableStew</defName>
+    <label>vegetable stew</label>
+    <description>A hearty vegetable stew slow-cooked to perfection. Warm and comforting.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_VegetableStew/RkM_VegetableStew</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <WorkToMake>450</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteVegetableStew</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 肉炖菜 / Meat Stew ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_MeatStew</defName>
+    <label>meat stew</label>
+    <description>A rich meat stew slow-cooked with tender chunks of meat. Hearty and satisfying.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_MeatStew/RkM_MeatStew</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>25</MarketValue>
+      <WorkToMake>450</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteMeatStew</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 肉素混合炖菜 / Mixed Stew ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_MixedStew</defName>
+    <label>mixed stew</label>
+    <description>A balanced stew combining meat and vegetables. The best of both worlds.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_MixedStew/RkM_MixedStew</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>28</MarketValue>
+      <WorkToMake>500</WorkToMake>
+      <Nutrition>0.95</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteMixedStew</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 烤鸡 / Roast Chicken ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_RoastChicken</defName>
+    <label>roast chicken</label>
+    <description>A whole roasted chicken, golden and crispy on the outside, juicy inside. A festive delicacy.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_RoastChicken/RkM_RoastChicken</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>50</MarketValue>
+      <WorkToMake>800</WorkToMake>
+      <Nutrition>1.2</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealLavish</preferability>
+      <tasteThought>RkM_AteRoastChicken</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 香料烤鱼 / Spicy Roast Fish ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_SpicyFish</defName>
+    <label>spicy roast fish</label>
+    <description>Fish roasted with aromatic spices. The fragrance is irresistible.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_SpicyFish/RkM_SpicyFish</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>40</MarketValue>
+      <WorkToMake>600</WorkToMake>
+      <Nutrition>1.0</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteSpicyFish</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 蜜饯 / Candied Fruit ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_CandiedFruit</defName>
+    <label>candied fruit</label>
+    <description>Sweet preserved fruits coated in honey or sugar. A delightful treat.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_CandiedFruit/RkM_CandiedFruit</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>25</MarketValue>
+      <WorkToMake>400</WorkToMake>
+      <Nutrition>0.5</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteCandiedFruit</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <joy>0.10</joy>
+      <joyKind>Gluttonous</joyKind>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 莓果派 / Berry Pie ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_BerryPie</defName>
+    <label>berry pie</label>
+    <description>A delicious pie filled with sweet berries. The crust is golden and flaky.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_BerryPie/RkM_BerryPie</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>30</MarketValue>
+      <WorkToMake>500</WorkToMake>
+      <Nutrition>0.8</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>RkM_AteBerryPie</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <joy>0.15</joy>
+      <joyKind>Gluttonous</joyKind>
+    </ingestible>
+  </ThingDef>
+
+</Defs>

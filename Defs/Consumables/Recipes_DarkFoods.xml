@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ============================================ -->
+  <!--          拉特金中世纪+ 黑暗食物配方            -->
+  <!--      Ratkin Medieval+ Dark Food Recipes       -->
+  <!-- ============================================ -->
+  
+  <!-- 注意：这些是绝望情况下的食物配方 -->
+  <!-- Note: These are desperate survival food recipes -->
+
+  <!-- ========== 泔水配方 / Swill Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeSwill</defName>
+    <label>prepare swill</label>
+    <description>Collect and prepare food scraps into barely edible swill.</description>
+    <jobString>Preparing swill.</jobString>
+    <workAmount>150</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Foods</li>
+          </categories>
+        </filter>
+        <count>0.15</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_Swill>1</RkM_Swill>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 树皮面包配方 / Bark Bread Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeBarkBread</defName>
+    <label>bake bark bread</label>
+    <description>Grind bark and mix with minimal flour to create barely edible bread.</description>
+    <jobString>Baking bark bread.</jobString>
+    <workAmount>300</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.1</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_BarkBread>1</RkM_BarkBread>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 绝境炖菜配方 / Desperation Stew Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeDesperationStew</defName>
+    <label>cook desperation stew</label>
+    <description>Throw anything edible into a pot and hope for the best.</description>
+    <jobString>Cooking desperation stew.</jobString>
+    <workAmount>200</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Foods</li>
+          </categories>
+        </filter>
+        <count>0.25</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_DesperationStew>1</RkM_DesperationStew>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 泥饼配方 / Dirt Cake Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeDirtCake</defName>
+    <label>make dirt cake</label>
+    <description>Mix any available plant matter with dirt to create a filling but nauseating food.</description>
+    <jobString>Making dirt cake.</jobString>
+    <workAmount>100</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.1</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_DirtCake>1</RkM_DirtCake>
+    </products>
+    <recipeUsers>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 皮革汤配方 / Leather Soup Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeLeatherSoup</defName>
+    <label>boil leather soup</label>
+    <description>Boil leather scraps into a barely digestible soup.</description>
+    <jobString>Boiling leather soup.</jobString>
+    <workAmount>250</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Leathers</li>
+          </categories>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_LeatherSoup>1</RkM_LeatherSoup>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+</Defs>

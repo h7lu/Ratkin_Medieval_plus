@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 黑暗食物 / Dark Foods ========== -->
+  <!-- These are desperate foods with negative effects -->
+
+  <!-- ========== 潲水饭 / Swill ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_Swill</defName>
+    <label>swill</label>
+    <description>Leftover scraps and waste mixed together. Barely edible, with a significant chance of food poisoning.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_Swill/RkM_Swill</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2</MarketValue>
+      <WorkToMake>50</WorkToMake>
+      <Nutrition>0.4</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <tasteThought>RkM_AteSwill</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>FoodPoisoning</hediffDef>
+          <chance>0.05</chance>
+          <severity>0.75</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 树皮面包 / Bark Bread ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_BarkBread</defName>
+    <label>bark bread</label>
+    <description>Bread made from ground tree bark mixed with minimal flour. Extremely hard to digest and often causes intestinal blockage.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_BarkBread/RkM_BarkBread</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>3</MarketValue>
+      <WorkToMake>100</WorkToMake>
+      <Nutrition>0.3</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <tasteThought>RkM_AteBarkBread</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RkM_IntestinalBlockage</hediffDef>
+          <chance>0.50</chance>
+          <severity>0.5</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 绝望炖菜 / Desperation Stew ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_DesperationStew</defName>
+    <label>desperation stew</label>
+    <description>A foul-smelling stew made from whatever could be found - rotting vegetables, questionable meat, and things best left unidentified.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_DesperationStew/RkM_DesperationStew</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>4</MarketValue>
+      <WorkToMake>150</WorkToMake>
+      <Nutrition>0.5</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <tasteThought>RkM_AteDesperationStew</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>FoodPoisoning</hediffDef>
+          <chance>0.10</chance>
+          <severity>0.75</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 土饼 / Dirt Cake ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_DirtCake</defName>
+    <label>dirt cake</label>
+    <description>A "cake" made primarily from dirt and clay, with just enough edible material to technically qualify as food. Almost guaranteed to cause severe intestinal blockage.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_DirtCake/RkM_DirtCake</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>1</MarketValue>
+      <WorkToMake>50</WorkToMake>
+      <Nutrition>0.2</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <tasteThought>RkM_AteDirtCake</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>RkM_IntestinalBlockage</hediffDef>
+          <chance>1.0</chance>
+          <severity>0.8</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 皮革汤 / Leather Soup ========== -->
+  <ThingDef ParentName="MealCooked">
+    <defName>RkM_LeatherSoup</defName>
+    <label>leather soup</label>
+    <description>A thin broth made by boiling old leather scraps. Barely nutritious and utterly unpleasant, but it might just keep you alive.</description>
+    <graphicData>
+      <texPath>Things/Items/Foods/RkM_LeatherSoup/RkM_LeatherSoup</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2</MarketValue>
+      <WorkToMake>100</WorkToMake>
+      <Nutrition>0.25</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+      <tasteThought>RkM_AteLeatherSoup</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+</Defs>
