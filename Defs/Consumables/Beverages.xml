@@ -7,7 +7,7 @@
     <label>hot water</label>
     <description>Simple boiled water that has been heated. Drinking it provides warmth and may help reduce the chance of getting sick.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_HotWater/RkM_HotWater</texPath>
+      <texPath>Things/Items/Foods/RkM_HotWater</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -39,7 +39,7 @@
     <label>hot tea</label>
     <description>A fragrant herbal tea brewed from dried leaves. Provides a slight boost to work efficiency and lifts the mood.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_HotTea/RkM_HotTea</texPath>
+      <texPath>Things/Items/Foods/RkM_HotTea</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -74,7 +74,7 @@
     <label>simple berry wine</label>
     <description>A crudely fermented berry wine. Not very refined, but it does the job.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_SimpleBerryWine/RkM_SimpleBerryWine</texPath>
+      <texPath>Things/Items/Foods/RkM_SimpleBerryWine</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -126,7 +126,7 @@
     <label>berry wine</label>
     <description>A well-aged berry wine with a rich fruity aroma. A refined drink for special occasions.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_BerryWine/RkM_BerryWine</texPath>
+      <texPath>Things/Items/Foods/RkM_BerryWine</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -178,7 +178,7 @@
     <label>rat wheat ale</label>
     <description>A traditional ale brewed from rat wheat. Has a distinctive malty flavor beloved by ratkin.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_RatWheatAle/RkM_RatWheatAle</texPath>
+      <texPath>Things/Items/Foods/RkM_RatWheatAle</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -230,7 +230,7 @@
     <label>herbal wine</label>
     <description>A medicinal wine infused with various herbs. Provides healing benefits along with a mild buzz.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_HerbalWine/RkM_HerbalWine</texPath>
+      <texPath>Things/Items/Foods/RkM_HerbalWine</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>

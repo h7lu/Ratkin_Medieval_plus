@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- ========== Add RkM Kitchen Buildings to Existing Recipes ========== -->
+
+  <!-- Add Big Wooden Pot to congee/soup recipes -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/RecipeDef[defName="RkM_CookMixedCongee"]/recipeUsers</xpath>
+    <value>
+      <li>RkM_BigWoodenPot</li>
+      <li>RkM_IronPot</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/RecipeDef[defName="RkM_CookMixedCongeeBulk"]/recipeUsers</xpath>
+    <value>
+      <li>RkM_BigWoodenPot</li>
+      <li>RkM_IronPot</li>
+    </value>
+  </Operation>
+
+  <!-- Add Iron Pot to salad recipes (cold prep on work surface) -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/RecipeDef[defName="RkM_CookSalad"]/recipeUsers</xpath>
+    <value>
+      <li>RkM_IronPot</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/RecipeDef[defName="RkM_CookSaladBulk"]/recipeUsers</xpath>
+    <value>
+      <li>RkM_IronPot</li>
+    </value>
+  </Operation>
+
+  <!-- Add Stone Oven to bread/baking recipes (if they exist) -->
+  <!-- Placeholder for future baked goods -->
+
+  <!-- Add Grill to meat-based recipes -->
+  <!-- Add grilling capability to roasted meat recipes -->
+
+  <!-- Add grinding to Big Wooden Pot (flour making) -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/RecipeDef[defName="RkM_GrindRatWheat"]/recipeUsers</xpath>
+    <value>
+      <li>RkM_BigWoodenPot</li>
+    </value>
+  </Operation>
+
+</Patch>

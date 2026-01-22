@@ -10,8 +10,8 @@
     <label>swill</label>
     <description>Leftover scraps and waste mixed together. Barely edible, with a significant chance of food poisoning.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_Swill/RkM_Swill</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_Swill</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>2</MarketValue>
@@ -39,8 +39,8 @@
     <label>bark bread</label>
     <description>Bread made from ground tree bark mixed with minimal flour. Extremely hard to digest and often causes intestinal blockage.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_BarkBread/RkM_BarkBread</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_BarkBread</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>3</MarketValue>
@@ -68,8 +68,8 @@
     <label>desperation stew</label>
     <description>A foul-smelling stew made from whatever could be found - rotting vegetables, questionable meat, and things best left unidentified.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_DesperationStew/RkM_DesperationStew</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_DesperationStew</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>4</MarketValue>
@@ -97,8 +97,8 @@
     <label>dirt cake</label>
     <description>A "cake" made primarily from dirt and clay, with just enough edible material to technically qualify as food. Almost guaranteed to cause severe intestinal blockage.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_DirtCake/RkM_DirtCake</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_DirtCake</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>1</MarketValue>
@@ -126,8 +126,8 @@
     <label>leather soup</label>
     <description>A thin broth made by boiling old leather scraps. Barely nutritious and utterly unpleasant, but it might just keep you alive.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_LeatherSoup/RkM_LeatherSoup</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_LeatherSoup</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>2</MarketValue>

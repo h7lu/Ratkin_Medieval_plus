@@ -84,7 +84,7 @@
     <stages>
       <li>
         <statOffsets>
-          <ComfortableTemperatureMin>-3</ComfortableTemperatureMin>
+          <ComfyTemperatureMin>-3</ComfyTemperatureMin>
           <ImmunityGainSpeed>0.02</ImmunityGainSpeed>
         </statOffsets>
       </li>

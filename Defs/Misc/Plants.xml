@@ -23,7 +23,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <maxMeshCount>4</maxMeshCount>
       <harvestTag>Standard</harvestTag>
-      <!-- <harvestedThingDef>RatkinSage</harvestedThingDef> -->
+      <harvestedThingDef>RkM_Sage</harvestedThingDef>
       <harvestYield>8</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -61,7 +61,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <maxMeshCount>4</maxMeshCount>
       <harvestTag>Standard</harvestTag>
-      <!-- <harvestedThingDef>RatkinValerian</harvestedThingDef> -->
+      <harvestedThingDef>RkM_Valerian</harvestedThingDef>
       <harvestYield>6</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -99,7 +99,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <maxMeshCount>4</maxMeshCount>
       <harvestTag>Standard</harvestTag>
-      <!-- <harvestedThingDef>RatkinLavender</harvestedThingDef> -->
+      <harvestedThingDef>RkM_Lavender</harvestedThingDef>
       <harvestYield>10</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -138,7 +138,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <maxMeshCount>4</maxMeshCount>
       <harvestTag>Standard</harvestTag>
-      <!-- <harvestedThingDef>RatkinLicorice</harvestedThingDef> -->
+      <harvestedThingDef>RkM_Licorice</harvestedThingDef>
       <harvestYield>7</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -176,7 +176,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <maxMeshCount>4</maxMeshCount>
       <harvestTag>Standard</harvestTag>
-      <!-- <harvestedThingDef>RatkinAconite</harvestedThingDef> -->
+      <harvestedThingDef>RkM_Aconite</harvestedThingDef>
       <harvestYield>4</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -214,7 +214,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <maxMeshCount>4</maxMeshCount>
       <harvestTag>Standard</harvestTag>
-      <!-- <harvestedThingDef>RatkinMarigold</harvestedThingDef> -->
+      <harvestedThingDef>RkM_Marigold</harvestedThingDef>
       <harvestYield>9</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -224,6 +224,228 @@
       <growDays>13</growDays>
       <visualSizeRange>0.5~1.0</visualSizeRange>
       <wildOrder>2</wildOrder>
+      <purpose>Health</purpose>
+      <humanFoodPlant>false</humanFoodPlant>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 鼠麦 / Rat Wheat ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_RatWheat</defName>
+    <label>rat wheat</label>
+    <description>A short-stalked wheat variety common in ratkin farms, with plump golden grains that emit a rich wheat aroma. This highly adaptable crop is drought-resistant, cold-tolerant, and fast-growing, forming the backbone of ratkin agriculture. Harvesting also produces hay as a byproduct.</description>
+    <statBases>
+      <MaxHitPoints>85</MaxHitPoints>
+      <Nutrition>0.18</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/RatWheat</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.5, 1.5)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>14</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/RatWheat_Immature</immatureGraphicPath>
+      <dieIfLeafless>false</dieIfLeafless>
+      <maxMeshCount>9</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_RatWheat</harvestedThingDef>
+      <harvestYield>18</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>20</growDays>
+      <fertilityMin>0.30</fertilityMin>
+      <fertilitySensitivity>0.3</fertilitySensitivity>
+      <visualSizeRange>0.3~1.0</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Food</purpose>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 苦艾 / Wormwood ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_Wormwood</defName>
+    <label>wormwood</label>
+    <description>A herb with long, silvery-white leaves and a strong bitter taste. A fundamental ingredient for alchemists crafting antidotes and clarity potions. Thrives in poor soil conditions.</description>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Wormwood</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.5, 1.5)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>14</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/Wormwood_Immature</immatureGraphicPath>
+      <dieIfLeafless>true</dieIfLeafless>
+      <maxMeshCount>4</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_Wormwood</harvestedThingDef>
+      <harvestYield>8</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>10</growDays>
+      <fertilityMin>0.20</fertilityMin>
+      <visualSizeRange>0.4~1.0</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Health</purpose>
+      <humanFoodPlant>false</humanFoodPlant>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 蓟草 / Thistle ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_Thistle</defName>
+    <label>thistle</label>
+    <description>A thorny wild plant with striking purple flower crowns. Both roots and petals have medicinal properties for stopping bleeding and preventing infection. Harvesting has a small chance to cause minor injuries due to thorns.</description>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Thistle</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.5, 1.5)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>18</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/Thistle_Immature</immatureGraphicPath>
+      <dieIfLeafless>true</dieIfLeafless>
+      <maxMeshCount>4</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_Thistle</harvestedThingDef>
+      <harvestYield>6</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>8</growDays>
+      <visualSizeRange>0.4~1.0</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Health</purpose>
+      <humanFoodPlant>false</humanFoodPlant>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 薄荷 / Mint ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_Mint</defName>
+    <label>mint</label>
+    <description>A refreshing herb with cool, aromatic leaves. Commonly found near streams and wet areas. Widely used for digestive issues and as a stimulant. Easy to grow in large quantities with a short growth cycle.</description>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Mint</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.2, 1.2)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>10</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/Mint_Immature</immatureGraphicPath>
+      <dieIfLeafless>true</dieIfLeafless>
+      <maxMeshCount>9</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_Mint</harvestedThingDef>
+      <harvestYield>12</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>6</growDays>
+      <visualSizeRange>0.3~0.8</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Health</purpose>
+      <humanFoodPlant>false</humanFoodPlant>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 百里香 / Thyme ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_Thyme</defName>
+    <label>thyme</label>
+    <description>A small, hardy aromatic herb with mild antibacterial properties. A common fixture in both kitchens and medicine cabinets. When cooked with meat, provides a delightful flavor bonus. Drought-resistant and grows well in poor soil.</description>
+    <statBases>
+      <MaxHitPoints>65</MaxHitPoints>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Thyme</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.0, 1.0)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>10</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/Thyme_Immature</immatureGraphicPath>
+      <dieIfLeafless>true</dieIfLeafless>
+      <maxMeshCount>9</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_Thyme</harvestedThingDef>
+      <harvestYield>10</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>8</growDays>
+      <fertilityMin>0.20</fertilityMin>
+      <visualSizeRange>0.3~0.7</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Health</purpose>
+      <humanFoodPlant>false</humanFoodPlant>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 曼德拉草 / Mandrake ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_Mandrake</defName>
+    <label>mandrake</label>
+    <description>A mysterious plant with humanoid-shaped roots. Legend says its scream can cause unconsciousness. A rare ingredient for powerful potions, invisibility elixirs, and high-grade healing solutions. Harvesting causes the harvester to fall unconscious for a full day. Grows slowly and only one plant per tile.</description>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Nutrition>0.10</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Mandrake</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(2.0, 2.0)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>14</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/Mandrake_Immature</immatureGraphicPath>
+      <dieIfLeafless>true</dieIfLeafless>
+      <maxMeshCount>1</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_Mandrake</harvestedThingDef>
+      <harvestYield>1</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>30</growDays>
+      <visualSizeRange>0.5~1.2</visualSizeRange>
+      <wildOrder>1</wildOrder>
       <purpose>Health</purpose>
       <humanFoodPlant>false</humanFoodPlant>
     </plant>

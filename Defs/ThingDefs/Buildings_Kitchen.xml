@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 厨房设施 / Kitchen Buildings ========== -->
+
+  <!-- ========== 大木锅 / Big Wooden Pot ========== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RkM_BigWoodenPot</defName>
+    <label>big wooden pot</label>
+    <description>A large wooden pot placed over a fire pit. Used for making soups and stews. Primitive but effective for handling large quantities of liquid food. Requires wood as fuel.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Graybox/Things/Building/BigWoodenPot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <WoodLog>50</WoodLog>
+      <Steel>10</Steel>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <WorkTableWorkSpeedFactor>0.8</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>10.0</fuelConsumptionRate>
+        <fuelCapacity>50.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_HeatPusher">
+        <heatPerSecond>2</heatPerSecond>
+        <heatPushMaxTemperature>23</heatPushMaxTemperature>
+      </li>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+  </ThingDef>
+
+  <!-- ========== 铁锅 / Iron Pot ========== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RkM_IronPot</defName>
+    <label>iron pot</label>
+    <description>A sturdy iron pot that retains heat well. Allows for more precise temperature control and faster cooking. Ideal for preparing complex medieval dishes and medicinal syrups.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Graybox/Things/Building/IronPot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <Steel>60</Steel>
+      <WoodLog>20</WoodLog>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>1500</WorkToBuild>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <WorkTableWorkSpeedFactor>1.2</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>10.0</fuelConsumptionRate>
+        <fuelCapacity>50.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_HeatPusher">
+        <heatPerSecond>3</heatPerSecond>
+        <heatPushMaxTemperature>23</heatPushMaxTemperature>
+      </li>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <researchPrerequisites>
+      <li>RkM_MedievalCooking</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- ========== 装饰性容器 / Decorative Containers ========== -->
+
+  <!-- 篮子 / Basket -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RkM_Basket</defName>
+    <label>woven basket</label>
+    <description>A simple basket woven from dried reeds or straw. Used for storing small items or simply as rural decoration.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Building/Basket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>10</WoodLog> <!-- Placeholder for straw/reeds -->
+    </costList>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>100</WorkToBuild>
+      <Mass>1</Mass>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.2</fillPercent>
+    <designationCategory>Furniture</designationCategory>
+    <rotatable>false</rotatable>
+  </ThingDef>
+
+  <!-- ========== 石窑 / Stone Oven ========== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RkM_StoneOven</defName>
+    <label>stone oven</label>
+    <description>A sturdy stone oven for baking bread, pies, and roasting meat. The thick stone walls retain heat efficiently, allowing for even cooking. A staple of any medieval kitchen.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Graybox/Things/Building/StoneOven</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <costList>
+      <BlocksGranite>40</BlocksGranite>
+      <Steel>15</Steel>
+    </costList>
+    <costStuffCount>0</costStuffCount>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>2500</WorkToBuild>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkTableWorkSpeedFactor>1.0</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(2,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>15.0</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_HeatPusher">
+        <heatPerSecond>6</heatPerSecond>
+        <heatPushMaxTemperature>28</heatPushMaxTemperature>
+      </li>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <researchPrerequisites>
+      <li>RkM_MedievalCooking</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- ========== 烤架 / Grill ========== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RkM_Grill</defName>
+    <label>cooking grill</label>
+    <description>A simple iron grill placed over a fire pit. Perfect for grilling meat and vegetables directly over open flames. Adds a distinctive smoky flavor to food.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Graybox/Things/Building/Grill</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.15</staticSunShadowHeight>
+    <costList>
+      <Steel>40</Steel>
+      <WoodLog>10</WoodLog>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.4</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>800</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+      <WorkTableWorkSpeedFactor>0.9</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>12.0</fuelConsumptionRate>
+        <fuelCapacity>40.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_HeatPusher">
+        <heatPerSecond>4</heatPerSecond>
+        <heatPushMaxTemperature>25</heatPushMaxTemperature>
+      </li>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+  </ThingDef>
+
+</Defs>

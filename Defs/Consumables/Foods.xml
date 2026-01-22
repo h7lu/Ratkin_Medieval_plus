@@ -53,7 +53,7 @@
     <label>ratkin bread</label>
     <description>Simple bread made from rat wheat flour. A staple food that fills the belly without any special effects.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_Bread/RkM_Bread</texPath>
+      <texPath>Things/Items/Foods/RkM_Bread</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
@@ -75,7 +75,7 @@
     <label>recovery meal</label>
     <description>A nutritious medicinal meal that promotes healing and boosts the immune system. Made with herbs and quality ingredients.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_RecoveryMeal/RkM_RecoveryMeal</texPath>
+      <texPath>Things/Items/Foods/RkM_RecoveryMeal</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
@@ -103,7 +103,7 @@
     <label>vegetable stew</label>
     <description>A hearty vegetable stew slow-cooked to perfection. Warm and comforting.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_VegetableStew/RkM_VegetableStew</texPath>
+      <texPath>Things/Items/Foods/RkM_VegetableStew</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
@@ -125,7 +125,7 @@
     <label>meat stew</label>
     <description>A rich meat stew slow-cooked with tender chunks of meat. Hearty and satisfying.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_MeatStew/RkM_MeatStew</texPath>
+      <texPath>Things/Items/Foods/RkM_MeatStew</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
@@ -147,7 +147,7 @@
     <label>mixed stew</label>
     <description>A balanced stew combining meat and vegetables. The best of both worlds.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_MixedStew/RkM_MixedStew</texPath>
+      <texPath>Things/Items/Foods/RkM_MixedStew</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
@@ -169,8 +169,8 @@
     <label>roast chicken</label>
     <description>A whole roasted chicken, golden and crispy on the outside, juicy inside. A festive delicacy.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_RoastChicken/RkM_RoastChicken</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_RoastChicken</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>50</MarketValue>
@@ -191,8 +191,8 @@
     <label>spicy roast fish</label>
     <description>Fish roasted with aromatic spices. The fragrance is irresistible.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_SpicyFish/RkM_SpicyFish</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Items/Foods/RkM_SpicyFish</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
       <MarketValue>40</MarketValue>
@@ -213,7 +213,7 @@
     <label>candied fruit</label>
     <description>Sweet preserved fruits coated in honey or sugar. A delightful treat.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_CandiedFruit/RkM_CandiedFruit</texPath>
+      <texPath>Things/Items/Foods/RkM_CandiedFruit</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
@@ -237,7 +237,7 @@
     <label>berry pie</label>
     <description>A delicious pie filled with sweet berries. The crust is golden and flaky.</description>
     <graphicData>
-      <texPath>Things/Items/Foods/RkM_BerryPie/RkM_BerryPie</texPath>
+      <texPath>Things/Items/Foods/RkM_BerryPie</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
