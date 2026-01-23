@@ -70,14 +70,8 @@ namespace RkM
         /// <summary>Whether to show a glow effect when fueled.</summary>
         public bool showGlowWhenFueled = true;
 
-        /// <summary>Texture path for the glow effect.</summary>
-        public string glowTexturePath = "Things/Mote/Glow";
-        
-        /// <summary>Glow color when fuel is active.</summary>
-        public Color glowColor = new Color(1f, 0.6f, 0.2f, 0.4f); // Orange-yellowish
-        
-        /// <summary>Glow radius/size.</summary>
-        public float glowRadius = 1.2f;
+        /// <summary>Mote definition to use for the glow.</summary>
+        public ThingDef glowMoteDef;
         
         /// <summary>Draw offset for the glow effect.</summary>
         public Vector3 glowDrawOffset = new Vector3(0f, 0f, -0.1f);
@@ -141,7 +135,7 @@ namespace RkM
         private Graphic vegStewMaskGraphic;
         private Graphic meatStewMaskGraphic;
         private Graphic mixedStewMaskGraphic;
-        private Graphic glowGraphic;
+        private Mote glowMote;
         private bool graphicsInitialized;
 
         public CompProperties_AutoCookDispenser Props => (CompProperties_AutoCookDispenser)props;
@@ -259,16 +253,6 @@ namespace RkM
                 mixedStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
                     Props.mixedStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
             }
-
-            // Create glow graphic (simple colored overlay)
-            /*
-            if (Props.showGlowWhenFueled && !Props.glowTexturePath.NullOrEmpty())
-            {
-                glowGraphic = GraphicDatabase.Get<Graphic_Single>(
-                    Props.glowTexturePath, ShaderDatabase.MoteGlow, 
-                    new Vector2(Props.glowRadius, Props.glowRadius), Props.glowColor);
-            }
-            */
         }
 
         public override void PostDraw()
@@ -306,18 +290,6 @@ namespace RkM
                 maskPos.y += 0.01f; // Slightly above the base
                 maskToDraw.Draw(maskPos, parent.Rotation, parent);
             }
-
-            // Draw glow if fueled
-             /*
-            if (Props.showGlowWhenFueled && HasFuel && glowGraphic != null)
-            {
-                // Rotate offset with the building
-                Vector3 rotOffset = Props.glowDrawOffset.RotatedBy(parent.Rotation);
-                Vector3 glowPos = drawPos + rotOffset;
-                glowPos.y += 0.005f; // Below mask but above ground
-                glowGraphic.Draw(glowPos, parent.Rotation, parent);
-            }
-            */
         }
 
         public override void PostExposeData()
@@ -332,6 +304,18 @@ namespace RkM
         public override void CompTick()
         {
             base.CompTick();
+
+            if (Props.showGlowWhenFueled && Props.glowMoteDef != null)
+            {
+                if (IsPoweredAndFueled)
+                {
+                    if (glowMote == null || glowMote.Destroyed)
+                    {
+                        glowMote = MoteMaker.MakeAttachedOverlay(parent, Props.glowMoteDef, Props.glowDrawOffset);
+                    }
+                    glowMote.Maintain();
+                }
+            }
 
             if (!IsPoweredAndFueled)
             {

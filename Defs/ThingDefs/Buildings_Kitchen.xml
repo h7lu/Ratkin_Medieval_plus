@@ -78,9 +78,8 @@
         <maskDrawOffset>(0, 0, 0)</maskDrawOffset>
         <!-- Glow settings -->
         <showGlowWhenFueled>true</showGlowWhenFueled>
-        <glowColor>(1, 0.6, 0.2, 0.35)</glowColor>
-        <glowRadius>1.5</glowRadius>
-        <glowDrawOffset>(0, 0, -0.1)</glowDrawOffset>
+        <glowMoteDef>RkM_Mote_PotGlow</glowMoteDef>
+        <glowDrawOffset>(0, 0, 0)</glowDrawOffset>
       </li>
     </comps>
   </ThingDef>
