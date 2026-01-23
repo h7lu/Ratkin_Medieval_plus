@@ -13,7 +13,8 @@ namespace RkM
         None,
         Vegetable,
         Meat,
-        Mixed
+        Mixed,
+        HotWater
     }
 
     /// <summary>
@@ -34,6 +35,9 @@ namespace RkM
         /// <summary>The stew ThingDef produced when both veg and protein are available.</summary>
         public ThingDef mixedStewDef;
 
+        /// <summary>The def for hot water (produced when no nutrition is available).</summary>
+        public ThingDef hotWaterDef;
+
         /// <summary>Work ticks required to produce one unit of food.</summary>
         public int ticksPerUnit = 5000; // About 2 hours
 
@@ -42,6 +46,41 @@ namespace RkM
 
         /// <summary>Filter for what raw foods can be added to the pot.</summary>
         public ThingFilter ingredientFilter;
+
+        // ========== Mask overlay settings ==========
+        /// <summary>Texture path for water mask (shown when pot is empty).</summary>
+        public string waterMaskPath = "Things/Building/potMasks/RkM_Water_potMask";
+        
+        /// <summary>Texture path for vegetable stew mask.</summary>
+        public string vegStewMaskPath = "Things/Building/potMasks/RkM_VegetableStew_potMask";
+        
+        /// <summary>Texture path for meat stew mask.</summary>
+        public string meatStewMaskPath = "Things/Building/potMasks/RkM_MeatStew_potMask";
+        
+        /// <summary>Texture path for mixed stew mask.</summary>
+        public string mixedStewMaskPath = "Things/Building/potMasks/RkM_MixedStew_potMask";
+        
+        /// <summary>Draw size for the mask overlay.</summary>
+        public Vector2 maskDrawSize = new Vector2(1f, 1f);
+        
+        /// <summary>Draw offset for the mask overlay (x, y, z).</summary>
+        public Vector3 maskDrawOffset = Vector3.zero;
+
+        // ========== Glow settings ==========
+        /// <summary>Whether to show a glow effect when fueled.</summary>
+        public bool showGlowWhenFueled = true;
+
+        /// <summary>Texture path for the glow effect.</summary>
+        public string glowTexturePath = "Things/Mote/Glow";
+        
+        /// <summary>Glow color when fuel is active.</summary>
+        public Color glowColor = new Color(1f, 0.6f, 0.2f, 0.4f); // Orange-yellowish
+        
+        /// <summary>Glow radius/size.</summary>
+        public float glowRadius = 1.2f;
+        
+        /// <summary>Draw offset for the glow effect.</summary>
+        public Vector3 glowDrawOffset = new Vector3(0f, 0f, -0.1f);
 
         public CompProperties_AutoCookDispenser()
         {
@@ -75,6 +114,7 @@ namespace RkM
                 case StewType.Vegetable: return vegetableStewDef;
                 case StewType.Meat: return meatStewDef;
                 case StewType.Mixed: return mixedStewDef;
+                case StewType.HotWater: return hotWaterDef;
                 default: return null;
             }
         }
@@ -96,6 +136,14 @@ namespace RkM
         private static readonly Texture2D ProteinBarFilledTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.8f, 0.3f, 0.2f)); // Red/Brown
         private static readonly Texture2D BarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f, 0.5f));
 
+        // Cached mask graphics (loaded once)
+        private Graphic waterMaskGraphic;
+        private Graphic vegStewMaskGraphic;
+        private Graphic meatStewMaskGraphic;
+        private Graphic mixedStewMaskGraphic;
+        private Graphic glowGraphic;
+        private bool graphicsInitialized;
+
         public CompProperties_AutoCookDispenser Props => (CompProperties_AutoCookDispenser)props;
 
         public float VegNutrition => vegNutrition;
@@ -103,42 +151,61 @@ namespace RkM
         public float VegNutritionPct => vegNutrition / Props.nutritionCapacity;
         public float ProteinNutritionPct => proteinNutrition / Props.nutritionCapacity;
         public float CookingProgressPct => cookingProgress / Props.ticksPerUnit;
+
+        /// <summary>
+        /// Determine display stew type.
+        /// If we have both, Mixed. If only one, that type.
+        /// If neither, it's None (which displays water mask).
+        /// </summary>
+        public StewType DisplayStewType
+        {
+            get
+            {
+                bool hasVeg = vegNutrition > 0.01f;
+                bool hasProtein = proteinNutrition > 0.01f;
+
+                if (hasVeg && hasProtein)
+                    return StewType.Mixed;
+                if (hasVeg)
+                    return StewType.Vegetable;
+                if (hasProtein)
+                    return StewType.Meat;
+                return StewType.None;
+            }
+        }
         
         /// <summary>
         /// Determines the best stew type that can be made with current nutrition.
-        /// Priority: Mixed > Vegetable/Meat (whichever has enough)
+        /// Priority: Mixed > Vegetable/Meat (ANY amount) > HotWater
         /// </summary>
         public StewType AvailableStewType
         {
             get
             {
-                float mixedNutrition = Props.GetNutritionPerUnit(StewType.Mixed);
-                float halfNutrition = mixedNutrition / 2f;
+                bool hasVeg = vegNutrition > 0f;
+                bool hasProtein = proteinNutrition > 0f;
 
-                // Check for mixed stew first (requires both)
-                if (vegNutrition >= halfNutrition && proteinNutrition >= halfNutrition)
+                // Priority 1: Mixed (if ANY of both exist)
+                if (hasVeg && hasProtein)
                     return StewType.Mixed;
 
-                // Check for vegetable stew
-                float vegStewNutrition = Props.GetNutritionPerUnit(StewType.Vegetable);
-                if (vegNutrition >= vegStewNutrition)
+                // Priority 2: Single type
+                if (hasVeg)
                     return StewType.Vegetable;
-
-                // Check for meat stew
-                float meatStewNutrition = Props.GetNutritionPerUnit(StewType.Meat);
-                if (proteinNutrition >= meatStewNutrition)
+                if (hasProtein)
                     return StewType.Meat;
 
-                return StewType.None;
+                // Priority 3: Hot Water (when empty)
+                return StewType.HotWater;
             }
         }
 
-        public bool HasEnoughNutrition => AvailableStewType != StewType.None;
+        public bool HasEnoughNutrition => true; // Always true, at minimum gives Hot Water
         
         /// <summary>
-        /// Can dispense if we have enough nutrition, power/fuel, AND cooking is at least 90% complete.
+        /// Can dispense if power/fuel, AND cooking is at least 90% complete.
         /// </summary>
-        public bool CanDispenseNow => HasEnoughNutrition && IsPoweredAndFueled && CookingProgressPct >= 0.9f;
+        public bool CanDispenseNow => IsPoweredAndFueled && CookingProgressPct >= 0.9f;
 
         private bool IsPoweredAndFueled
         {
@@ -150,6 +217,107 @@ namespace RkM
 
                 return true;
             }
+        }
+
+        private bool HasFuel
+        {
+            get
+            {
+                var refuelable = parent.GetComp<CompRefuelable>();
+                return refuelable != null && refuelable.HasFuel;
+            }
+        }
+
+        /// <summary>
+        /// Initialize cached graphics for overlays.
+        /// </summary>
+        private void InitializeGraphics()
+        {
+            if (graphicsInitialized) return;
+            graphicsInitialized = true;
+
+            Vector2 size = Props.maskDrawSize;
+
+            // Load mask textures
+            if (!Props.waterMaskPath.NullOrEmpty())
+            {
+                waterMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+                    Props.waterMaskPath, ShaderDatabase.Transparent, size, Color.white);
+            }
+            if (!Props.vegStewMaskPath.NullOrEmpty())
+            {
+                vegStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+                    Props.vegStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
+            }
+            if (!Props.meatStewMaskPath.NullOrEmpty())
+            {
+                meatStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+                    Props.meatStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
+            }
+            if (!Props.mixedStewMaskPath.NullOrEmpty())
+            {
+                mixedStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+                    Props.mixedStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
+            }
+
+            // Create glow graphic (simple colored overlay)
+            /*
+            if (Props.showGlowWhenFueled && !Props.glowTexturePath.NullOrEmpty())
+            {
+                glowGraphic = GraphicDatabase.Get<Graphic_Single>(
+                    Props.glowTexturePath, ShaderDatabase.MoteGlow, 
+                    new Vector2(Props.glowRadius, Props.glowRadius), Props.glowColor);
+            }
+            */
+        }
+
+        public override void PostDraw()
+        {
+            base.PostDraw();
+            InitializeGraphics();
+
+            Vector3 drawPos = parent.DrawPos;
+            
+            // Draw the appropriate mask based on stew type
+            Graphic maskToDraw = null;
+            StewType displayType = DisplayStewType;
+
+            switch (displayType)
+            {
+                case StewType.None:
+                    maskToDraw = waterMaskGraphic;
+                    break;
+                case StewType.Vegetable:
+                    maskToDraw = vegStewMaskGraphic;
+                    break;
+                case StewType.Meat:
+                    maskToDraw = meatStewMaskGraphic;
+                    break;
+                case StewType.Mixed:
+                    maskToDraw = mixedStewMaskGraphic;
+                    break;
+            }
+
+            if (maskToDraw != null)
+            {
+                // Rotate offset with the building
+                Vector3 rotOffset = Props.maskDrawOffset.RotatedBy(parent.Rotation);
+                Vector3 maskPos = drawPos + rotOffset;
+                maskPos.y += 0.01f; // Slightly above the base
+                maskToDraw.Draw(maskPos, parent.Rotation, parent);
+            }
+
+            // Draw glow if fueled
+             /*
+            if (Props.showGlowWhenFueled && HasFuel && glowGraphic != null)
+            {
+                // Rotate offset with the building
+                Vector3 rotOffset = Props.glowDrawOffset.RotatedBy(parent.Rotation);
+                Vector3 glowPos = drawPos + rotOffset;
+                glowPos.y += 0.005f; // Below mask but above ground
+                glowGraphic.Draw(glowPos, parent.Rotation, parent);
+            }
+            */
         }
 
         public override void PostExposeData()
@@ -183,7 +351,7 @@ namespace RkM
                 return;
             }
 
-            // Progress cooking if we have nutrition
+            // Progress cooking if we have nutrition OR we are making hot water
             if (canCook != StewType.None)
             {
                 if (currentlyCooked == StewType.None)
@@ -254,11 +422,11 @@ namespace RkM
 
             // Reduce cooking progress based on dilution (Thermal Shock / Mixing)
             // Example: 90% progress with 10 nutrition. Add 5. Total 15.
-            // New Progress = 90% * (10 / 15) = 60%.
+            // New Progress = 90% * (10 + 1/ 15 + 1) = 68.7%.
             float newNutrition = vegNutrition + proteinNutrition;
             if (cookingProgress > 0 && newNutrition > 0 && newNutrition > oldNutrition)
             {
-                cookingProgress *= (oldNutrition / newNutrition);
+                cookingProgress *= ((oldNutrition + 1)/ (newNutrition + 1));
             }
         }
 
@@ -328,6 +496,7 @@ namespace RkM
 
         /// <summary>
         /// Consumes the appropriate amount of nutrition based on stew type.
+        /// Now allows partial consumption (draining to 0) if nutrition is insufficient.
         /// </summary>
         private void ConsumeNutritionForStew(StewType stewType)
         {
@@ -345,6 +514,9 @@ namespace RkM
                     float half = nutrition / 2f;
                     vegNutrition -= half;
                     proteinNutrition -= half;
+                    break;
+                case StewType.HotWater:
+                    // Hot water consumes nothing
                     break;
             }
 

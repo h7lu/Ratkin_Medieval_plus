@@ -8,6 +8,7 @@
     <defName>RkM_BigWoodenPot</defName>
     <label>big wooden pot</label>
     <tickerType>Normal</tickerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
     <description>A large wooden pot placed over a fire pit. Add raw food ingredients and fuel, and it will slowly cook them into appetizing stews containing vegetables and meat. Colonists can eat directly from the pot.\n\nRequires wood as fuel.</description>
     <thingClass>RkM.Building_BigPot</thingClass>
     <graphicData>
@@ -65,8 +66,21 @@
         <vegetableStewDef>RkM_VegetableStew</vegetableStewDef>
         <meatStewDef>RkM_MeatStew</meatStewDef>
         <mixedStewDef>RkM_MixedStew</mixedStewDef>
+        <hotWaterDef>RkM_HotWater</hotWaterDef>
         <ticksPerUnit>2000</ticksPerUnit>
         <allowDirectConsumption>true</allowDirectConsumption>
+        <!-- Mask overlay settings -->
+        <waterMaskPath>Things/Building/potMasks/RkM_Water_potMask</waterMaskPath>
+        <vegStewMaskPath>Things/Building/potMasks/RkM_VegetableStew_potMask</vegStewMaskPath>
+        <meatStewMaskPath>Things/Building/potMasks/RkM_MeatStew_potMask</meatStewMaskPath>
+        <mixedStewMaskPath>Things/Building/potMasks/RkM_MixedStew_potMask</mixedStewMaskPath>
+        <maskDrawSize>(2, 1.95)</maskDrawSize>
+        <maskDrawOffset>(0, 0, 0)</maskDrawOffset>
+        <!-- Glow settings -->
+        <showGlowWhenFueled>true</showGlowWhenFueled>
+        <glowColor>(1, 0.6, 0.2, 0.35)</glowColor>
+        <glowRadius>1.5</glowRadius>
+        <glowDrawOffset>(0, 0, -0.1)</glowDrawOffset>
       </li>
     </comps>
   </ThingDef>
