@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <JobDef>
+    <defName>RkM_PlaySong</defName>
+	<driverClass>RkM.JobDriver_PlaySong</driverClass>
+	<reportString>Playing songs。</reportString>
+	<playerInterruptible>true</playerInterruptible>
+	<!--checkOverrideOnDamage>OnlyIfInstigatorNotJobTarget</checkOverrideOnDamage-->
+  </JobDef>
+  
+</Defs>

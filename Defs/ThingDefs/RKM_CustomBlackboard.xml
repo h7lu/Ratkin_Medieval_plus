@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>RKM_CustomBlackboard</defName>
+    <label>custom blackboard</label>
+    <description>A blackboard for teaching classes.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Misc/Campfire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>60</pathCost>
+    <statBases>
+      <WorkToBuild>400</WorkToBuild>
+    </statBases>
+    <size>(1,1)</size>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <linkableBuildings>
+          <li>Lectern</li>
+        </linkableBuildings>
+        <maxSimultaneous>3</maxSimultaneous>
+      </li>
+    </comps>
+    <uiIconPath>Things/Building/Misc/Campfire</uiIconPath>
+  </ThingDef>
+</Defs>

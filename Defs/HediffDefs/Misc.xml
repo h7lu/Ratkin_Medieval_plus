@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 激昂之歌效果 -->
+    <HediffDef>
+        <defName>RkM_BardSong_BattleFrenzy</defName>
+        <label>激昂之歌</label>
+        <description>激昂的战歌让你热血沸腾，移动和攻击速度都得到了提升。</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <comps>
+            <li Class="HediffCompProperties_Disappears">
+                <disappearsAfterTicks>360000</disappearsAfterTicks> <!-- 1小时 -->
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <label>激昂</label>
+                <statOffsets>
+					<RangedCooldownFactor>-0.17</RangedCooldownFactor>
+                    <AimingDelayFactor>-0.17</AimingDelayFactor>
+                    <MeleeCooldownFactor>-0.17</MeleeCooldownFactor>
+                </statOffsets>
+            </li>
+        </stages>
+        <isBad>false</isBad>
+    </HediffDef>
+
+</Defs>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ========================================== -->
+  <!--          拉特金中世纪+ 饮品配方              -->
+  <!--      Ratkin Medieval+ Beverage Recipes      -->
+  <!-- ========================================== -->
+
+  <!-- ========== 热水配方 / Hot Water Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeHotWater</defName>
+    <label>prepare hot water</label>
+    <description>Heat water for a simple warm drink.</description>
+    <jobString>Preparing hot water.</jobString>
+    <workAmount>100</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredients>
+    </ingredients>
+    <products>
+      <RkM_HotWater>1</RkM_HotWater>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 热茶配方 / Hot Tea Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeHotTea</defName>
+    <label>brew hot tea</label>
+    <description>Brew tea leaves into a refreshing hot drink.</description>
+    <jobString>Brewing hot tea.</jobString>
+    <workAmount>200</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+          </thingDefs>
+        </filter>
+        <count>0.05</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_HotTea>1</RkM_HotTea>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 简易浆果酒配方 / Simple Berry Wine Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeSimpleBerryWine</defName>
+    <label>brew simple berry wine</label>
+    <description>Ferment berries into a simple, rustic wine.</description>
+    <jobString>Brewing simple berry wine.</jobString>
+    <workAmount>400</workAmount>
+    <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+          </thingDefs>
+        </filter>
+        <count>0.25</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_SimpleBerryWine>1</RkM_SimpleBerryWine>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 精酿浆果酒配方 / Berry Wine Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeBerryWine</defName>
+    <label>craft berry wine</label>
+    <description>Craft a high-quality berry wine with refined fermentation.</description>
+    <jobString>Crafting berry wine.</jobString>
+    <workAmount>600</workAmount>
+    <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+          </thingDefs>
+        </filter>
+        <count>0.4</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_BerryWine>1</RkM_BerryWine>
+    </products>
+    <skillRequirements>
+      <Cooking>4</Cooking>
+    </skillRequirements>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 鼠麦酒配方 / Rat Wheat Ale Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeRatWheatAle</defName>
+    <label>brew rat wheat ale</label>
+    <description>Brew a unique ale from rat wheat grain.</description>
+    <jobString>Brewing rat wheat ale.</jobString>
+    <workAmount>500</workAmount>
+    <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.35</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_RatWheatAle>1</RkM_RatWheatAle>
+    </products>
+    <skillRequirements>
+      <Cooking>3</Cooking>
+    </skillRequirements>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 草药酒配方 / Herbal Wine Recipe ========== -->
+  
+  <RecipeDef>
+    <defName>RkM_MakeHerbalWine</defName>
+    <label>brew herbal wine</label>
+    <description>Infuse wine with medicinal herbs for healing properties.</description>
+    <jobString>Brewing herbal wine.</jobString>
+    <workAmount>700</workAmount>
+    <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+          </thingDefs>
+        </filter>
+        <count>0.3</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineHerbal</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <RkM_HerbalWine>1</RkM_HerbalWine>
+    </products>
+    <skillRequirements>
+      <Cooking>5</Cooking>
+    </skillRequirements>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 植物收获物 / Plant Products ========== -->
+  <!-- 草药和材料定义 -->
+
+  <!-- ========== 鼠尾草 / Sage ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Sage</defName>
+    <label>sage</label>
+    <description>Broad, aromatic leaves with a distinctive clean fragrance. Used for air purification, cooking seasoning, and as a medicinal ingredient in recovery broths. When burned, releases a soothing aroma.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Sage</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>3</MarketValue>
+      <Mass>0.03</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 缬草根 / Valerian Root ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Valerian</defName>
+    <label>valerian root</label>
+    <description>Thick roots from the valerian plant with calming and sedative properties. A key ingredient in sleep aids and soothing potions. Direct consumption provides a relaxing effect but may reduce work efficiency.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Valerian</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>5</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>4</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 薰衣草 / Lavender ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Lavender</defName>
+    <label>lavender</label>
+    <description>Dried purple flower spikes with a pleasant fragrance. Used to make sachets, perfumes, and emotion-soothing potions. Placing them in rooms enhances environmental beauty.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Lavender</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>4</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 甘草根 / Licorice Root ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Licorice</defName>
+    <label>licorice root</label>
+    <description>Sweet-tasting roots that soothe respiratory discomfort. Commonly used as a sweetening agent in medicinal recipes. Provides a pleasant, sweet flavor when consumed directly.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Licorice</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>4</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>3</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 附子草 / Aconite ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Aconite</defName>
+    <label>aconite</label>
+    <description>A deadly plant containing potent aconitine toxins. In medieval times, often coated on arrows for hunting and warfare. Skilled alchemists can transform it into powerful reagents, but handling requires extreme caution. Harvesting risks poisoning.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Aconite</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>15</MarketValue>
+      <Mass>0.03</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>4</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 金盏花 / Marigold ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Marigold</defName>
+    <label>marigold</label>
+    <description>Bright orange or yellow flower petals known for wound-healing and anti-inflammatory properties. Used by healers and alchemists in healing potions and remedies. Slightly improves treatment quality when applied externally.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Marigold</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>4</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>8</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 苦艾叶 / Wormwood Leaf ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Wormwood</defName>
+    <label>wormwood leaf</label>
+    <description>Long, silvery-white leaves with a strong bitter taste. A fundamental ingredient for alchemists crafting antidotes and clarity potions. Direct use temporarily boosts consciousness but causes nausea afterward.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Wormwood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>5</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 蓟草 / Thistle ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Thistle</defName>
+    <label>thistle</label>
+    <description>A thorny wild plant with purple flower crowns. Both roots and petals have medicinal properties for stopping bleeding and preventing infection. Harvesting has a small chance to cause minor injuries due to thorns.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Thistle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>3</MarketValue>
+      <Mass>0.03</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 薄荷 / Mint ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Mint</defName>
+    <label>mint</label>
+    <description>Fresh leaves with a cool, refreshing aroma. Commonly found near streams and wet areas. Widely used for digestive issues and as a stimulant. Easy to grow in large quantities with a short growth cycle.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Mint</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>2</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>10</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 百里香 / Thyme ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Thyme</defName>
+    <label>thyme</label>
+    <description>A small, hardy aromatic herb with mild antibacterial properties. A common fixture in both kitchens and medicine cabinets. When cooked with meat, provides a delightful flavor bonus. Drought-resistant and grows well in poor soil.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Thyme</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>2</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 曼德拉草 / Mandrake ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_Mandrake</defName>
+    <label>mandrake root</label>
+    <description>A mysterious plant with humanoid-shaped roots. Legend says its scream can cause unconsciousness. A rare ingredient for powerful potions, invisibility elixirs, and high-grade healing solutions. Harvesting causes the harvester to fall unconscious for a full day.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_Mandrake</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>50</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <stackLimit>25</stackLimit>
+  </ThingDef>
+
+  <!-- ========== 鼠麦 / Rat Wheat ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_RatWheat</defName>
+    <label>rat wheat</label>
+    <description>A short-stalked wheat variety common in ratkin farms, with plump golden grains that emit a rich wheat aroma and a subtle nutty flavor. This highly adaptable crop is drought-resistant and fast-growing, forming the backbone of ratkin agriculture.</description>
+    <graphicData>
+      <texPath>Things/Items/RkM_RatWheat</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>2</MarketValue>
+      <Mass>0.03</Mass>
+      <Flammability>1.2</Flammability>
+      <DeteriorationRate>3</DeteriorationRate>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <thingCategories>
+      <li>PlantFoodRaw</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+      <preferability>RawBad</preferability>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========== 鼠麦面粉 / Rat Wheat Flour ========== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>RkM_RatFlour</defName>
+    <label>rat wheat flour</label>
+    <description>A light brown powder ground from rat wheat grains using a stone mill, with fine texture and rich wheat aroma with a distinctive nutty aftertaste. The most fundamental and indispensable ingredient in ratkin kitchens, essential for bread, pies, and various baked goods.</description>
+    <graphicData>
+      <texPath>Graybox/Things/Items/RkM_RatFlour</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>3</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>1.3</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <thingCategories>
+      <li>PlantFoodRaw</li>
+    </thingCategories>
+    <stackLimit>75</stackLimit>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+      <preferability>RawBad</preferability>
+    </ingestible>
+  </ThingDef>
+
+</Defs>

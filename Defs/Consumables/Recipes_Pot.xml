@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--炖菜-->
+  <RecipeDef Name="RkM_CookStewBase" ParentName="CookMealBase" Abstract="True">
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+	<skillRequirements>
+      <Cooking>0</Cooking>
+    </skillRequirements>
+  </RecipeDef>
+  
+    <!--添加原材料-->
+  <RecipeDef ParentName="RkM_CookStewBase">
+    <defName>RkM_AddIngredients</defName>
+    <label>add ingredients</label>
+    <description>Cook one bowl of ratkin meat and vegetable stew from ingredients.</description>
+    <jobString>Cooking ratkin meat and vegetable stew.</jobString>
+	<recipeUsers>
+	  <li>RkM_BigWoodenPot</li>
+	</recipeUsers>
+	<workAmount>300</workAmount>
+	<skillRequirements>
+      <Cooking>4</Cooking>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>FoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.3</count>
+      </li>
+    </ingredients>
+    <products/>
+	<modExtensions>
+	  <li Class="RkM.ModExtension_NutritionStorageRecipe"/>
+	</modExtensions>
+  </RecipeDef>
+  <!--手动取出-->
+  <RecipeDef ParentName="RkM_CookStewBase">
+    <defName>RkM_GetStew</defName>
+    <label>get stew</label>
+    <description>Cook one bowl of ratkin meat and vegetable stew from ingredients.</description>
+    <jobString>Cooking ratkin meat and vegetable stew.</jobString>
+	<workAmount>60</workAmount>
+	<recipeUsers>
+	  <li>RkM_BigWoodenPot</li>
+	</recipeUsers>
+    <products/>
+	<modExtensions>
+	  <li Class="RkM.ModExtension_NutritionConsumeRecipe"/>
+	</modExtensions>
+  </RecipeDef>
+  <!--取出热水-->
+  <RecipeDef ParentName="RkM_CookStewBase">
+    <defName>RkM_GetHotWater</defName>
+    <label>get hot water</label>
+    <description>Cook one bowl of ratkin vegetable stew from ingredients.</description>
+    <jobString>Cooking ratkin vegetable stew.</jobString>
+	<recipeUsers>
+	  <li>RkM_BigWoodenPot</li>
+	</recipeUsers>
+    <products>
+      <RkM_HotWater>1</RkM_HotWater>
+    </products>
+	<modExtensions>
+	  <li Class="RkM.ModExtension_WithoutNutritionGetRecipe">
+		<useIngredients>false</useIngredients>
+		<matchDispensable>true</matchDispensable>
+	  </li>
+	</modExtensions>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 振奋之歌想法 -->
+    <ThoughtDef>
+        <defName>RkM_BardSong_Inspiring</defName>
+        <label>美妙的音乐</label>
+        <description>我现在更有干劲了！</description>
+        <stackLimit>1</stackLimit>
+        <durationDays>0.0416666667</durationDays> <!-- 1小时 -->
+        <thoughtClass>Thought_Memory</thoughtClass>
+        <stages>
+            <li>
+                <label>美妙的音乐</label>
+                <baseMoodEffect>5</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+</Defs>

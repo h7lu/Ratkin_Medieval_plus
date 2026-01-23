@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 吃了沙拉（清爽可口） ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteSalad</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>refreshing and tasty</label>
+        <description>I ate a delicious salad, refreshing and tasty!</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 吃了杂烩粥（稀疏乏味） ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteMixedCongee</defName>
+    <durationDays>0.1666667</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>a sparse and bland meal</label>
+        <description>A sparse and bland meal, really wish I could eat something good.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 康复药膳 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteRecoveryMeal</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>nourishing meal</label>
+        <description>That medicinal meal was surprisingly pleasant and I can feel it helping my body recover.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 素炖菜 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteVegetableStew</defName>
+    <durationDays>0.2083333</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>hearty vegetable stew</label>
+        <description>A warm, comforting bowl of vegetable stew. Simple but satisfying.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 肉炖菜 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteMeatStew</defName>
+    <durationDays>0.2083333</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>rich meat stew</label>
+        <description>That meat stew was hearty and filling. The tender chunks of meat were perfect.</description>
+        <baseMoodEffect>7</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 肉素混合炖菜 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteMixedStew</defName>
+    <durationDays>0.2083333</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>delicious mixed stew</label>
+        <description>The perfect balance of meat and vegetables in that stew. Absolutely delicious!</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 烤鸡 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteRoastChicken</defName>
+    <durationDays>2</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>festive roast chicken</label>
+        <description>I had a whole roast chicken! Golden, crispy, and juicy. What a feast!</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 香料烤鱼 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteSpicyFish</defName>
+    <durationDays>1</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>aromatic spicy fish</label>
+        <description>That spicy roast fish was incredible! The aroma alone was irresistible.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 蜜饯 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteCandiedFruit</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>sweet treat</label>
+        <description>Those candied fruits were so sweet and delightful!</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 莓果派 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteBerryPie</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>delicious berry pie</label>
+        <description>That berry pie was heavenly! Sweet, fruity filling with a perfect flaky crust.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 热茶 ========== -->
+  <ThoughtDef>
+    <defName>RkM_DrankHotTea</defName>
+    <durationDays>0.125</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>soothing tea</label>
+        <description>A nice cup of hot tea. Relaxing and refreshing.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 简易莓果酒 ========== -->
+  <ThoughtDef>
+    <defName>RkM_DrankSimpleBerryWine</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>crude but effective</label>
+        <description>That berry wine was a bit rough, but it did the job.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 莓果酒 ========== -->
+  <ThoughtDef>
+    <defName>RkM_DrankBerryWine</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>fine berry wine</label>
+        <description>A glass of fine berry wine. Fruity, smooth, and quite pleasant.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 鼠麦酒 ========== -->
+  <ThoughtDef>
+    <defName>RkM_DrankRatWheatAle</defName>
+    <durationDays>0.5</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>traditional ale</label>
+        <description>Good old rat wheat ale. A taste of home.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 草药酒 ========== -->
+  <ThoughtDef>
+    <defName>RkM_DrankHerbalWine</defName>
+    <durationDays>1</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>medicinal drink</label>
+        <description>That herbal wine had a unique flavor. I can feel it working already.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 黑暗食物心情 / Dark Food Thoughts ========== -->
+
+  <!-- ========== 潲水饭 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteSwill</defName>
+    <durationDays>0.25</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>ate garbage</label>
+        <description>I just ate swill... literal garbage mixed together. I feel sick.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 树皮面包 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteBarkBread</defName>
+    <durationDays>0.25</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>ate bark bread</label>
+        <description>That bread was mostly tree bark. My stomach is not happy about this.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 绝望炖菜 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteDesperationStew</defName>
+    <durationDays>0.25</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>desperation stew</label>
+        <description>That stew was made from things I'd rather not think about. Desperate times...</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 土饼 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteDirtCake</defName>
+    <durationDays>0.25</durationDays>
+    <nullifyingTraits>
+      <li>Ascetic</li>
+    </nullifyingTraits>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>ate dirt</label>
+        <description>I literally ate dirt. How has it come to this?</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ========== 皮革汤 ========== -->
+  <ThoughtDef>
+    <defName>RkM_AteLeatherSoup</defName>
+    <durationDays>0.25</durationDays>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stages>
+      <li>
+        <label>boiled leather</label>
+        <description>That soup was just boiled leather. It was chewy and flavorless.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="RkM_StewPotBase" ParentName="BuildingBase" Abstract="True">
+    <description>A machine that synthesizes edible nutrient paste from organic feedstocks placed in adjacent hoppers. It consumes less ingredients and time than any other meal production method - but nobody likes eating nutrient paste. Accepts raw food, but not rough plant matter like hay.</description>
+    <thingClass>RkM.Building_FoodGetter</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0.02,0.25,2.96,2.85)</rect>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+      </damageData>
+      <shadowData>
+        <volume>(2.87,0.75,3.05)</volume>
+        <offset>(0,0,0.38)</offset>
+      </shadowData>
+    </graphicData>
+	<inspectorTabs>
+      <li>RkM.ITab_NS</li>
+    </inspectorTabs>
+	<rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>false</blockWind>
+    <fillPercent>1</fillPercent>
+    <statBases>
+      <WorkToBuild>2200</WorkToBuild>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <building>
+      <isMealSource>true</isMealSource>
+      <nutritionCostPerDispense>0.3</nutritionCostPerDispense>
+      <soundDispense>DispensePaste</soundDispense>
+      <forceShowRoomStats>true</forceShowRoomStats>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+	  <!--li Class="RkM.CompProperties_ConsumeFuel">
+		<fuelPerDay>5</fuelPerDay>
+	  </li-->
+      <li Class="CompProperties_Refuelable">
+		<fuelConsumptionRate>80.0</fuelConsumptionRate>
+		<fuelCapacity>50.0</fuelCapacity>
+		<fuelFilter>
+		  <thingDefs>
+		    <li>WoodLog</li>
+		  </thingDefs>
+		</fuelFilter>
+		<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+	  </li>
+    </comps>
+    <size>(2,2)</size>
+    <costList>
+      <Steel>125</Steel>
+    </costList>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <interactionCellOffset>(0,0,2)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Production</designationCategory>
+    <uiOrder>2130</uiOrder>
+    <constructEffect>ConstructMetal</constructEffect>
+    <canOverlapZones>false</canOverlapZones>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>NutrientPaste</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <ThingDef ParentName="RkM_StewPotBase">
+    <defName>RkM_VegetableStewPot</defName>
+    <label>ratkin vegetable stew pot</label>
+	<graphicData>
+      <texPath>Things/Items/RkM_VegetableStewPot</texPath>
+      <color>(232,255,191)</color>
+    </graphicData>
+	<recipes>
+      <li>RkM_CookVegetableStewBulk_S</li>
+      <li>RkM_CookVegetableStew_S</li>
+	  <li>RkM_CookVegetableStew_G</li>
+	  <li>RkM_CookVegetableStewBulk_G</li>
+    </recipes>
+    <comps>
+	  <li Class="RkM.CompProperties_NutritionStorage">
+		<maxNutrition>20</maxNutrition>
+		<rottable>true</rottable>
+		<!--rottableSlot Class="RkM.RottableSlot_ThingDef">RkM_VegetableStew</rottableSlot-->
+		<!--ingredientFilter Class="RkM.IngredientFilterSlot_RecipeDef">RkM_CookVegetableStew</ingredientFilter-->
+	  </li>
+    </comps>
+	<modExtensions>
+	  <li Class="RkM.ModExtension_ThingGetter">
+		<thingDef>RkM_VegetableStew</thingDef>
+	  </li>
+	</modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="RkM_StewPotBase">
+    <defName>RkM_MeatStewPot</defName>
+    <label>ratkin meat stew pot</label>
+	<graphicData>
+      <texPath>Things/Items/RkM_MeatStewPot</texPath>
+      <color>(232,255,191)</color>
+    </graphicData>
+    <comps>
+	  <li Class="RkM.CompProperties_NutritionStorage">
+		<maxNutrition>20</maxNutrition>
+		<rottable>true</rottable>
+		<maxNutrition>20</maxNutrition>
+		<!--rottableSlot Class="RkM.RottableSlot_ThingDef">RkM_MeatStew</rottableSlot-->
+		<!--ingredientFilter Class="RkM.IngredientFilterSlot_RecipeDef">RkM_CookMeatStew</ingredientFilter-->
+	  </li>
+    </comps>
+	<modExtensions>
+	  <li Class="RkM.ModExtension_ThingGetter">
+		<thingDef>RkM_MeatStew</thingDef>
+	  </li>
+	</modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="RkM_StewPotBase">
+    <defName>RkM_MeatAndVegetableStewPot</defName>
+    <label>ratkin meat stew pot</label>
+	<graphicData>
+      <texPath>Things/Items/RkM_MeatAndVegetableStewPot</texPath>
+      <color>(232,255,191)</color>
+    </graphicData>
+    <comps>
+	  <li Class="RkM.CompProperties_NutritionStorage">
+		<maxNutrition>20</maxNutrition>
+		<rottable>true</rottable>
+		<maxNutrition>20</maxNutrition>
+		<!--rottableSlot Class="RkM.RottableSlot_ThingDef">RkM_MeatAndVegetableStew</rottableSlot-->
+		<!--ingredientFilter Class="RkM.IngredientFilterSlot_RecipeDef">RkM_CookMeatAndVegetableStew</ingredientFilter-->
+	  </li>
+    </comps>
+	<modExtensions>
+	  <li Class="RkM.ModExtension_ThingGetter">
+		<thingDef>RkM_MeatAndVegetableStew</thingDef>
+	  </li>
+	</modExtensions>
+  </ThingDef>
+</Defs>

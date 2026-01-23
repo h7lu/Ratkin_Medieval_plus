@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== 材料加工配方 / Material Processing Recipes ========== -->
+
+  <!-- ========== 研磨鼠麦 / Grind Rat Wheat ========== -->
+  <RecipeDef>
+    <defName>RkM_GrindRatWheat</defName>
+    <label>grind rat wheat into flour</label>
+    <description>Grind rat wheat grains into fine flour using a hand mill or grinding station.</description>
+    <jobString>Grinding rat wheat.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>200</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RkM_RatWheat</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>RkM_RatWheat</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <RkM_RatFlour>15</RkM_RatFlour>
+    </products>
+    <recipeUsers>
+      <li>CraftingSpot</li>
+      <li>TableButcher</li>
+      <li>FueledStove</li>
+      <li>ElectricStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!-- ========== 干燥薰衣草 / Dry Lavender ========== -->
+  <!-- Placeholder for future processing recipes -->
+  <!--
+  <RecipeDef>
+    <defName>RkM_DryLavender</defName>
+    <label>dry lavender into sachets</label>
+    <description>Dry lavender flowers to create fragrant sachets.</description>
+    ...
+  </RecipeDef>
+  -->
+
+  <!-- ========== 研磨草药 / Grind Herbs ========== -->
+  <!-- Generic herb processing for potions - to be expanded with alchemy system -->
+  <!--
+  <RecipeDef>
+    <defName>RkM_GrindHerbs</defName>
+    <label>grind herbs into powder</label>
+    <description>Grind various medicinal herbs into fine powder for use in potions.</description>
+    ...
+  </RecipeDef>
+  -->
+
+</Defs>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ========== Big Pot Jobs ========== -->
+
+  <JobDef>
+    <defName>RkM_EatFromBigPot</defName>
+    <driverClass>RkM.JobDriver_EatFromBigPot</driverClass>
+    <reportString>eating from big pot.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+  </JobDef>
+
+  <JobDef>
+    <defName>RkM_FillBigPot</defName>
+    <driverClass>RkM.JobDriver_FillBigPot</driverClass>
+    <reportString>adding ingredients to TargetA.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+  </JobDef>
+
+</Defs>
