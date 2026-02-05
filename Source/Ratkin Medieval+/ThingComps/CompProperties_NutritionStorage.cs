@@ -32,6 +32,7 @@ public class CompProperties_NutritionStorage : CompProperties
     public FoodKind noIngredientsFoodKind;
     public bool useCookingProgress = false;
     public float ticksPerUnit = 1000f;
+    public float decayPerHour = 0.1f;
 }
 public class CompNutritionStorge : ThingComp_VacuumAware
 {
@@ -60,20 +61,6 @@ public class CompNutritionStorge : ThingComp_VacuumAware
 	    set => targetNutritionLevel = value;
     }
 
-    // public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
-    // {
-    //     if (parent.def.building is { IsTurret: true })
-    //     {
-    //         TaggedString taggedString = "RearmCostExplanation".Translate();
-    //         if (Props.factorByDifficulty)
-    //         {
-    //             taggedString += " (" + "RearmCostExplanationDifficulty".Translate() + ")";
-    //         }
-    //         taggedString += ".";
-    //         yield return new StatDrawEntry(StatCategoryDefOf.Building, "RearmCost".Translate(), GenLabel.ThingLabel(Props.fuelFilter.AnyAllowedDef, null, this.GetFuelCountToFullyRefuel()).CapitalizeFirst(), taggedString, 3171);
-    //     }
-    //     yield break;
-    // }
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
 		{
 			if (!Props.hideGizmosIfNotPlayerFaction || parent.Faction == Faction.OfPlayer)
@@ -174,34 +161,41 @@ public class CompNutritionStorge : ThingComp_VacuumAware
                     cookingProgress = Mathf.Max(0, cookingProgress - 1);
                 return;
             }
-            // Determine what we're cooking
+            
             bool canCook = CanCook;
-            // If we started cooking something and ingredients changed, reset
             if (!CanCook)
             {
                 cookingProgress = 0;
                 return;
             }
-            // Progress cooking if we have nutrition OR we are making hot water
+            
             if (canCook)
             {
-                // Stop incrementing if full
+                if (Props.decayPerHour > 0f)
+                {
+                    float decayAmount = Props.decayPerHour / 2500f; 
+                    if (NutritionClassify != null)
+                    {
+                        float actualDecay = NutritionClassify.DecayNutrition(decayAmount);
+                        if (actualDecay > 0)
+                        {
+                            nutrition -= actualDecay;
+                            if (nutrition < 0) nutrition = 0;
+                        }
+                    }
+                    else
+                    {
+                        nutrition -= decayAmount;
+                        if (nutrition < 0) nutrition = 0;
+                    }
+                }
+
                 if (cookingProgress < Props.ticksPerUnit)
                 {
                     cookingProgress++;
                     var refuelable = parent.GetComp<CompRefuelable>();
                     refuelable?.Notify_UsedThisTick();
                 }
-                // If full, do nothing (wait for dispense)
-                /*
-                if (cookingProgress >= Props.ticksPerUnit)
-                {
-                    // No longer auto-producing items on ground
-                    // ProduceFoodBatch(currentlyCooked);
-                    // cookingProgress = 0;
-                    // currentlyCooked = StewType.None;
-                }
-                */
             }
         }
         public virtual bool CanDispenseNow
@@ -225,41 +219,7 @@ public class CompNutritionStorge : ThingComp_VacuumAware
 
 	        }
         }
-        // public override void CompTick()
-  //   {
-  //       base.CompTick();
-  //       tick++;
-  //       if (tick%60 == 0)
-  //       {
-	 //        if (Props.rottable)
-		//         if (rotTick > 0)
-		//         {
-		// 	        rotTick-=60;
-		// 	        if (rotTick <= 0)
-		// 	        {
-		// 		        ClearNutritionAndIngredients();
-		// 		        //警告腐烂
-		// 		        Messages.Message("MessageRottedAwayInStorage".Translate(parent.Label, parent).CapitalizeFirst(), new TargetInfo(parent.PositionHeld, parent.MapHeld), MessageTypeDefOf.NegativeEvent);
-		// 	        }
-		//         }
-	 //        if (tick/6000 == 1) tick = 0;
-  //       }
-  //   }
 
-    // public virtual void AddNutritionFromRaw(List<Thing> raws)
-    // {
-    //     float num = 0f;
-    //     var list = new List<ThingDef>();
-    //     int rot = -1;
-    //     foreach (var thing in raws)
-    //     {
-    //         num += thing.stackCount * thing.GetStatValue(StatDefOf.Nutrition);
-    //         list.Add(thing.def);
-    //         //thing.SplitOff(num2);
-    //     }
-    //     //if (Props.rottable) rot = (int)(Props.rottableSlot.TicksToRotStart * num);
-    //     AddNutrition(num, list);
-    // }
     public virtual void AddNutrition(float nutrition, List<Thing> ingredients)
     {
 	    if (ingredients == null|| ingredients.Count == 0)
@@ -270,22 +230,14 @@ public class CompNutritionStorge : ThingComp_VacuumAware
         if (this.nutrition+nutrition > Props.maxNutrition) nutrition = Props.maxNutrition-this.nutrition;
         NutritionClassify?.NotifyNutritionAdded(nutrition, ingredients);
         var ingredientDefs = ingredients.Select(x => x.def).ToList();
-        // 添加原材料种类，并集(除去重复值)
+        
         this.ingredients ??= [];
         this.ingredients.AddRange(ingredientDefs);
         this.ingredients = this.ingredients.Distinct().ToList();
-        // if (Props.rottable&&rotTick != -1)
-        // {
-        //     if (this.rotTick == -1) this.rotTick = rotTick;
-        //     // 移动加权平均法算剩余时间
-        //     this.rotTick = (int)((this.rotTick * Nutrition + rotTick) / (this.nutrition + nutrition));
-        // }
+        
         float oldNutrition = this.nutrition;
         this.nutrition += nutrition;
         
-        // Reduce cooking progress based on dilution (Thermal Shock / Mixing)
-        // Example: 90% progress with 10 nutrition. Add 5. Total 15.
-        // New Progress = 90% * (10 + 1/ 15 + 1) = 68.7%.
         if (Props.useCookingProgress)
 	        if (CookingProgress > 0 && this.nutrition > 0 && this.nutrition > oldNutrition) cookingProgress *= (oldNutrition + 1)/ (this.nutrition + 1);
     }
@@ -305,7 +257,6 @@ public class CompNutritionStorge : ThingComp_VacuumAware
         nutrition = 0f;
         ingredients.Clear();
         NutritionClassify?.NotifyNutritionCleaned();
-        //rotTick = -1;
     }
     public override void PostExposeData()
     {
@@ -361,16 +312,12 @@ public class CompNutritionStorge : ThingComp_VacuumAware
 		    return "MealKindVegetarian".Translate().Colorize(Color.green);
 	    if (GetFoodKind(this) == ReturnFoodType.Meat)
 		    return "MealKindMeat".Translate().Colorize(ColorLibrary.RedReadable);
-	    //if (GetFoodKind(this)==ReturnFoodType.MeatAndVegetarian)
-		//    return "MealKindMeatAndVegetarian".Translate().Colorize(Color.yellow);
 	    return "MealKindOther".Translate().Colorize(Color.white);
     }
     public static readonly Color BarColor_Vegetarian = new(0.4f, 0.8f, 0.4f);
     public static readonly Color BarTipColor_Vegetarian = new(0.6f, 1f, 0.6f);
     public static readonly Color BarColor_Meat = new(0.8f, 0.4f, 0.4f);
 	public static readonly Color BarTipColor_Meat = new(1f, 0.6f, 0.6f);
-	//public static readonly Color BarColor_MeatAndVegetarian = new(0.8f, 0.8f, 0.4f);
-	//public static readonly Color BarTipColor_MeatAndVegetarian = new(1f, 1f, 0.6f);
 	public static readonly Color BarColor_Other = new(0.6f, 0.6f, 0.6f);
 	public static readonly Color BarTipColor_Other = new(0.8f, 0.8f, 0.8f);
 
@@ -380,8 +327,6 @@ public class CompNutritionStorge : ThingComp_VacuumAware
 		    return tip? BarTipColor_Vegetarian : BarColor_Vegetarian;
 	    if (GetFoodKind(this) == ReturnFoodType.Meat)
 		    return tip? BarTipColor_Meat : BarColor_Meat;
-	    //if (GetFoodKind(this)==ReturnFoodType.MeatAndVegetarian)
-		//    return tip? BarTipColor_MeatAndVegetarian : BarColor_MeatAndVegetarian;
 	    return tip? BarTipColor_Other : BarColor_Other;
     }
     protected override bool FunctionsInVacuum => Props.functionsInVacuum;
@@ -396,30 +341,11 @@ public class CompNutritionStorge : ThingComp_VacuumAware
 		    if (t.IsAnimalProduct) flag = true;
 	    }
 	    return !flag ? ReturnFoodType.Vegetarian : ReturnFoodType.Other;
-	    // bool meat = false;
-	    // bool vegetarian = false;
-	    // for (int index = 0; index < comp.ingredients.Count; ++index)
-	    // {
-		   //  if (FoodUtility.GetFoodKind(comp.ingredients[index]) == FoodKind.Meat) meat = true;
-		   //  else if (comp.ingredients[index].IsAnimalProduct) flag = true;
-		   //  else vegetarian = true;
-		   //  if (meat&& vegetarian&& flag) break;
-	    // }
-	    // ReturnFoodType result;
-	    // if (meat)
-	    // {
-		   //  if (vegetarian&&!flag) result = ReturnFoodType.MeatAndVegetarian;
-		   //  else result = ReturnFoodType.Meat;
-	    // }
-	    // else if (vegetarian) result = flag ? ReturnFoodType.Other : ReturnFoodType.Vegetarian;
-	    // else result = ReturnFoodType.Other;
-	    // return result;
     }
     public enum ReturnFoodType : byte
     {
 	    Meat,
 	    Vegetarian,
-	    //MeatAndVegetarian,
 	    Other
     }
 }

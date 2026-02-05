@@ -42,7 +42,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
 
         public override Job JobOnThing(Pawn pawn, Thing thing, bool forced = false)
         {
-            // 检查是否是可用的工作台
             if (thing is not IBillGiver billGiver || 
                 !ThingIsUsableBillGiver(thing) || 
                 !billGiver.BillStack.AnyShouldDoNow || 
@@ -51,21 +50,17 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                 thing.IsBurning())
                 return null;
             
-            // 检查交互单元格是否可用
             if (thing.def.hasInteractionCell && 
                 !pawn.CanReserveSittableOrSpot(thing.InteractionCell, thing, forced))
                 return null;
             
-            // 检查是否需要加油
             CompRefuelable compRefuelable = thing.TryGetComp<CompRefuelable>();
             if (compRefuelable == null || compRefuelable.HasFuel)
             {
-                // 移除无法完成的配方
                 billGiver.BillStack.RemoveIncompletableBills();
                 return StartOrResumeBillJob(pawn, billGiver, forced);
             }
             
-            // 如果可以加油，先分配加油工作
             if (!RefuelWorkGiverUtility.CanRefuel(pawn, thing, forced)) return null;
             return RefuelWorkGiverUtility.RefuelJob(pawn, thing, forced);
         }
@@ -79,7 +74,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                     ((UnfinishedThing)t).Creator == pawn)
                 {
                     List<Thing> ingredients = ((UnfinishedThing)t).ingredients;
-                    // 检查所有材料是否符合配方要求
                     if (ingredients.TrueForAll(x => bill.IsFixedOrAllowedIngredient(x.def))) return pawn.CanReserve(t);
                 }
                 return false;
@@ -97,18 +91,15 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
 
         private static Job FinishUftJob(Pawn pawn, UnfinishedThing uft, Bill_ProductionWithUft bill)
         {
-            // 安全检查：确保殖民者是未完成物品的创建者
             if (uft.Creator != pawn)
             {
                 Log.Error($"Tried to get FinishUftJob for {pawn} finishing {uft} but its creator is {uft.Creator}");
                 return null;
             }
             
-            // 尝试清理工作台上的物品
             Job job = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, bill.billStack.billGiver, uft);
             if (job != null && job.targetA.Thing != uft) return job;
             
-            // 创建完成未完成物品的工作
             Job finishJob = JobMaker.MakeJob(Job, (Thing)bill.billStack.billGiver);
             finishJob.bill = bill;
             finishJob.targetQueueB = [uft];
@@ -122,16 +113,13 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
         {
             bool isFloatMenu = FloatMenuMakerMap.makingFor == pawn;
             
-            // 遍历所有配方
             foreach (var bill in giver.BillStack)
             {
-                // 检查配方是否可用
                 if ((bill.recipe.requiredGiverWorkType == null || bill.recipe.requiredGiverWorkType == def.workType) &&
                     (Find.TickManager.TicksGame > bill.nextTickToSearchForIngredients || 
                      FloatMenuMakerMap.makingFor == pawn) && bill.ShouldDoNow() && 
                     bill.PawnAllowedToStartAnew(pawn))
                 {
-                    // 检查专项要求
                     ModExtension_NutritionRecipe extension = bill.recipe.GetModExtension<ModExtension_NutritionRecipe>();
                     switch (extension)
                     {
@@ -161,14 +149,12 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                         }
                     }
 
-                    // 检查技能要求
                     SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
                     if (skillRequirement != null)
                     {
                         JobFailReason.Is("UnderRequiredSkill".Translate(skillRequirement.minLevel), bill.Label);
                         continue;
                     }
-                    // 检查医疗配方
                     if (bill is Bill_Medical billMedical)
                     {
                         if (billMedical.IsSurgeryViolationOnExtraFactionMember(pawn))
@@ -184,19 +170,16 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                             continue;
                         }
                     }
-                    // 检查机械师配方
                     if (bill is Bill_Mech billMech && billMech.Gestator.WasteProducer.Waste != null && billMech.Gestator.GestatingMech == null)
                     {
                         JobFailReason.Is("WasteContainerFull".Translate());
                         continue;
                     }
                     
-                    // 处理未完成物品
                     if (bill is Bill_ProductionWithUft billProductionWithUft)
                     {
                         if (billProductionWithUft.BoundUft != null)
                         {
-                            // 继续完成已绑定的未完成物品
                             if (billProductionWithUft.BoundWorker == pawn && 
                                 pawn.CanReserveAndReach(billProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly) && 
                                 !billProductionWithUft.BoundUft.IsForbidden(pawn))
@@ -214,7 +197,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                     if (bill is Bill_Autonomous billAutonomous && billAutonomous.State != FormingState.Gathering)
                         return WorkOnFormedBill((Thing)giver, billAutonomous);
                     
-                    // 清空材料列表
                     List<IngredientCount> localMissingIngredients = null;
                     if (isFloatMenu)
                     {
@@ -223,7 +205,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                         tmpMissingUniqueIngredients.Clear();
                     }
                     
-                    // 检查医疗配方的特殊材料
                     Bill_Medical billMedical2 = bill as Bill_Medical;
                     List<Thing> uniqueRequiredIngredients = billMedical2?.uniqueRequiredIngredients;
                     if (uniqueRequiredIngredients != null && !uniqueRequiredIngredients.NullOrEmpty())
@@ -236,31 +217,26 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                         }
                     }
 
-                    // 尝试寻找最佳材料
                     if (TryFindBestBillIngredients(bill, pawn, (Thing)giver, chosenIngThings, localMissingIngredients) && 
                         tmpMissingUniqueIngredients.NullOrEmpty())
                     {
                         isFloatMenu = false;
                         
-                        // 添加医疗配方的特殊材料
                         List<Thing> uniqueRequiredIngredients2 = billMedical2?.uniqueRequiredIngredients;
                         if (uniqueRequiredIngredients2 != null && !uniqueRequiredIngredients2.NullOrEmpty())
                             foreach (Thing thing in billMedical2.uniqueRequiredIngredients) chosenIngThings.Add(new ThingCount(thing, 1));
 
-                        // 创建工作
                         Job haulOffJob;
                         Job result = TryStartNewDoBillJob(pawn, bill, giver, chosenIngThings, out haulOffJob);
                         chosenIngThings.Clear();
                         return result;
                     }
                     
-                    // 如果没有找到材料，设置重新检查时间
                     if (FloatMenuMakerMap.makingFor != pawn)
                         bill.nextTickToSearchForIngredients =
                             Find.TickManager.TicksGame + ReCheckFailedBillTicksRange.RandomInRange;
                     else if (isFloatMenu)
                     {
-                        // 显示失败原因
                         if (CannotDoBillDueToMedicineRestriction(giver, bill, localMissingIngredients))
                             JobFailReason.Is(
                                 "NoMedicineMatchingCategory".Translate(GetMedicalCareCategory((Thing)giver).GetLabel()
@@ -290,7 +266,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             if (giver is not Pawn pawn)
                 return false;
             
-            // 检查是否有需要药品的配方
             bool needsMedicine = false;
             foreach (IngredientCount ingredient in missingIngredients)
             {
@@ -303,7 +278,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             
             if (!needsMedicine) return false;
             
-            // 检查是否有符合医疗等级的药品可用
             MedicalCareCategory medicalCareCategory = GetMedicalCareCategory(pawn);
             return pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Medicine).All(medicine => !IsUsableIngredient(medicine, bill) || !medicalCareCategory.AllowsMedicine(medicine.def));
         }
@@ -314,7 +288,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             if (haulOffJob != null && dontCreateJobIfHaulOffRequired)
                 return haulOffJob;
             
-            // 创建执行配方的工作
             Job job = JobMaker.MakeJob(Job, (Thing)giver);
             job.targetQueueB = new List<LocalTargetInfo>(chosenIngThings.Count);
             job.countQueue = new List<int>(chosenIngThings.Count);
@@ -325,7 +298,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                 job.countQueue.Add(t.Count);
             }
             
-            // 添加异种基因（如果存在）
             if (bill.xenogerm != null)
             {
                 job.targetQueueB.Add(bill.xenogerm);
@@ -351,9 +323,7 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             Corpse corpse = thing as Corpse;
             Pawn innerPawn = corpse?.InnerPawn;
             
-            // 检查固定定义
             if (def.fixedBillGiverDefs != null && def.fixedBillGiverDefs.Contains(thing.def)) return true;
-            // 检查活体
             if (pawn != null)
             {
                 if (def.billGiversAllHumanlikes && pawn.RaceProps.Humanlike)
@@ -364,7 +334,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                     return true;
             }
             
-            // 检查尸体
             if (corpse != null && innerPawn != null)
             {
                 if (def.billGiversAllHumanlikesCorpses && innerPawn.RaceProps.Humanlike)
@@ -454,7 +423,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             
             bool billGiverIsPawn = billGiver is Pawn;
             
-            // 如果是医疗配方，添加所有药品
             if (billGiverIsPawn)
             {
                 AddEveryMedicineToRelevantThings(pawn, billGiver, relevantThings, baseValidator, pawn.Map);
@@ -465,7 +433,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                 }
             }
             
-            // 检查自主工作台内部容器
             if (billGiver is Building_WorkTableAutonomous autonomousTable)
             {
                 relevantThings.AddRange(autonomousTable.innerContainer);
@@ -476,7 +443,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                 }
             }
             
-            // 遍历所有搬运来源
             foreach (IHaulSource haulSource in pawn.Map.haulDestinationManager.AllHaulSourcesListForReading)
             {
                 if (haulSource.HaulSourceEnabled)
@@ -503,7 +469,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             
             newRelevantThings.Clear();
             
-            // 区域遍历寻找材料
             TraverseParms traverseParams = TraverseParms.For(pawn);
             RegionEntryPredicate entryCondition;
             
@@ -531,7 +496,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             
             RegionProcessor regionProcessor = r =>
             {
-                // 收集区域内的可搬运物品
                 foreach (Thing thing in r.ListerThings.ThingsMatching(ThingRequest.ForGroup(ThingRequestGroup.HaulableEver)))
                 {
                     if (!processedThings.Contains(thing) && 
@@ -546,7 +510,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                 
                 regionsProcessed++;
                 
-                // 处理收集到的材料
                 if (newRelevantThings.Count > 0 && regionsProcessed > adjacentRegionsAvailable)
                 {
                     relevantThings.AddRange(newRelevantThings);
@@ -587,7 +550,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             List<Thing> allMedicine = map.listerThings.ThingsInGroup(ThingRequestGroup.Medicine);
             tmpMedicine.Clear();
             
-            // 收集符合医疗等级的药品
             for (int i = 0; i < allMedicine.Count; i++)
             {
                 Thing medicine = allMedicine[i];
@@ -596,7 +558,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
                     pawn.CanReach(medicine, PathEndMode.OnCell, Danger.Deadly)) tmpMedicine.Add(medicine);
             }
             
-            // 按医疗效力和距离排序
             tmpMedicine.SortBy(x => -x.GetStatValue(StatDefOf.MedicalPotency), 
                                x => x.Position.DistanceToSquared(billGiver.Position));
             
@@ -618,7 +579,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
 
         private static bool TryFindBestIngredientsInSet_NoMixHelper(List<Thing> availableThings, List<IngredientCount> ingredients, List<ThingCount> chosen, IntVec3 rootCell, bool alreadySorted, List<IngredientCount> missingIngredients, Bill bill = null)
         {
-            // 按距离排序
             if (!alreadySorted)
                 availableThings.Sort((t1, t2) => 
                     (t1.PositionHeld - rootCell).LengthHorizontalSquared.CompareTo(
@@ -630,7 +590,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
 
             availableCounts.GenerateFrom(availableThings);
             
-            // 为每个配方成分寻找材料
             foreach (var ingredient in ingredients)
             {
                 bool found = false;
@@ -688,12 +647,10 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             chosen.Clear();
             missingIngredients?.Clear();
 
-            // 按材料价值和距离排序
             availableThings.SortBy(
                 t => bill.recipe.IngredientValueGetter.ValuePerUnitOf(t.def),
                 t => (t.Position - rootCell).LengthHorizontalSquared);
             
-            // 允许混合材料
             foreach (var ingredient in bill.recipe.ingredients)
             {
                 float requiredValue = ingredient.GetBaseCount();
@@ -720,7 +677,6 @@ public class WorkGiver_DoBillFoodGetter : WorkGiver_DoBill
             return missingIngredients == null || missingIngredients.Count == 0;
         }
 
-        // 内部辅助类：用于跟踪材料数量和类型
         private class DefCountList
         {
             private List<ThingDef> defs = [];

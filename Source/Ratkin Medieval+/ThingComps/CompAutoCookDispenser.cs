@@ -5,591 +5,481 @@ using Verse;
 
 namespace RkM
 {
-    /// <summary>
-    /// Enum representing the type of stew to produce based on nutrition availability.
-    /// </summary>
-    public enum StewType
-    {
-        None,
-        Vegetable,
-        Meat,
-        Mixed,
-        HotWater
-    }
+//     public enum StewType
+//     {
+//         None,
+//         Vegetable,
+//         Meat,
+//         Mixed,
+//         HotWater
+//     }
 
-    /// <summary>
-    /// CompProperties for the auto-cooking dispenser with dual nutrition tracking.
-    /// Configures nutrition storage for vegetables and protein, and output stew types.
-    /// </summary>
-    public class CompProperties_AutoCookDispenser : CompProperties
-    {
-        /// <summary>Maximum nutrition that can be stored for each type (veg and protein).</summary>
-        public float nutritionCapacity = 15f;
+//     public class CompProperties_AutoCookDispenser : CompProperties
+//     {
+//         public float nutritionCapacity = 15f;
 
-        /// <summary>The stew ThingDef produced when only vegetables are available.</summary>
-        public ThingDef vegetableStewDef;
+//         public ThingDef vegetableStewDef;
 
-        /// <summary>The stew ThingDef produced when only meat/protein is available.</summary>
-        public ThingDef meatStewDef;
+//         public ThingDef meatStewDef;
 
-        /// <summary>The stew ThingDef produced when both veg and protein are available.</summary>
-        public ThingDef mixedStewDef;
+//         public ThingDef mixedStewDef;
 
-        /// <summary>The def for hot water (produced when no nutrition is available).</summary>
-        public ThingDef hotWaterDef;
+//         public ThingDef hotWaterDef;
 
-        /// <summary>Work ticks required to produce one unit of food.</summary>
-        public int ticksPerUnit = 5000; // About 2 hours
+//         public int ticksPerUnit = 5000;
 
-        /// <summary>Whether colonists can directly eat from this pot.</summary>
-        public bool allowDirectConsumption = true;
+//         public bool allowDirectConsumption = true;
 
-        /// <summary>Filter for what raw foods can be added to the pot.</summary>
-        public ThingFilter ingredientFilter;
+//         public ThingFilter ingredientFilter;
 
-        // ========== Mask overlay settings ==========
-        /// <summary>Texture path for water mask (shown when pot is empty).</summary>
-        public string waterMaskPath = "Things/Building/potMasks/RkM_Water_potMask";
+//         public string waterMaskPath = "Things/Building/potMasks/RkM_Water_potMask";
         
-        /// <summary>Texture path for vegetable stew mask.</summary>
-        public string vegStewMaskPath = "Things/Building/potMasks/RkM_VegetableStew_potMask";
+//         public string vegStewMaskPath = "Things/Building/potMasks/RkM_VegetableStew_potMask";
         
-        /// <summary>Texture path for meat stew mask.</summary>
-        public string meatStewMaskPath = "Things/Building/potMasks/RkM_MeatStew_potMask";
+//         public string meatStewMaskPath = "Things/Building/potMasks/RkM_MeatStew_potMask";
         
-        /// <summary>Texture path for mixed stew mask.</summary>
-        public string mixedStewMaskPath = "Things/Building/potMasks/RkM_MixedStew_potMask";
+//         public string mixedStewMaskPath = "Things/Building/potMasks/RkM_MixedStew_potMask";
         
-        /// <summary>Draw size for the mask overlay.</summary>
-        public Vector2 maskDrawSize = new Vector2(1f, 1f);
+//         public Vector2 maskDrawSize = new Vector2(1f, 1f);
         
-        /// <summary>Draw offset for the mask overlay (x, y, z).</summary>
-        public Vector3 maskDrawOffset = Vector3.zero;
+//         public Vector3 maskDrawOffset = Vector3.zero;
 
-        // ========== Glow settings ==========
-        /// <summary>Whether to show a glow effect when fueled.</summary>
-        public bool showGlowWhenFueled = true;
+//         public bool showGlowWhenFueled = true;
 
-        /// <summary>Mote definition to use for the glow.</summary>
-        public ThingDef glowMoteDef;
+//         public ThingDef glowMoteDef;
         
-        /// <summary>Draw offset for the glow effect.</summary>
-        public Vector3 glowDrawOffset = new Vector3(0f, 0f, -0.1f);
+//         public Vector3 glowDrawOffset = new Vector3(0f, 0f, -0.1f);
 
-        public CompProperties_AutoCookDispenser()
-        {
-            compClass = typeof(CompAutoCookDispenser);
-        }
+//         public CompProperties_AutoCookDispenser()
+//         {
+//             compClass = typeof(CompAutoCookDispenser);
+//         }
 
-        public override void ResolveReferences(ThingDef parentDef)
-        {
-            base.ResolveReferences(parentDef);
-            ingredientFilter?.ResolveReferences();
-        }
+//         public override void ResolveReferences(ThingDef parentDef)
+//         {
+//             base.ResolveReferences(parentDef);
+//             ingredientFilter?.ResolveReferences();
+//         }
 
-        /// <summary>
-        /// Gets the nutrition required per unit of a given stew type.
-        /// For mixed stew, requires half from each type.
-        /// </summary>
-        public float GetNutritionPerUnit(StewType stewType)
-        {
-            ThingDef stewDef = GetStewDef(stewType);
-            if (stewDef == null) return 0.5f; // Default fallback
-            return stewDef.GetStatValueAbstract(StatDefOf.Nutrition);
-        }
+//         public float GetNutritionPerUnit(StewType stewType)
+//         {
+//             ThingDef stewDef = GetStewDef(stewType);
+//             if (stewDef == null) return 0.5f;
+//             return stewDef.GetStatValueAbstract(StatDefOf.Nutrition);
+//         }
 
-        /// <summary>
-        /// Gets the appropriate stew def for a given stew type.
-        /// </summary>
-        public ThingDef GetStewDef(StewType stewType)
-        {
-            switch (stewType)
-            {
-                case StewType.Vegetable: return vegetableStewDef;
-                case StewType.Meat: return meatStewDef;
-                case StewType.Mixed: return mixedStewDef;
-                case StewType.HotWater: return hotWaterDef;
-                default: return null;
-            }
-        }
-    }
+//         public ThingDef GetStewDef(StewType stewType)
+//         {
+//             switch (stewType)
+//             {
+//                 case StewType.Vegetable: return vegetableStewDef;
+//                 case StewType.Meat: return meatStewDef;
+//                 case StewType.Mixed: return mixedStewDef;
+//                 case StewType.HotWater: return hotWaterDef;
+//                 default: return null;
+//             }
+//         }
+//     }
 
-    /// <summary>
-    /// Component that handles auto-cooking functionality for the Big Pot.
-    /// Stores dual nutrition (vegetable and protein), cooks over time, and dispenses appropriate stews.
-    /// </summary>
-    public class CompAutoCookDispenser : ThingComp
-    {
-        private float vegNutrition;
-        private float proteinNutrition;
-        private float cookingProgress;
-        private StewType currentlyCooked = StewType.None;
+//     public class CompAutoCookDispenser : ThingComp
+//     {
+//         private float vegNutrition;
+//         private float proteinNutrition;
+//         private float cookingProgress;
+//         private StewType currentlyCooked = StewType.None;
 
-        // UI textures for the nutrition bars
-        private static readonly Texture2D VegBarFilledTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.8f, 0.2f)); // Green
-        private static readonly Texture2D ProteinBarFilledTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.8f, 0.3f, 0.2f)); // Red/Brown
-        private static readonly Texture2D BarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f, 0.5f));
+//         private static readonly Texture2D VegBarFilledTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.8f, 0.2f));
+//         private static readonly Texture2D ProteinBarFilledTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.8f, 0.3f, 0.2f));
+//         private static readonly Texture2D BarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f, 0.5f));
 
-        // Cached mask graphics (loaded once)
-        private Graphic waterMaskGraphic;
-        private Graphic vegStewMaskGraphic;
-        private Graphic meatStewMaskGraphic;
-        private Graphic mixedStewMaskGraphic;
-        private Mote glowMote;
-        private bool graphicsInitialized;
+//         private Graphic waterMaskGraphic;
+//         private Graphic vegStewMaskGraphic;
+//         private Graphic meatStewMaskGraphic;
+//         private Graphic mixedStewMaskGraphic;
+//         private Mote glowMote;
+//         private bool graphicsInitialized;
 
-        public CompProperties_AutoCookDispenser Props => (CompProperties_AutoCookDispenser)props;
+//         public CompProperties_AutoCookDispenser Props => (CompProperties_AutoCookDispenser)props;
 
-        public float VegNutrition => vegNutrition;
-        public float ProteinNutrition => proteinNutrition;
-        public float VegNutritionPct => vegNutrition / Props.nutritionCapacity;
-        public float ProteinNutritionPct => proteinNutrition / Props.nutritionCapacity;
-        public float CookingProgressPct => cookingProgress / Props.ticksPerUnit;
+//         public float VegNutrition => vegNutrition;
+//         public float ProteinNutrition => proteinNutrition;
+//         public float VegNutritionPct => vegNutrition / Props.nutritionCapacity;
+//         public float ProteinNutritionPct => proteinNutrition / Props.nutritionCapacity;
+//         public float CookingProgressPct => cookingProgress / Props.ticksPerUnit;
 
-        /// <summary>
-        /// Determine display stew type.
-        /// If we have both, Mixed. If only one, that type.
-        /// If neither, it's None (which displays water mask).
-        /// </summary>
-        public StewType DisplayStewType
-        {
-            get
-            {
-                bool hasVeg = vegNutrition > 0.01f;
-                bool hasProtein = proteinNutrition > 0.01f;
+//         public StewType DisplayStewType
+//         {
+//             get
+//             {
+//                 bool hasVeg = vegNutrition > 0.01f;
+//                 bool hasProtein = proteinNutrition > 0.01f;
 
-                if (hasVeg && hasProtein)
-                    return StewType.Mixed;
-                if (hasVeg)
-                    return StewType.Vegetable;
-                if (hasProtein)
-                    return StewType.Meat;
-                return StewType.None;
-            }
-        }
+//                 if (hasVeg && hasProtein)
+//                     return StewType.Mixed;
+//                 if (hasVeg)
+//                     return StewType.Vegetable;
+//                 if (hasProtein)
+//                     return StewType.Meat;
+//                 return StewType.None;
+//             }
+//         }
         
-        /// <summary>
-        /// Determines the best stew type that can be made with current nutrition.
-        /// Priority: Mixed > Vegetable/Meat (ANY amount) > HotWater
-        /// </summary>
-        public StewType AvailableStewType
-        {
-            get
-            {
-                bool hasVeg = vegNutrition > 0f;
-                bool hasProtein = proteinNutrition > 0f;
+//         public StewType AvailableStewType
+//         {
+//             get
+//             {
+//                 bool hasVeg = vegNutrition > 0f;
+//                 bool hasProtein = proteinNutrition > 0f;
 
-                // Priority 1: Mixed (if ANY of both exist)
-                if (hasVeg && hasProtein)
-                    return StewType.Mixed;
+//                 if (hasVeg && hasProtein)
+//                     return StewType.Mixed;
 
-                // Priority 2: Single type
-                if (hasVeg)
-                    return StewType.Vegetable;
-                if (hasProtein)
-                    return StewType.Meat;
+//                 if (hasVeg)
+//                     return StewType.Vegetable;
+//                 if (hasProtein)
+//                     return StewType.Meat;
 
-                // Priority 3: Hot Water (when empty)
-                return StewType.HotWater;
-            }
-        }
+//                 return StewType.HotWater;
+//             }
+//         }
 
-        public bool HasEnoughNutrition => true; // Always true, at minimum gives Hot Water
+//         public bool HasEnoughNutrition => true;
         
-        /// <summary>
-        /// Can dispense if power/fuel, AND cooking is at least 90% complete.
-        /// </summary>
-        public bool CanDispenseNow => IsPoweredAndFueled && CookingProgressPct >= 0.9f;
+//         public bool CanDispenseNow => IsPoweredAndFueled && CookingProgressPct >= 0.9f;
 
-        private bool IsPoweredAndFueled
-        {
-            get
-            {
-                var refuelable = parent.GetComp<CompRefuelable>();
-                if (refuelable != null && !refuelable.HasFuel)
-                    return false;
+//         private bool IsPoweredAndFueled
+//         {
+//             get
+//             {
+//                 var refuelable = parent.GetComp<CompRefuelable>();
+//                 if (refuelable != null && !refuelable.HasFuel)
+//                     return false;
 
-                return true;
-            }
-        }
+//                 return true;
+//             }
+//         }
 
-        private bool HasFuel
-        {
-            get
-            {
-                var refuelable = parent.GetComp<CompRefuelable>();
-                return refuelable != null && refuelable.HasFuel;
-            }
-        }
+//         private bool HasFuel
+//         {
+//             get
+//             {
+//                 var refuelable = parent.GetComp<CompRefuelable>();
+//                 return refuelable != null && refuelable.HasFuel;
+//             }
+//         }
 
-        /// <summary>
-        /// Initialize cached graphics for overlays.
-        /// </summary>
-        private void InitializeGraphics()
-        {
-            if (graphicsInitialized) return;
-            graphicsInitialized = true;
+//         private void InitializeGraphics()
+//         {
+//             if (graphicsInitialized) return;
+//             graphicsInitialized = true;
 
-            Vector2 size = Props.maskDrawSize;
+//             Vector2 size = Props.maskDrawSize;
 
-            // Load mask textures
-            if (!Props.waterMaskPath.NullOrEmpty())
-            {
-                waterMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
-                    Props.waterMaskPath, ShaderDatabase.Transparent, size, Color.white);
-            }
-            if (!Props.vegStewMaskPath.NullOrEmpty())
-            {
-                vegStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
-                    Props.vegStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
-            }
-            if (!Props.meatStewMaskPath.NullOrEmpty())
-            {
-                meatStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
-                    Props.meatStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
-            }
-            if (!Props.mixedStewMaskPath.NullOrEmpty())
-            {
-                mixedStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
-                    Props.mixedStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
-            }
-        }
+//             if (!Props.waterMaskPath.NullOrEmpty())
+//             {
+//                 waterMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+//                     Props.waterMaskPath, ShaderDatabase.Transparent, size, Color.white);
+//             }
+//             if (!Props.vegStewMaskPath.NullOrEmpty())
+//             {
+//                 vegStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+//                     Props.vegStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
+//             }
+//             if (!Props.meatStewMaskPath.NullOrEmpty())
+//             {
+//                 meatStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+//                     Props.meatStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
+//             }
+//             if (!Props.mixedStewMaskPath.NullOrEmpty())
+//             {
+//                 mixedStewMaskGraphic = GraphicDatabase.Get<Graphic_Single>(
+//                     Props.mixedStewMaskPath, ShaderDatabase.Transparent, size, Color.white);
+//             }
+//         }
 
-        public override void PostDraw()
-        {
-            base.PostDraw();
-            InitializeGraphics();
+//         public override void PostDraw()
+//         {
+//             base.PostDraw();
+//             InitializeGraphics();
 
-            Vector3 drawPos = parent.DrawPos;
+//             Vector3 drawPos = parent.DrawPos;
             
-            // Draw the appropriate mask based on stew type
-            Graphic maskToDraw = null;
-            StewType displayType = DisplayStewType;
+//             Graphic maskToDraw = null;
+//             StewType displayType = DisplayStewType;
 
-            switch (displayType)
-            {
-                case StewType.None:
-                    maskToDraw = waterMaskGraphic;
-                    break;
-                case StewType.Vegetable:
-                    maskToDraw = vegStewMaskGraphic;
-                    break;
-                case StewType.Meat:
-                    maskToDraw = meatStewMaskGraphic;
-                    break;
-                case StewType.Mixed:
-                    maskToDraw = mixedStewMaskGraphic;
-                    break;
-            }
+//             switch (displayType)
+//             {
+//                 case StewType.None:
+//                     maskToDraw = waterMaskGraphic;
+//                     break;
+//                 case StewType.Vegetable:
+//                     maskToDraw = vegStewMaskGraphic;
+//                     break;
+//                 case StewType.Meat:
+//                     maskToDraw = meatStewMaskGraphic;
+//                     break;
+//                 case StewType.Mixed:
+//                     maskToDraw = mixedStewMaskGraphic;
+//                     break;
+//             }
 
-            if (maskToDraw != null)
-            {
-                // Rotate offset with the building
-                Vector3 rotOffset = Props.maskDrawOffset.RotatedBy(parent.Rotation);
-                Vector3 maskPos = drawPos + rotOffset;
-                maskPos.y += 0.01f; // Slightly above the base
-                maskToDraw.Draw(maskPos, parent.Rotation, parent);
-            }
-        }
+//             if (maskToDraw != null)
+//             {
+//                 Vector3 rotOffset = Props.maskDrawOffset.RotatedBy(parent.Rotation);
+//                 Vector3 maskPos = drawPos + rotOffset;
+//                 maskPos.y += 0.01f;
+//                 maskToDraw.Draw(maskPos, parent.Rotation, parent);
+//             }
+//         }
 
-        public override void PostExposeData()
-        {
-            base.PostExposeData();
-            Scribe_Values.Look(ref vegNutrition, "vegNutrition", 0f);
-            Scribe_Values.Look(ref proteinNutrition, "proteinNutrition", 0f);
-            Scribe_Values.Look(ref cookingProgress, "cookingProgress", 0f);
-            Scribe_Values.Look(ref currentlyCooked, "currentlyCooked", StewType.None);
-        }
+//         public override void PostExposeData()
+//         {
+//             base.PostExposeData();
+//             Scribe_Values.Look(ref vegNutrition, "vegNutrition", 0f);
+//             Scribe_Values.Look(ref proteinNutrition, "proteinNutrition", 0f);
+//             Scribe_Values.Look(ref cookingProgress, "cookingProgress", 0f);
+//             Scribe_Values.Look(ref currentlyCooked, "currentlyCooked", StewType.None);
+//         }
 
-        public override void CompTick()
-        {
-            base.CompTick();
+//         public override void CompTick()
+//         {
+//             base.CompTick();
 
-            if (Props.showGlowWhenFueled && Props.glowMoteDef != null)
-            {
-                if (IsPoweredAndFueled)
-                {
-                    if (glowMote == null || glowMote.Destroyed)
-                    {
-                        glowMote = MoteMaker.MakeAttachedOverlay(parent, Props.glowMoteDef, Props.glowDrawOffset);
-                    }
-                    glowMote.Maintain();
-                }
-            }
+//             if (Props.showGlowWhenFueled && Props.glowMoteDef != null)
+//             {
+//                 if (IsPoweredAndFueled)
+//                 {
+//                     if (glowMote == null || glowMote.Destroyed)
+//                     {
+//                         glowMote = MoteMaker.MakeAttachedOverlay(parent, Props.glowMoteDef, Props.glowDrawOffset);
+//                     }
+//                     glowMote.Maintain();
+//                 }
+//             }
 
-            if (!IsPoweredAndFueled)
-            {
-                if (cookingProgress > 0)
-                    cookingProgress = Mathf.Max(0, cookingProgress - 1);
-                return;
-            }
+//             if (!IsPoweredAndFueled)
+//             {
+//                 if (cookingProgress > 0)
+//                     cookingProgress = Mathf.Max(0, cookingProgress - 1);
+//                 return;
+//             }
 
-            // Determine what we're cooking
-            StewType canCook = AvailableStewType;
+//             StewType canCook = AvailableStewType;
             
-            // If we started cooking something and ingredients changed, reset
-            if (currentlyCooked != StewType.None && currentlyCooked != canCook && canCook == StewType.None)
-            {
-                currentlyCooked = StewType.None;
-                cookingProgress = 0;
-                return;
-            }
+//             if (currentlyCooked != StewType.None && currentlyCooked != canCook && canCook == StewType.None)
+//             {
+//                 currentlyCooked = StewType.None;
+//                 cookingProgress = 0;
+//                 return;
+//             }
 
-            // Progress cooking if we have nutrition OR we are making hot water
-            if (canCook != StewType.None)
-            {
-                if (currentlyCooked == StewType.None)
-                    currentlyCooked = canCook;
+//             if (canCook != StewType.None)
+//             {
+//                 if (currentlyCooked == StewType.None)
+//                     currentlyCooked = canCook;
 
-                // Stop incrementing if full
-                if (cookingProgress < Props.ticksPerUnit)
-                {
-                    cookingProgress++;
+//                 if (cookingProgress < Props.ticksPerUnit)
+//                 {
+//                     cookingProgress++;
 
-                    var refuelable = parent.GetComp<CompRefuelable>();
-                    refuelable?.Notify_UsedThisTick();
-                }
+//                     var refuelable = parent.GetComp<CompRefuelable>();
+//                     refuelable?.Notify_UsedThisTick();
+//                 }
+//             }
+//         }
 
-                // If full, do nothing (wait for dispense)
-                /*
-                if (cookingProgress >= Props.ticksPerUnit)
-                {
-                    // No longer auto-producing items on ground
-                    // ProduceFoodBatch(currentlyCooked);
-                    // cookingProgress = 0;
-                    // currentlyCooked = StewType.None;
-                }
-                */
-            }
-        }
+//         public static bool IsProteinFood(ThingDef foodDef)
+//         {
+//             if (foodDef == null) return false;
 
-        /// <summary>
-        /// Determines if a food item is protein-based (meat, eggs, fish) or vegetable-based.
-        /// </summary>
-        public static bool IsProteinFood(ThingDef foodDef)
-        {
-            if (foodDef == null) return false;
+//             if (foodDef.IsMeat) return true;
 
-            // Check if it's raw meat
-            if (foodDef.IsMeat) return true;
+//             if (foodDef.IsEgg) return true;
 
-            // Check if it's an egg
-            if (foodDef.IsEgg) return true;
+//             if (ThingCategoryDefOf.Fish != null && foodDef.IsWithinCategory(ThingCategoryDefOf.Fish))
+//                 return true;
 
-            // Check for fish category (if Odyssey DLC is present)
-            if (ThingCategoryDefOf.Fish != null && foodDef.IsWithinCategory(ThingCategoryDefOf.Fish))
-                return true;
+//             return false;
+//         }
 
-            // Default: not protein
-            return false;
-        }
+//         public void AddNutritionDirect(float amount, bool isProtein)
+//         {
+//             if (amount <= 0) return;
 
-        /// <summary>
-        /// Helper to add nutrition directly and handle cooking progress dilution.
-        /// </summary>
-        public void AddNutritionDirect(float amount, bool isProtein)
-        {
-            if (amount <= 0) return;
+//             float oldNutrition = vegNutrition + proteinNutrition;
+//             float currentSpecific = isProtein ? proteinNutrition : vegNutrition;
+//             float spaceRemaining = Props.nutritionCapacity - currentSpecific;
 
-            float oldNutrition = vegNutrition + proteinNutrition;
-            float currentSpecific = isProtein ? proteinNutrition : vegNutrition;
-            float spaceRemaining = Props.nutritionCapacity - currentSpecific;
+//             if (spaceRemaining <= 0) return;
 
-            if (spaceRemaining <= 0) return;
+//             float actualAdded = Mathf.Min(amount, spaceRemaining);
 
-            float actualAdded = Mathf.Min(amount, spaceRemaining);
+//             if (isProtein)
+//                 proteinNutrition += actualAdded;
+//             else
+//                 vegNutrition += actualAdded;
 
-            if (isProtein)
-                proteinNutrition += actualAdded;
-            else
-                vegNutrition += actualAdded;
+//             float newNutrition = vegNutrition + proteinNutrition;
+//             if (cookingProgress > 0 && newNutrition > 0 && newNutrition > oldNutrition)
+//             {
+//                 cookingProgress *= ((oldNutrition + 1)/ (newNutrition + 1));
+//             }
+//         }
 
-            // Reduce cooking progress based on dilution (Thermal Shock / Mixing)
-            // Example: 90% progress with 10 nutrition. Add 5. Total 15.
-            // New Progress = 90% * (10 + 1/ 15 + 1) = 68.7%.
-            float newNutrition = vegNutrition + proteinNutrition;
-            if (cookingProgress > 0 && newNutrition > 0 && newNutrition > oldNutrition)
-            {
-                cookingProgress *= ((oldNutrition + 1)/ (newNutrition + 1));
-            }
-        }
+//         public float AddNutrition(Thing foodItem)
+//         {
+//             if (foodItem == null || !foodItem.def.IsNutritionGivingIngestible)
+//                 return 0f;
 
-        /// <summary>
-        /// Adds nutrition from a food item to the appropriate nutrition pool.
-        /// </summary>
-        public float AddNutrition(Thing foodItem)
-        {
-            if (foodItem == null || !foodItem.def.IsNutritionGivingIngestible)
-                return 0f;
+//             bool isProtein = IsProteinFood(foodItem.def);
+//             float currentSpecific = isProtein ? proteinNutrition : vegNutrition;
+//             float spaceRemaining = Props.nutritionCapacity - currentSpecific;
 
-            bool isProtein = IsProteinFood(foodItem.def);
-            float currentSpecific = isProtein ? proteinNutrition : vegNutrition;
-            float spaceRemaining = Props.nutritionCapacity - currentSpecific;
+//             float nutritionAvailable = foodItem.GetStatValue(StatDefOf.Nutrition) * foodItem.stackCount;
+//             if (nutritionAvailable <= 0 || spaceRemaining <= 0)
+//                 return 0f;
 
-            float nutritionAvailable = foodItem.GetStatValue(StatDefOf.Nutrition) * foodItem.stackCount;
-            if (nutritionAvailable <= 0 || spaceRemaining <= 0)
-                return 0f;
+//             float actualAdded = Mathf.Min(nutritionAvailable, spaceRemaining);
 
-            // Calculate how much we can actually take
-            float actualAdded = Mathf.Min(nutritionAvailable, spaceRemaining);
+//             AddNutritionDirect(actualAdded, isProtein);
 
-            // Apply nutrition change and dilution
-            AddNutritionDirect(actualAdded, isProtein);
+//             float nutritionPerItem = foodItem.GetStatValue(StatDefOf.Nutrition);
+//             int itemsConsumed = Mathf.CeilToInt(actualAdded / nutritionPerItem);
+//             itemsConsumed = Mathf.Min(itemsConsumed, foodItem.stackCount);
 
-            // Consume the item stack
-            float nutritionPerItem = foodItem.GetStatValue(StatDefOf.Nutrition);
-            int itemsConsumed = Mathf.CeilToInt(actualAdded / nutritionPerItem);
-            itemsConsumed = Mathf.Min(itemsConsumed, foodItem.stackCount);
+//             if (itemsConsumed >= foodItem.stackCount)
+//             {
+//                 foodItem.Destroy();
+//             }
+//             else
+//             {
+//                 foodItem.stackCount -= itemsConsumed;
+//             }
 
-            if (itemsConsumed >= foodItem.stackCount)
-            {
-                foodItem.Destroy();
-            }
-            else
-            {
-                foodItem.stackCount -= itemsConsumed;
-            }
+//             return actualAdded;
+//         }
 
-            return actualAdded;
-        }
+//         private void ProduceFoodBatch(StewType stewType)
+//         {
+//             ThingDef outputDef = Props.GetStewDef(stewType);
+//             if (outputDef == null)
+//             {
+//                 Log.Error($"[RkM] AutoCookDispenser: No stew def for type {stewType}!");
+//                 return;
+//             }
 
-        /// <summary>
-        /// Produces a batch of food based on the stew type and consumes the appropriate nutrition.
-        /// </summary>
-        private void ProduceFoodBatch(StewType stewType)
-        {
-            ThingDef outputDef = Props.GetStewDef(stewType);
-            if (outputDef == null)
-            {
-                Log.Error($"[RkM] AutoCookDispenser: No stew def for type {stewType}!");
-                return;
-            }
+//             ConsumeNutritionForStew(stewType);
 
-            // Consume the appropriate nutrition
-            ConsumeNutritionForStew(stewType);
+//             Thing food = ThingMaker.MakeThing(outputDef);
+//             food.stackCount = 1;
 
-            Thing food = ThingMaker.MakeThing(outputDef);
-            food.stackCount = 1;
+//             IntVec3 spawnPos = parent.InteractionCell;
+//             if (!spawnPos.IsValid || !spawnPos.InBounds(parent.Map))
+//                 spawnPos = parent.Position;
 
-            IntVec3 spawnPos = parent.InteractionCell;
-            if (!spawnPos.IsValid || !spawnPos.InBounds(parent.Map))
-                spawnPos = parent.Position;
+//             GenPlace.TryPlaceThing(food, spawnPos, parent.Map, ThingPlaceMode.Near);
+//         }
 
-            GenPlace.TryPlaceThing(food, spawnPos, parent.Map, ThingPlaceMode.Near);
-        }
-
-        /// <summary>
-        /// Consumes the appropriate amount of nutrition based on stew type.
-        /// Now allows partial consumption (draining to 0) if nutrition is insufficient.
-        /// </summary>
-        private void ConsumeNutritionForStew(StewType stewType)
-        {
-            float nutrition = Props.GetNutritionPerUnit(stewType);
+//         private void ConsumeNutritionForStew(StewType stewType)
+//         {
+//             float nutrition = Props.GetNutritionPerUnit(stewType);
             
-            switch (stewType)
-            {
-                case StewType.Vegetable:
-                    vegNutrition -= nutrition;
-                    break;
-                case StewType.Meat:
-                    proteinNutrition -= nutrition;
-                    break;
-                case StewType.Mixed:
-                    float half = nutrition / 2f;
-                    vegNutrition -= half;
-                    proteinNutrition -= half;
-                    break;
-                case StewType.HotWater:
-                    // Hot water consumes nothing
-                    break;
-            }
+//             switch (stewType)
+//             {
+//                 case StewType.Vegetable:
+//                     vegNutrition -= nutrition;
+//                     break;
+//                 case StewType.Meat:
+//                     proteinNutrition -= nutrition;
+//                     break;
+//                 case StewType.Mixed:
+//                     float half = nutrition / 2f;
+//                     vegNutrition -= half;
+//                     proteinNutrition -= half;
+//                     break;
+//                 case StewType.HotWater:
+//                     break;
+//             }
 
-            vegNutrition = Mathf.Max(0, vegNutrition);
-            proteinNutrition = Mathf.Max(0, proteinNutrition);
-        }
+//             vegNutrition = Mathf.Max(0, vegNutrition);
+//             proteinNutrition = Mathf.Max(0, proteinNutrition);
+//         }
 
-        /// <summary>
-        /// Dispenses a single serving directly to a pawn (for eating in place).
-        /// </summary>
-        public Thing DispenseFood()
-        {
-            StewType stewType = AvailableStewType;
-            if (!CanDispenseNow || stewType == StewType.None)
-                return null;
+//         public Thing DispenseFood()
+//         {
+//             StewType stewType = AvailableStewType;
+//             if (!CanDispenseNow || stewType == StewType.None)
+//                 return null;
 
-            ThingDef outputDef = Props.GetStewDef(stewType);
-            if (outputDef == null)
-                return null;
+//             ThingDef outputDef = Props.GetStewDef(stewType);
+//             if (outputDef == null)
+//                 return null;
 
-            ConsumeNutritionForStew(stewType);
+//             ConsumeNutritionForStew(stewType);
 
-            Thing food = ThingMaker.MakeThing(outputDef);
-            food.stackCount = 1;
-            return food;
-        }
+//             Thing food = ThingMaker.MakeThing(outputDef);
+//             food.stackCount = 1;
+//             return food;
+//         }
 
-        public override string CompInspectStringExtra()
-        {
-            string result = "";
+//         public override string CompInspectStringExtra()
+//         {
+//             string result = "";
 
-            // Vegetable nutrition
-            result += "RkM_VegNutrition".Translate() + ": " + vegNutrition.ToString("F1") + " / " + Props.nutritionCapacity.ToString("F0");
+//             result += "RkM_VegNutrition".Translate() + ": " + vegNutrition.ToString("F1") + " / " + Props.nutritionCapacity.ToString("F0");
             
-            // Protein nutrition
-            result += "\n" + "RkM_ProteinNutrition".Translate() + ": " + proteinNutrition.ToString("F1") + " / " + Props.nutritionCapacity.ToString("F0");
+//             result += "\n" + "RkM_ProteinNutrition".Translate() + ": " + proteinNutrition.ToString("F1") + " / " + Props.nutritionCapacity.ToString("F0");
 
-            // Current status
-            StewType available = AvailableStewType;
-            if (available != StewType.None && IsPoweredAndFueled)
-            {
-                string stewName = ("RkM_StewType_" + available.ToString()).Translate();
-                result += "\n" + "RkM_CookingStew".Translate(stewName) + ": " + CookingProgressPct.ToStringPercent();
-            }
-            else if (!IsPoweredAndFueled)
-            {
-                result += "\n" + "RkM_NeedsFuel".Translate();
-            }
-            else
-            {
-                result += "\n" + "RkM_NeedsIngredients".Translate();
-            }
+//             StewType available = AvailableStewType;
+//             if (available != StewType.None && IsPoweredAndFueled)
+//             {
+//                 string stewName = ("RkM_StewType_" + available.ToString()).Translate();
+//                 result += "\n" + "RkM_CookingStew".Translate(stewName) + ": " + CookingProgressPct.ToStringPercent();
+//             }
+//             else if (!IsPoweredAndFueled)
+//             {
+//                 result += "\n" + "RkM_NeedsFuel".Translate();
+//             }
+//             else
+//             {
+//                 result += "\n" + "RkM_NeedsIngredients".Translate();
+//             }
 
-            return result;
-        }
+//             return result;
+//         }
 
-        public override IEnumerable<Gizmo> CompGetGizmosExtra()
-        {
-            foreach (var gizmo in base.CompGetGizmosExtra())
-                yield return gizmo;
+//         public override IEnumerable<Gizmo> CompGetGizmosExtra()
+//         {
+//             foreach (var gizmo in base.CompGetGizmosExtra())
+//                 yield return gizmo;
 
-            // Debug: Add nutrition
-            if (DebugSettings.godMode)
-            {
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Add 5 veg nutrition",
-                    action = () => AddNutritionDirect(5f, false)
-                };
+//             if (DebugSettings.godMode)
+//             {
+//                 yield return new Command_Action
+//                 {
+//                     defaultLabel = "DEV: Add 5 veg nutrition",
+//                     action = () => AddNutritionDirect(5f, false)
+//                 };
 
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Add 5 protein nutrition",
-                    action = () => AddNutritionDirect(5f, true)
-                };
+//                 yield return new Command_Action
+//                 {
+//                     defaultLabel = "DEV: Add 5 protein nutrition",
+//                     action = () => AddNutritionDirect(5f, true)
+//                 };
 
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Finish cooking",
-                    action = () =>
-                    {
-                        StewType stewType = AvailableStewType;
-                        if (stewType != StewType.None)
-                        {
-                            ProduceFoodBatch(stewType);
-                        }
-                    }
-                };
-            }
-        }
-    }
+//                 yield return new Command_Action
+//                 {
+//                     defaultLabel = "DEV: Finish cooking",
+//                     action = () =>
+//                     {
+//                         StewType stewType = AvailableStewType;
+//                         if (stewType != StewType.None)
+//                         {
+//                             ProduceFoodBatch(stewType);
+//                         }
+//                     }
+//                 };
+//             }
+//         }
+//     }
 }

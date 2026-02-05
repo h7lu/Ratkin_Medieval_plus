@@ -5,10 +5,10 @@ using Verse.AI;
 
 namespace RkM
 {
-    /// <summary>
+    ///  
     /// Job driver for eating from the Big Pot.
     /// Dispenses food into hand, then finds a place to sit and eat.
-    /// </summary>
+    ///  
     // public class JobDriver_EatFromBigPot : JobDriver
     // {
     //     private Building_BigPot BigPot => job.GetTarget(TargetIndex.A).Thing as Building_BigPot;
