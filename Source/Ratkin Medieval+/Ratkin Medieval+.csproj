@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,12 +40,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SYS">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\3497673755\1.6\Assemblies\SYS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -57,9 +67,26 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Compile Include="Buildings\Building_BigPot.cs" />
+    <Compile Include="Buildings\Building_FoodGetter.cs" />
+    <Compile Include="DefModExtension\ModExtension_NutritionStorageRecipe.cs" />
+    <Compile Include="DefModExtension\ModExtension_FoodGetter.cs" />
+    <Compile Include="ITab\ITab_NS.cs" />
+    <Compile Include="Jobs\JobDriver_DoBillFoodGetter.cs" />
+    <Compile Include="Jobs\JobDriver_EatFromBigPot.cs" />
+    <Compile Include="Jobs\JobDriver_FillBigPot.cs" />
+    <Compile Include="ThingComps\CompDrawGlowMote.cs" />
+    <Compile Include="HarmonyPatches\CompProperties_WeaponExtention.cs" />
+    <Compile Include="HarmonyPatches\FoodGetter.cs" />
+    <Compile Include="HarmonyPatches\FoodUtilityPatches.cs" />
+    <Compile Include="HarmonyPatches\HarmonyPatch.cs" />
+    <Compile Include="HarmonyPatches\GenRecipe_MakeRecipeProducts_Patch.cs" />
+    <Compile Include="HarmonyPatches\SYSFix.cs" />
     <Compile Include="HediffComps\HediffComp_giveAfterEffect.cs" />
     <Compile Include="HediffComps\HediffComp_givePermanentTrait.cs" />
     <Compile Include="HediffComps\HediffComp_InstantHeal.cs" />
@@ -67,15 +94,21 @@
     <Compile Include="HediffComps\HediffComp_MemoryWipe.cs" />
     <Compile Include="HediffComps\HediffComp_MentalStateGiver.cs" />
     <Compile Include="HediffComps\HediffComp_RemoveSpecificHediffs.cs" />
+    <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_TendWithNumLimit.cs" />
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_CureAll.cs" />
+    <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_GiveOrRemoveHediffWithConditions.cs" />
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_GiveRandomInspiration.cs" />
     <Compile Include="IngestionOutcomeDoers\IngestionOutcomeDoer_RemoveSpecificHediffs.cs" />
+    <Compile Include="Jobs\JobDriver_PlaySong.cs" />
     <Compile Include="MentalState\MentalStateWorker_RomanceAttempt.cs" />
+    <Compile Include="Override\ColdPlant.cs" />
+    <Compile Include="ThingComps\CompNutritionClassify.cs" />
+    <Compile Include="ThingComps\CompProperties_NutritionStorage.cs" />
+    <Compile Include="ThingComps\CompAdditionalHarvestYield.cs" />
     <Compile Include="ThingComps\CompGiveHediffNearby.cs" />
-    <Compile Include="ThingComps\CompAutoCookDispenser.cs" />
-    <Compile Include="Buildings\Building_BigPot.cs" />
-    <Compile Include="Jobs\JobDriver_EatFromBigPot.cs" />
-    <Compile Include="Jobs\JobDriver_FillBigPot.cs" />
+    <Compile Include="ThingComps\CompSongAbility.cs" />
+    <Compile Include="ThingComps\CompProperties_GetEquipmentGizmo.cs" />
+    <Compile Include="ThingComps\CompEquipmentWithGizmos.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Rituals\RitualGiveClassXPProps.cs" />
     <Compile Include="Rituals\RitualOutcomeEffectWorker_GiveClassXP.cs" />
@@ -83,6 +116,7 @@
     <Compile Include="Rituals\CompRitualStarter.cs" />
     <Compile Include="Rituals\RitualOutcomeComps.cs" />
     <Compile Include="RkMDefOf.cs" />
+    <Compile Include="Works\WorkGiver_DoBillFoodGetter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

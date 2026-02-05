@@ -10,7 +10,7 @@
     <tickerType>Normal</tickerType>
     <drawerType>MapMeshAndRealTime</drawerType>
     <description>A large wooden pot placed over a fire pit. Add raw food ingredients and fuel, and it will slowly cook them into appetizing stews containing vegetables and meat. Colonists can eat directly from the pot.\n\nRequires wood as fuel.</description>
-    <thingClass>RkM.Building_BigPot</thingClass>
+    <thingClass>RkM.Building_FoodGetter</thingClass>
     <graphicData>
       <texPath>Things/Building/BigWoodenPot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -38,6 +38,19 @@
       <WorkTableWorkSpeedFactor>0.8</WorkTableWorkSpeedFactor>
       <Mass>50</Mass>
     </statBases>
+	<building>
+      <isMealSource>true</isMealSource>
+      <nutritionCostPerDispense>0.3</nutritionCostPerDispense>
+      <soundDispense>DispensePaste</soundDispense>
+      <forceShowRoomStats>true</forceShowRoomStats>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+	<inspectorTabs>
+      <li>RkM.ITab_NS</li>
+    </inspectorTabs>
     <size>(2,2)</size>
     <designationCategory>Production</designationCategory>
     <passability>PassThroughOnly</passability>
@@ -61,26 +74,48 @@
         <heatPerSecond>2</heatPerSecond>
         <heatPushMaxTemperature>23</heatPushMaxTemperature>
       </li>
-      <li Class="RkM.CompProperties_AutoCookDispenser">
-        <nutritionCapacity>15.0</nutritionCapacity>
-        <vegetableStewDef>RkM_VegetableStew</vegetableStewDef>
-        <meatStewDef>RkM_MeatStew</meatStewDef>
-        <mixedStewDef>RkM_MixedStew</mixedStewDef>
-        <hotWaterDef>RkM_HotWater</hotWaterDef>
-        <ticksPerUnit>2000</ticksPerUnit>
-        <allowDirectConsumption>true</allowDirectConsumption>
-        <!-- Mask overlay settings -->
-        <waterMaskPath>Things/Building/potMasks/RkM_Water_potMask</waterMaskPath>
-        <vegStewMaskPath>Things/Building/potMasks/RkM_VegetableStew_potMask</vegStewMaskPath>
-        <meatStewMaskPath>Things/Building/potMasks/RkM_MeatStew_potMask</meatStewMaskPath>
-        <mixedStewMaskPath>Things/Building/potMasks/RkM_MixedStew_potMask</mixedStewMaskPath>
-        <maskDrawSize>(2, 1.95)</maskDrawSize>
-        <maskDrawOffset>(0, 0, 0)</maskDrawOffset>
+      <li Class="RkM.CompProperties_DrawGlowMote">
         <!-- Glow settings -->
         <showGlowWhenFueled>true</showGlowWhenFueled>
         <glowMoteDef>RkM_Mote_PotGlow</glowMoteDef>
         <glowDrawOffset>(0, 0, 0)</glowDrawOffset>
       </li>
+	  <li Class="RkM.CompProperties_NutritionStorage">
+		<maxNutrition>20</maxNutrition>
+		<useCookingProgress>true</useCookingProgress>
+	  </li>
+	  <li Class="RkM.CompProperties_NutritionClassify">
+        <stewDefs>
+		  <li>
+			<index>0</index>
+		    <def></def>
+			<path></path>
+		  </li>
+		  <li>
+			<index>1</index>
+		    <def>RkM_VegetableStew</def>
+			<path>Things/Building/potMasks/RkM_VegetableStew_potMask</path>
+		  </li>
+		  <li>
+			<index>2</index>
+		    <def>RkM_MeatStew</def>
+			<path>Things/Building/potMasks/RkM_MeatStew_potMask</path>
+		  </li>
+		  <li>
+			<index>3</index>
+		    <def>RkM_MixedStew</def>
+			<path>Things/Building/potMasks/RkM_MixedStew_potMask</path>
+		  </li>
+		  <li>
+			<index>4</index>
+		    <def>RkM_HotWater</def>
+			<path>Things/Building/potMasks/RkM_Water_potMask</path>
+		  </li>
+		</stewDefs>
+        <ticksPerUnit>2000</ticksPerUnit>
+        <maskDrawSize>(2, 1.95)</maskDrawSize>
+        <maskDrawOffset>(0, 0, 0)</maskDrawOffset>
+	  </li>
     </comps>
   </ThingDef>
 

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+        <defName>RkM_BardLute</defName>
+        <label>吟游诗人鲁特琴</label>
+        <description>一把音色优美的木质鲁特琴。鼠鼠们用它演奏动人的歌曲。</description>
+        <graphicData>
+            <texPath>Things/Weapons/RkM_BardLute</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+        </graphicData>
+        <thingClass>ThingWithComps</thingClass>
+        <tradeTags>
+            <li>ExoticMisc</li>
+            <li>Art</li>
+        </tradeTags>
+        <statBases>
+            <Mass>1.5</Mass>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+            <MeleeWeapon_DamageMultiplier>0.1</MeleeWeapon_DamageMultiplier>
+            <MeleeWeapon_CooldownMultiplier>1.5</MeleeWeapon_CooldownMultiplier>
+            <WorkToMake>5000</WorkToMake>
+            <SharpDamageMultiplier>0.2</SharpDamageMultiplier>
+            <BluntDamageMultiplier>0.5</BluntDamageMultiplier>
+        </statBases>
+        <tools>
+            <li>
+                <label>head</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>3</power>
+                <cooldownTime>1.8</cooldownTime>
+            </li>
+        </tools>
+        <equippedAngleOffset>-90</equippedAngleOffset>
+        <alwaysHaulable>true</alwaysHaulable>
+        <comps>
+            <!-- 欢快之歌 -->
+            <li Class="RkM.CompProperties_SongAbility">
+                <label>欢快之歌</label>
+                <description>演奏一首欢快的曲子，为周围的人们带来欢乐。</description>
+                <iconPath>UI/Commands/SongJoyful</iconPath>
+                <radius>10</radius>
+                <castingTimeTicks>120</castingTimeTicks> <!-- 2秒 -->
+                <cooldownTicks>30000</cooldownTicks> <!-- 12小时 -->
+                <songEffect Class="RkM.SongEffect_AddJoy">
+					<joyAmount>0.5</joyAmount>
+				</songEffect>
+            </li>
+            <!-- 振奋之歌 -->
+            <li Class="RkM.CompProperties_SongAbility">
+                <label>振奋之歌</label>
+                <description>演奏激励人心的旋律，提升周围人们的心情。</description>
+                <iconPath>UI/Commands/SongInspiring</iconPath>
+                <radius>10</radius>
+                <castingTimeTicks>180</castingTimeTicks> 
+                <cooldownTicks>30000</cooldownTicks> 
+                <songEffect Class="RkM.SongEffect_AddThought">
+                    <thoughtDef>RkM_BardSong_Inspiring</thoughtDef>
+                    <durationTicks>30000</durationTicks> 
+                </songEffect>
+            </li>
+            <!-- 激昂之歌 -->
+            <li Class="RkM.CompProperties_SongAbility">
+                <label>激昂之歌</label>
+                <description>演奏激昂的战歌，提升周围人们的移动和攻击速度。</description>
+                <iconPath>UI/Commands/SongBattle</iconPath>
+                <radius>15</radius>
+                <castingTimeTicks>240</castingTimeTicks> <!-- 4秒 -->
+                <cooldownTicks>30000</cooldownTicks> <!-- 12小时 -->
+                <songEffect Class="RkM.SongEffect_AddHediff">
+                    <hediffDef>RkM_BardSong_BattleFrenzy</hediffDef>
+                    <durationTicks>30000</durationTicks> <!-- 1小时 -->
+                </songEffect>
+            </li>
+        </comps>
+        <!--recipeMaker>
+            <recipeUsers>
+                <li>Smithy</li>
+                <li>ElectricSmithy</li>
+            </recipeUsers>
+            <workAmount>5000</workAmount>
+            <ingredients>
+                <li>
+                    <filter>
+                        <thingDefs>
+                            <li>WoodLog</li>
+                        </thingDefs>
+                    </filter>
+                    <count>30</count>
+                </li>
+                <li>
+                    <filter>
+                        <thingDefs>
+                            <li>Cloth</li>
+                        </thingDefs>
+                    </filter>
+                    <count>5</count>
+                </li>
+                <li>
+                    <filter>
+                        <thingDefs>
+                            <li>Gold</li>
+                        </thingDefs>
+                    </filter>
+                    <count>2</count>
+                </li>
+            </ingredients>
+        </recipeMaker-->
+    </ThingDef>
+
+	
+	
+</Defs>

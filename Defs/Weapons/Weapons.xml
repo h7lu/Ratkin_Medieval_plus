@@ -27,7 +27,7 @@
         <cooldownTime>2.0</cooldownTime>
       </li>
     </tools>
-    <equippedAngleOffset>-65</equippedAngleOffset>
+    <equippedAngleOffset>45</equippedAngleOffset>
   </ThingDef>
 
   <!-- Ratkin Vexillum - Banner -->
@@ -54,6 +54,7 @@
       <SocialImpact>0.3</SocialImpact>
       <TradePriceImprovement>0.3</TradePriceImprovement>
     </equippedStatOffsets>
+	<equippedAngleOffset>45</equippedAngleOffset>
     <tools>
       <li>
         <label>shaft</label>
@@ -64,6 +65,27 @@
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- Ratkin Ceremonial Polearm -->
@@ -76,6 +98,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>1.5</drawSize>
     </graphicData>
+	<equippedAngleOffset>45</equippedAngleOffset>
     <weaponTags>
       <li>RkM_CeremonialPolearm</li>
     </weaponTags>
@@ -110,6 +133,27 @@
         <cooldownTime>1.8</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- Ratkin Forge Hammer -->
@@ -186,6 +230,7 @@
     <equippedStatOffsets>
       <MoveSpeed>-0.1</MoveSpeed>
     </equippedStatOffsets>
+	<equippedAngleOffset>45</equippedAngleOffset>
     <tools>
       <li>
         <label>hammer</label>
@@ -204,6 +249,27 @@
         <cooldownTime>2.2</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- Ratkin Halberd -->
@@ -233,6 +299,7 @@
     <equippedStatOffsets>
       <MoveSpeed>-0.1</MoveSpeed>
     </equippedStatOffsets>
+	<equippedAngleOffset>45</equippedAngleOffset>
     <tools>
       <li>
         <label>point</label>
@@ -259,6 +326,27 @@
         <cooldownTime>2.0</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- Ratkin Spear -->
@@ -288,6 +376,7 @@
     <equippedStatOffsets>
       <MoveSpeed>-0.1</MoveSpeed>
     </equippedStatOffsets>
+	<equippedAngleOffset>45</equippedAngleOffset>
     <tools>
       <li>
         <label>point</label>
@@ -306,6 +395,27 @@
         <cooldownTime>1.8</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 
   <!-- Ratkin Rapier -->
@@ -454,6 +564,27 @@
         <cooldownTime>2.4</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 
 <!-- 
@@ -505,6 +636,27 @@
         <cooldownTime>1.5</cooldownTime>
       </li>
     </tools>
+	<comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
   </ThingDef>
 -->
 
@@ -541,16 +693,42 @@
   </ThingDef>
 
   <ThingDef ParentName="ResourceBase">
-    <defName>wheat_powder</defName>
-    <label>wheat powder</label>
-    <description>Test item for wheat powder texture.</description>
+    <defName>RkM_RatWheatFlour</defName>
+    <label>rat wheat flour</label>
+    <description>由鼠麦粒经石磨精心研磨而成的浅色粉末，质地细腻，带有浓郁的麦香和独特的坚果余韵。是鼠族厨房中最基础且不可或缺的原料，承载着殖民地食物供给的重任。</description>
     <graphicData>
       <texPath>Graybox/Things/wheat_powder</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <statBases>
-      <Mass>0.1</Mass>
-    </statBases>
+	<statBases>
+		<Mass>0.1</Mass>
+		<MarketValue>1.3</MarketValue>
+		<Nutrition>0.05</Nutrition>
+		<Flammability>1.2</Flammability>
+	</statBases>
+	<thingCategories>
+		<li>PlantMatter</li>
+	</thingCategories>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>210</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	<ingestible>
+		<preferability>NeverForNutrition</preferability>
+		<specialThoughtAsIngredient>RkM_AteRatWheatFlourAsIngredient</specialThoughtAsIngredient>
+	</ingestible>  
   </ThingDef>
-
+  <ThoughtDef>
+    <defName>RkM_AteRatWheatFlourAsIngredient</defName>
+    <durationDays>1</durationDays>
+    <stages>
+      <li>
+        <label>鼠麦香气</label>
+        <description>鼠麦香气。</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>

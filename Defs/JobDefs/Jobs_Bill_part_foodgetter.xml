@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <JobDef>
+    <defName>RkM_DoBillFoodGetter</defName>
+	<driverClass>RkM.JobDriver_DoBillFoodGetter</driverClass>
+	<reportString>Using food getter.</reportString>
+    <suspendable>false</suspendable>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+  
+</Defs>
