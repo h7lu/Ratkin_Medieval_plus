@@ -587,6 +587,8 @@
 	</comps>
   </ThingDef>
 
+
+
 <!-- 
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>RkM_MagicStaff</defName>

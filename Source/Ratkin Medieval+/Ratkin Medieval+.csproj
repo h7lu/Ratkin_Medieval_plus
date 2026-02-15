@@ -84,6 +84,7 @@
     <Compile Include="HarmonyPatches\CompProperties_WeaponExtention.cs" />
     <Compile Include="HarmonyPatches\FoodGetter.cs" />
     <Compile Include="HarmonyPatches\FoodUtilityPatches.cs" />
+    <Compile Include="HarmonyPatches\GiveOnBreakPatch.cs" />
     <Compile Include="HarmonyPatches\HarmonyPatch.cs" />
     <Compile Include="HarmonyPatches\GenRecipe_MakeRecipeProducts_Patch.cs" />
     <Compile Include="HarmonyPatches\SYSFix.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="ThingComps\CompProperties_NutritionStorage.cs" />
     <Compile Include="ThingComps\CompAdditionalHarvestYield.cs" />
     <Compile Include="ThingComps\CompGiveHediffNearby.cs" />
+    <Compile Include="ThingComps\CompGiveOnBreak.cs" />
     <Compile Include="ThingComps\CompSongAbility.cs" />
     <Compile Include="ThingComps\CompProperties_GetEquipmentGizmo.cs" />
     <Compile Include="ThingComps\CompEquipmentWithGizmos.cs" />

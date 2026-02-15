@@ -112,6 +112,150 @@
         </recipeMaker-->
     </ThingDef>
 
-	
+	<!-- Santier's Spear -->
+  <ThingDef ParentName="BaseMeleeWeapon_Polearm">
+    <defName>RkM_Santier</defName>
+    <label>Santier's Spear</label>
+    <description>A spear that was embedded in a stone statue.\nAccording to an old local legend, a great spear was used to defeat Santier, the walking statue. Perhaps this is that very spear.\nBut it will be difficult to utilize such a thing in the manner of a spear. Your only choice is to swing it around, and smite foes about the head.</description>
+    <graphicData>
+      <texPath>Things/Weapons/DSII_Santier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_SantiersSpear</li>
+    </weaponTags>
+    <statBases>
+      <Mass>3.6</Mass>
+      <MaxHitPoints>500</MaxHitPoints>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.1</MoveSpeed>
+    </equippedStatOffsets>
+	<equippedAngleOffset>45</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+      <li>
+        <label>blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+    </tools>
+	<comps>
+        <li Class="RkM.CompProperties_GiveOnBreak">
+            <item>RkM_Santier_broken</item>
+            <qualitymode>inherit</qualitymode>
+            <alwaysDrop>false</alwaysDrop>
+            <alwaysForbidden>false</alwaysForbidden>
+        </li>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
+  </ThingDef>
+
+  <!-- Santier's Spear (Broken) -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>RkM_Santier_broken</defName>
+    <label>Santier's Spear (broken)</label>
+    <description>The outer shell has shattered, revealing the true form within. It strikes with rapid twinblade slashes. \nA broken weapon never breaks again, like how a dead man never dies twice.</description>
+    <graphicData>
+      <texPath>Things/Weapons/DSII_Santier_broken</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(1,0,0)</color>
+      <drawSize>1.3</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>RkM_SantiersSpearBroken</li>
+    </weaponTags>
+    <useHitPoints>False</useHitPoints>
+    <statBases>
+      <Mass>2.8</Mass>
+    </statBases>
+    <tools>
+      <li>
+        <label>haft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>0.4</cooldownTime>
+      </li>
+      <li>
+        <label>tail</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>0.4</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+		<li Class="RkM.HarmonyPatches.CompProperties_WeaponExtention">
+			<littleDown>True</littleDown>
+			<northOffset>
+				<position>(0.2,0,0.25)</position>
+				<angle>-45</angle>
+			</northOffset>
+			<southOffset>
+				<position>(-0.25,0.3,0.2)</position>
+				<angle>45</angle>
+			</southOffset>
+			<eastOffset>
+				<position>(0.15,0.3,0.2)</position>
+				<angle>-45</angle>
+			</eastOffset>
+			<westOffset>
+				<position>(-0.15,-0.3,0.2)</position>
+				<angle>45</angle>
+			</westOffset>
+		</li>
+	</comps>
+  </ThingDef>
 	
 </Defs>
