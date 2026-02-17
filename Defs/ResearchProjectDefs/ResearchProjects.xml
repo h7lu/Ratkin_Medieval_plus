@@ -13,4 +13,18 @@
 		<researchViewX>3</researchViewX>
 		<researchViewY>3</researchViewY>
 	</ResearchProjectDef>
+
+	<!-- ========== 中世纪烹饪 / Medieval Cooking ========== -->
+	<ResearchProjectDef>
+		<defName>RkM_MedievalCooking</defName>
+		<label>medieval cooking</label>
+		<description>Learn advanced medieval cooking techniques, enabling the construction of iron pots and stone ovens for preparing complex dishes and baked goods.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>4</researchViewX>
+		<researchViewY>3</researchViewY>
+		<prerequisites>
+			<li>RKFME</li>
+		</prerequisites>
+	</ResearchProjectDef>
 </Defs>

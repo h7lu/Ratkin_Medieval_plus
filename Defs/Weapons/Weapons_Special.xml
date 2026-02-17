@@ -36,6 +36,11 @@
             </li>
         </tools>
         <equippedAngleOffset>-90</equippedAngleOffset>
+        <costList>
+            <WoodLog>30</WoodLog>
+            <Cloth>5</Cloth>
+            <Gold>2</Gold>
+        </costList>
         <alwaysHaulable>true</alwaysHaulable>
         <comps>
             <!-- 欢快之歌 -->
@@ -116,12 +121,14 @@
   <ThingDef ParentName="BaseMeleeWeapon_Polearm">
     <defName>RkM_Santier</defName>
     <label>Santier's Spear</label>
+    <smeltable>false</smeltable>
+    <recipeMaker IsNull="True" />
     <description>A spear that was embedded in a stone statue.\nAccording to an old local legend, a great spear was used to defeat Santier, the walking statue. Perhaps this is that very spear.\nBut it will be difficult to utilize such a thing in the manner of a spear. Your only choice is to swing it around, and smite foes about the head.</description>
     <graphicData>
       <texPath>Things/Weapons/DSII_Santier</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <color>(1,0,0)</color>
+      <color>(1,1,1)</color>
       <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
@@ -194,13 +201,15 @@
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>RkM_Santier_broken</defName>
     <label>Santier's Spear (broken)</label>
+    <smeltable>false</smeltable>
+    <recipeMaker IsNull="True" />
     <description>The outer shell has shattered, revealing the true form within. It strikes with rapid twinblade slashes. \nA broken weapon never breaks again, like how a dead man never dies twice.</description>
     <graphicData>
       <texPath>Things/Weapons/DSII_Santier_broken</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <color>(1,0,0)</color>
-      <drawSize>1.3</drawSize>
+      <color>(1,1,1)</color>
+      <drawSize>1.5</drawSize>
     </graphicData>
     <weaponTags>
       <li>RkM_SantiersSpearBroken</li>
@@ -208,6 +217,8 @@
     <useHitPoints>False</useHitPoints>
     <statBases>
       <Mass>2.8</Mass>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Flammability>0</Flammability>
     </statBases>
     <tools>
       <li>

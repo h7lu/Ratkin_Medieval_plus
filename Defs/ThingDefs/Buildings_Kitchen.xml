@@ -83,6 +83,7 @@
 	  <li Class="RkM.CompProperties_NutritionStorage">
 		<maxNutrition>20</maxNutrition>
 		<useCookingProgress>true</useCookingProgress>
+		<ticksPerUnit>2000</ticksPerUnit>
 	  </li>
 	  <li Class="RkM.CompProperties_NutritionClassify">
         <stewDefs>
@@ -112,7 +113,6 @@
 			<path>Things/Building/potMasks/RkM_Water_potMask</path>
 		  </li>
 		</stewDefs>
-        <ticksPerUnit>2000</ticksPerUnit>
         <maskDrawSize>(2, 1.95)</maskDrawSize>
         <maskDrawOffset>(0, 0, 0)</maskDrawOffset>
 	  </li>

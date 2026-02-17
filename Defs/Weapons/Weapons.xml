@@ -698,6 +698,7 @@
     <defName>RkM_RatWheatFlour</defName>
     <label>rat wheat flour</label>
     <description>由鼠麦粒经石磨精心研磨而成的浅色粉末，质地细腻，带有浓郁的麦香和独特的坚果余韵。是鼠族厨房中最基础且不可或缺的原料，承载着殖民地食物供给的重任。</description>
+    <tickerType>Rare</tickerType>
     <graphicData>
       <texPath>Graybox/Things/wheat_powder</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -719,6 +720,7 @@
 		</comps>
 	<ingestible>
 		<preferability>NeverForNutrition</preferability>
+		<foodType>Processed</foodType>
 		<specialThoughtAsIngredient>RkM_AteRatWheatFlourAsIngredient</specialThoughtAsIngredient>
 	</ingestible>  
   </ThingDef>

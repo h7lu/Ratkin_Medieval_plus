@@ -24,7 +24,7 @@ public class CompProperties_NutritionStorage : CompProperties
     public float initialNutritionPercent = 0f;
     public bool drawNutritionGaugeInMap = true;
     public bool drawOutOfNutritionOverlay = true;
-    public readonly string NutritionGizmoLabel = "NutritionGizmoLabel".Translate();
+    public string NutritionGizmoLabel = "NutritionGizmoLabel";
     public bool functionsInVacuum = true;
     public Color nutritionBarColor = Color.white;
     public bool useCustomBarColor = false;
@@ -412,7 +412,7 @@ public class Gizmo_SetNutritionLevel : Gizmo_Slider
     set => nutritionStorge.TargetNutritionLevel = value * nutritionStorge.Props.maxNutrition;
   }
   protected override float ValuePercent => nutritionStorge.NutritionPercentOfMax;
-  protected override string Title => nutritionStorge.Props.NutritionGizmoLabel;
+  protected override string Title => nutritionStorge.Props.NutritionGizmoLabel.Translate();
   protected override bool IsDraggable => nutritionStorge.Props.targetNutritionLevelConfigurable;
   protected override Color BarColor => nutritionStorge.NutritionBarColor;
   protected override Color BarHighlightColor => nutritionStorge.GetFoodKindColor(true);

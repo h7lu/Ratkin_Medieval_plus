@@ -12,6 +12,7 @@
         <stages>
             <li>
                 <label>美妙的音乐</label>
+                <description>我听到了一首美妙的曲子，现在更有干劲了！</description>
                 <baseMoodEffect>5</baseMoodEffect>
             </li>
         </stages>
