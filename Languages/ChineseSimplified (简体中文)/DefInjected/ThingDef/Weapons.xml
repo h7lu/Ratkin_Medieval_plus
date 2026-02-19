@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- Weapons from Weapons.xml -->
+  
+  <!-- EN: Ratkin Vexillum -->
+  <RkM_Vexillum.label>Ratkin Vexillum</RkM_Vexillum.label>
+  <!-- EN: A carefully crafted ratkin banner that flies clearly on the battlefield, guiding companions and greatly boosting morale. -->
+  <RkM_Vexillum.description>A carefully crafted ratkin banner that flies clearly on the battlefield, guiding companions and greatly boosting morale.</RkM_Vexillum.description>
+  
+  <!-- EN: Ratkin Ceremonial Polearm -->
+  <RkM_CeremonialPolearm.label>Ratkin Ceremonial Polearm</RkM_CeremonialPolearm.label>
+  <!-- EN: A luxurious polearm made with fine materials. Beneath its gorgeous appearance lies an extremely dangerous weapon. -->
+  <RkM_CeremonialPolearm.description>A luxurious polearm made with fine materials. Beneath its gorgeous appearance lies an extremely dangerous weapon.</RkM_CeremonialPolearm.description>
+  
+  <!-- EN: Ratkin Forge Hammer -->
+  <RkM_ForgeHammer.label>Ratkin Forge Hammer</RkM_ForgeHammer.label>
+  <!-- EN: A useful blacksmith hammer that can improve forging efficiency. -->
+  <RkM_ForgeHammer.description>A useful blacksmith hammer that can improve forging efficiency.</RkM_ForgeHammer.description>
+  
+  <!-- EN: Ratkin Lucerne -->
+  <RkM_Lucerne.label>Ratkin Lucerne</RkM_Lucerne.label>
+  <!-- EN: A terrifying weapon with a heavy hammer head and armor-piercing spike. Its powerful strikes can dent even the strongest plate armor. -->
+  <RkM_Lucerne.description>A terrifying weapon with a heavy hammer head and armor-piercing spike. Its powerful strikes can dent even the strongest plate armor.</RkM_Lucerne.description>
+  
+  <!-- EN: Ratkin Halberd -->
+  <RkM_Halberd.label>Ratkin Halberd</RkM_Halberd.label>
+  <!-- EN: A classic polearm that cleverly combines the thrusting of a spear tip, the chopping of an axe blade, and the hooking of a rear spike. -->
+  <RkM_Halberd.description>A classic polearm that cleverly combines the thrusting of a spear tip, the chopping of an axe blade, and the hooking of a rear spike.</RkM_Halberd.description>
+  
+  <!-- EN: Ratkin Spear -->
+  <RkM_Spear.label>Ratkin Spear</RkM_Spear.label>
+  <!-- EN: A simple but extremely effective polearm. Its long shaft can pierce enemies before they can reach you. -->
+  <RkM_Spear.description>A simple but extremely effective polearm. Its long shaft can pierce enemies before they can reach you.</RkM_Spear.description>
+  
+  <!-- EN: Ratkin Rapier -->
+  <RkM_Rapier.label>Ratkin Rapier</RkM_Rapier.label>
+  <!-- EN: A one-handed weapon with a slender blade and complex guard. Its elegant form is both a weapon and a status symbol. -->
+  <RkM_Rapier.description>A one-handed weapon with a slender blade and complex guard. Its elegant form is both a weapon and a status symbol.</RkM_Rapier.description>
+  
+  <!-- EN: Ratkin Steam Hammer -->
+  <RkM_SteamHammer.label>Ratkin Steam Hammer</RkM_SteamHammer.label>
+  <!-- EN: A massive steam-powered hammer created by the ratkin. Each strike is accompanied by the hiss of steam and the tremor of the ground. -->
+  <RkM_SteamHammer.description>A massive steam-powered hammer created by the ratkin. Each strike is accompanied by the hiss of steam and the tremor of the ground.</RkM_SteamHammer.description>
+  
+  <!-- EN: Ratkin Zweihander -->
+  <RkM_Zweihander.label>Ratkin Zweihander</RkM_Zweihander.label>
+  <!-- EN: A carefully crafted two-handed longsword with a flame-like twisted blade designed to cause more terrible tearing wounds. -->
+  <RkM_Zweihander.description>A carefully crafted two-handed longsword with a flame-like twisted blade designed to cause more terrible tearing wounds.</RkM_Zweihander.description>
+  
+  <!-- EN: lavender a -->
+  <Item_lavender_a.label>lavender a</Item_lavender_a.label>
+  <!-- EN: Test item for lavender texture. -->
+  <Item_lavender_a.description>Test item for lavender texture.</Item_lavender_a.description>
+  
+  <!-- EN: rat wheat flour -->
+  <RkM_RatWheatFlour.label>rat wheat flour</RkM_RatWheatFlour.label>
+  <!-- EN: A light-colored powder carefully ground from rat wheat grains using stone mills. Fine in texture, it carries a rich wheat aroma and distinctive nutty undertones. This is the most basic and indispensable ingredient in ratkin kitchens, bearing the responsibility for the colony's food supply. -->
+  <RkM_RatWheatFlour.description>由鼠麦粒经石磨精心研磨而成的浅色粉末，质地细腻，带有浓郁的麦香和独特的坚果余韵。是鼠族厨房中最基础且不可或缺的原料，承载着殖民地食物供给的重任。</RkM_RatWheatFlour.description>
+  
+</LanguageData>

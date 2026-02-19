@@ -10,12 +10,17 @@
       later to match whichever RitualPattern/RitualBehavior you choose.
   -->
 
-  <PreceptDef ParentName="SpeechPreceptBase">
+  <!-- No ParentName: SpeechPreceptBase is defined in Ideology DLC only.
+       We inline the minimal ritual-precept fields here so Ideology is not required.
+       NOTE: isAnytime / canBeAnytime are Precept_Ritual *instance* fields, not PreceptDef XML
+       fields — they are controlled via canStartAnytime / alwaysStartAnytime on RitualPatternDef. -->
+  <PreceptDef>
     <defName>RKM_TeachingRitual_Base</defName>
+    <preceptClass>Precept_Ritual</preceptClass>
     <label>teaching ritual</label>
     <description>A teaching ritual that grants skill XP to participants.</description>
-  <!-- Use our modded teaching pattern so the lectern/podium is guaranteed to be the start spot. -->
-  <ritualPatternBase>RKM_TeachingPattern</ritualPatternBase>
-  <!-- RitualOutcomeEffect is defined on the RitualPatternDef (the pattern links to the outcome). -->
+    <!-- Use our modded teaching pattern so the lectern/podium is guaranteed to be the start spot. -->
+    <ritualPatternBase>RKM_TeachingPattern</ritualPatternBase>
+    <!-- RitualOutcomeEffect is defined on the RitualPatternDef (the pattern links to the outcome). -->
   </PreceptDef>
 </Defs>

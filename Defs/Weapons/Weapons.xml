@@ -697,7 +697,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>RkM_RatWheatFlour</defName>
     <label>rat wheat flour</label>
-    <description>由鼠麦粒经石磨精心研磨而成的浅色粉末，质地细腻，带有浓郁的麦香和独特的坚果余韵。是鼠族厨房中最基础且不可或缺的原料，承载着殖民地食物供给的重任。</description>
+    <description>A light-colored powder carefully ground from rat wheat grains using stone mills. Fine in texture, it carries a rich wheat aroma and distinctive nutty undertones. This is the most basic and indispensable ingredient in ratkin kitchens, bearing the responsibility for the colony's food supply.</description>
     <tickerType>Rare</tickerType>
     <graphicData>
       <texPath>Graybox/Things/wheat_powder</texPath>
@@ -729,8 +729,8 @@
     <durationDays>1</durationDays>
     <stages>
       <li>
-        <label>鼠麦香气</label>
-        <description>鼠麦香气。</description>
+        <label>rat wheat aroma</label>
+        <description>The pleasant aroma of rat wheat.</description>
         <baseMoodEffect>1</baseMoodEffect>
       </li>
     </stages>

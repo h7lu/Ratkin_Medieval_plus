@@ -112,6 +112,7 @@
     <Compile Include="ThingComps\CompProperties_GetEquipmentGizmo.cs" />
     <Compile Include="ThingComps\CompEquipmentWithGizmos.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="Rituals\RitualPosition_GrandLectern.cs" />
     <Compile Include="Rituals\RitualGiveClassXPProps.cs" />
     <Compile Include="Rituals\RitualOutcomeEffectWorker_GiveClassXP.cs" />
     <Compile Include="Rituals\RitualBehaviorWorker_Teaching.cs" />

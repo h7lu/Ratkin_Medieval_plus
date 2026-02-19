@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
-  <!-- EN: 帝国之花铠甲 -->
-  <RkM_landsknecht_armor.label>TODO</RkM_landsknecht_armor.label>
-  <!-- EN: 帝国之花铠甲 -->
-  <RkM_landsknecht_armor.description>TODO</RkM_landsknecht_armor.description>
+  <!-- EN: Imperial Landsknecht armor -->
+  <RkM_landsknecht_armor.label>帝国之花铠甲</RkM_landsknecht_armor.label>
+  <!-- EN: A magnificent armor worn by the elite imperial Landsknecht guards. Its design combines protection with ceremonial grandeur. -->
+  <RkM_landsknecht_armor.description>帝国之花铠甲</RkM_landsknecht_armor.description>
   
-  <!-- EN: 帝国之花羽毛长帽 -->
-  <RkM_landsknecht_hat.label>TODO</RkM_landsknecht_hat.label>
-  <!-- EN: 鼠族贵族千草·凤尾仙茶定做的蕾丝头饰，她出手向来阔绰，颇有古堡贵人的感觉 -->
-  <RkM_landsknecht_hat.description>TODO</RkM_landsknecht_hat.description>
+  <!-- EN: Imperial Landsknecht feathered hat -->
+  <RkM_landsknecht_hat.label>帝国之花羽毛长帽</RkM_landsknecht_hat.label>
+  <!-- EN: An ornate lace headdress custom-made for the ratkin noble Chigusa Hōbi Sencha. Her lavish spending and refined taste evoke the elegance of castle nobility. -->
+  <RkM_landsknecht_hat.description>鼠族贵族千草·凤尾仙茶定做的蕾丝头饰，她出手向来阔绰，颇有古堡贵人的感觉</RkM_landsknecht_hat.description>
   
-  <!-- EN: 棉甲军服 -->
-  <RkM_gambeson.label>TODO</RkM_gambeson.label>
-  <!-- EN: 厚重棉花与布料填充制成，舒适方便出行必备 -->
-  <RkM_gambeson.description>TODO</RkM_gambeson.description>
+  <!-- EN: gambeson military garment -->
+  <RkM_gambeson.label>棉甲军服</RkM_gambeson.label>
+  <!-- EN: Made from thick cotton and cloth padding, this comfortable garment is essential for convenient travel and daily wear. -->
+  <RkM_gambeson.description>厚重棉花与布料填充制成，舒适方便出行必备</RkM_gambeson.description>
   
-  <!-- EN: 锁甲 -->
-  <RkM_chainmail.label>TODO</RkM_chainmail.label>
-  <!-- EN: 由金属煅烧穿环，一层一层在鼠族灵巧的工匠手中编制成坚固的锁甲 -->
-  <RkM_chainmail.description>TODO</RkM_chainmail.description>
+  <!-- EN: chainmail -->
+  <RkM_chainmail.label>锁甲</RkM_chainmail.label>
+  <!-- EN: Forged metal rings interlocked layer by layer through the skilled hands of ratkin craftsmen, creating sturdy chainmail armor. -->
+  <RkM_chainmail.description>由金属煅烧穿环，一层一层在鼠族灵巧的工匠手中编制成坚固的锁甲</RkM_chainmail.description>
   
 </LanguageData>

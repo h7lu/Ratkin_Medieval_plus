@@ -6,6 +6,7 @@ namespace RkM
     [DefOf]
     public static class RkMDefOf
     {
+        public static ThingDef RKM_GrandLectern;
         public static JobDef RkM_PlaySong;
         public static JobDef RkM_DoBillFoodGetter;
 		public static JobDef RkM_EatFromBigPot;

@@ -37,10 +37,19 @@
         <roleBehaviors>
           <li>
             <roleId>teacher</roleId>
-            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
-            <speakerInteraction>Speech_DateRitual</speakerInteraction>
+            <!-- GiveSpeech is defined in Core (Duties_Gatherings.xml) — no DLC required.
+                 SpeakOnCellFacingSpectators was Ideology-only; GiveSpeech makes the
+                 teacher walk to their spot and perform a speech-giving job identically. -->
+            <dutyDef>GiveSpeech</dutyDef>
+            <!-- speakerInteraction removed: Speech_DateRitual is Ideology-only.
+                 The ritual functions correctly without a speaker interaction. -->
             <customPositions>
-              <li Class="RitualPosition_Lectern">
+              <!-- RitualPosition_GrandLectern is our own class (mirrors vanilla
+                   RitualPosition_Lectern but points at RKM_GrandLectern).
+                   It positions the teacher in front of the nearest Grand Lectern.
+                   If Ideology is also loaded and the vanilla Lectern is also nearby,
+                   a second customPosition entry can be added via patch. -->
+              <li Class="RkM.RitualPosition_GrandLectern">
                 <maxDistanceToFocus>5</maxDistanceToFocus>
               </li>
             </customPositions>

@@ -9,8 +9,13 @@
     </supportedVersions>
     <description>鼠鼠中世纪.</description>
 	<loadAfter>
-      <li>ceteam.combatextended</li>
+      <!-- Ratkin race mod must load first (we extend its xenotype). -->
 	  <li>Solaris.RatkinRaceMod</li>
+	  <!-- Ratkin Odyssey extension must load before us. -->
 	  <li>fxz.Solaris.RatkinRaceMod.odyssey</li>
+      <!-- Ideology: we patch CompRitualStarter onto the Lectern building (Ideology-only).
+           The patch is conditional (PatchOperationFindMod) so Ideology is a soft dep,
+           but loading after it ensures the Lectern ThingDef exists when our patch runs. -->
+      <li>Ludeon.RimWorld.Ideology</li>
     </loadAfter>
 </ModMetaData>

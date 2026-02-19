@@ -1,31 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+
+  <!-- ===== Grand Lectern ===== -->
+  <!-- A 3-tile-wide lectern for formal teaching rituals. No DLC required. -->
+  <!-- BlackboardLinkUtility reads CompAffectedByFacilities to count linked blackboards. -->
   <ThingDef ParentName="BuildingBase">
-    <defName>RKM_CustomBlackboard</defName>
-    <label>custom blackboard</label>
-    <description>A blackboard for teaching classes.</description>
+    <defName>RKM_GrandLectern</defName>
+    <label>grand lectern</label>
+    <description>A grand carved lectern for formal teaching. Place blackboards behind it to improve teaching ritual outcomes. Use the gizmo or right-click to start a teaching ritual.</description>
     <thingClass>Building</thingClass>
     <graphicData>
-      <texPath>Things/Building/Misc/Campfire</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
+      <!-- Graphic_Multi: RimWorld appends _north/_south/_east/_west automatically. -->
+      <texPath>Things/Building/grandlecturn/RkM_grandlecturn</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.35</fillPercent>
+    <pathCost>50</pathCost>
+    <rotatable>true</rotatable>
+    <size>(3,1)</size>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>4000</WorkToBuild>
+      <Beauty>10</Beauty>
+      <Flammability>1.0</Flammability>
+      <Mass>30</Mass>
+    </statBases>
+    <costList>
+      <WoodLog>150</WoodLog>
+      <Silver>20</Silver>
+    </costList>
+    <comps>
+      <!-- Start the teaching ritual via gizmo. -->
+      <li Class="RkM.CompProperties_RitualStarter">
+        <ritualDefName>RKM_TeachingRitual_Base</ritualDefName>
+      </li>
+      <!-- Allows linked CompFacility buildings (blackboards) to register. -->
+      <li Class="CompProperties_AffectedByFacilities"/>
+    </comps>
+    <!-- Use the south-facing texture as the UI icon. -->
+    <uiIconPath>Things/Building/grandlecturn/RkM_grandlecturn_south</uiIconPath>
+    <designationCategory>Misc</designationCategory>
+  </ThingDef>
+
+  <!-- ===== Blackboard ===== -->
+  <!-- A 3-tile-wide blackboard that links to the Grand Lectern as a facility bonus. -->
+  <!-- Up to 3 blackboards can link to a single Grand Lectern. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RKM_Blackboard</defName>
+    <label>blackboard</label>
+    <description>A large slate blackboard for writing on with chalk. Place near a grand lectern to improve teaching ritual quality. Up to 3 blackboards can benefit a single lectern.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/blackboard/RkM_blackboard</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,3)</drawSize>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <fillPercent>0.4</fillPercent>
     <pathCost>60</pathCost>
+    <rotatable>true</rotatable>
+    <size>(3,1)</size>
     <statBases>
-      <WorkToBuild>400</WorkToBuild>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Mass>10</Mass>
     </statBases>
-    <size>(1,1)</size>
+    <costList>
+      <WoodLog>50</WoodLog>
+      <Silver>10</Silver>
+    </costList>
     <comps>
       <li Class="CompProperties_Facility">
+        <!-- RKM_GrandLectern is always listed (our own building, no DLC needed). -->
+        <!-- Lectern (Ideology) and SchoolDesk (Biotech) are added via conditional -->
+        <!-- patches in ThingComps_RkM_Patch.xml when the relevant DLCs are loaded. -->
         <linkableBuildings>
-          <li>Lectern</li>
+          <li>RKM_GrandLectern</li>
         </linkableBuildings>
         <maxSimultaneous>3</maxSimultaneous>
       </li>
     </comps>
-    <uiIconPath>Things/Building/Misc/Campfire</uiIconPath>
+    <uiIconPath>Things/Building/blackboard/RkM_blackboard_south</uiIconPath>
+    <designationCategory>Misc</designationCategory>
   </ThingDef>
+
 </Defs>

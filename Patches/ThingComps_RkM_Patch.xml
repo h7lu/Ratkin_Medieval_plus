@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-  <!-- Append our ritual-starter comp to the existing Lectern ThingDef without replacing it. -->
-  <Operation Class="PatchOperationAdd">
-    <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
-    <value>
-      <li Class="RkM.CompProperties_RitualStarter">
-        <ritualDefName>RKM_TeachingRitual_Base</ritualDefName>
-      </li>
-    </value>
+  <!-- ======================================================== -->
+  <!-- IDEOLOGY (soft dependency)                               -->
+  <!-- ======================================================== -->
+
+  <!-- 1. Add CompRitualStarter to the vanilla Lectern so it too can start teaching. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ideology</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
+      <value>
+        <li Class="RkM.CompProperties_RitualStarter">
+          <ritualDefName>RKM_TeachingRitual_Base</ritualDefName>
+        </li>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- 2. Let our RKM_Blackboard also link to the vanilla Lectern when Ideology is loaded. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ideology</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName='RKM_Blackboard']/comps/li[@Class='CompProperties_Facility']/linkableBuildings</xpath>
+      <value>
+        <li>Lectern</li>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- ======================================================== -->
+  <!-- BIOTECH (soft dependency)                                -->
+  <!-- ======================================================== -->
+
+  <!-- 3. Let the vanilla Blackboard (Biotech) also link to our RKM_GrandLectern. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Biotech</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName='Blackboard']/comps/li[@Class='CompProperties_Facility']/linkableBuildings</xpath>
+      <value>
+        <li>RKM_GrandLectern</li>
+      </value>
+    </match>
   </Operation>
   <Operation Class="PatchOperationSequence">
 		<success>Always</success>

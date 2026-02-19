@@ -3,8 +3,8 @@
   
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
         <defName>RkM_BardLute</defName>
-        <label>吟游诗人鲁特琴</label>
-        <description>一把音色优美的木质鲁特琴。鼠鼠们用它演奏动人的歌曲。</description>
+        <label>bard's lute</label>
+        <description>A beautifully crafted wooden lute with melodious tones. The ratkin use it to perform touching songs.</description>
         <graphicData>
             <texPath>Things/Weapons/RkM_BardLute</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -43,10 +43,10 @@
         </costList>
         <alwaysHaulable>true</alwaysHaulable>
         <comps>
-            <!-- 欢快之歌 -->
+            <!-- Joyful Song -->
             <li Class="RkM.CompProperties_SongAbility">
-                <label>欢快之歌</label>
-                <description>演奏一首欢快的曲子，为周围的人们带来欢乐。</description>
+                <label>joyful song</label>
+                <description>Play a cheerful tune that brings joy to people nearby.</description>
                 <iconPath>UI/Commands/SongJoyful</iconPath>
                 <radius>10</radius>
                 <castingTimeTicks>120</castingTimeTicks> <!-- 2秒 -->
@@ -55,10 +55,10 @@
 					<joyAmount>0.5</joyAmount>
 				</songEffect>
             </li>
-            <!-- 振奋之歌 -->
+            <!-- Inspiring Song -->
             <li Class="RkM.CompProperties_SongAbility">
-                <label>振奋之歌</label>
-                <description>演奏激励人心的旋律，提升周围人们的心情。</description>
+                <label>inspiring song</label>
+                <description>Play an encouraging melody that uplifts the mood of people nearby.</description>
                 <iconPath>UI/Commands/SongInspiring</iconPath>
                 <radius>10</radius>
                 <castingTimeTicks>180</castingTimeTicks> 
@@ -68,10 +68,10 @@
                     <durationTicks>30000</durationTicks> 
                 </songEffect>
             </li>
-            <!-- 激昂之歌 -->
+            <!-- Battle Frenzy Song -->
             <li Class="RkM.CompProperties_SongAbility">
-                <label>激昂之歌</label>
-                <description>演奏激昂的战歌，提升周围人们的移动和攻击速度。</description>
+                <label>battle frenzy song</label>
+                <description>Play a rousing war song that increases the movement and attack speed of nearby people.</description>
                 <iconPath>UI/Commands/SongBattle</iconPath>
                 <radius>15</radius>
                 <castingTimeTicks>240</castingTimeTicks> <!-- 4秒 -->
