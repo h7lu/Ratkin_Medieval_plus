@@ -68,7 +68,7 @@
     <interactionCellOffset>(0,0,2)</interactionCellOffset>
     <hasInteractionCell>true</hasInteractionCell>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Production</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
     <uiOrder>2130</uiOrder>
     <constructEffect>ConstructMetal</constructEffect>
     <canOverlapZones>false</canOverlapZones>

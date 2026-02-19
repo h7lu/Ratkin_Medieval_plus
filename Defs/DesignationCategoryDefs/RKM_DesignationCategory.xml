@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <DesignationCategoryDef>
+    <defName>RkM_Medieval</defName>
+    <label>Ratkin Medieval</label>
+    <!-- Appears after the vanilla Misc tab (order 90). -->
+    <order>95</order>
+  </DesignationCategoryDef>
+
+</Defs>

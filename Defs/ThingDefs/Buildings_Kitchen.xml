@@ -52,7 +52,7 @@
       <li>RkM.ITab_NS</li>
     </inspectorTabs>
     <size>(2,2)</size>
-    <designationCategory>Production</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
@@ -146,7 +146,7 @@
       <WorkTableWorkSpeedFactor>1.2</WorkTableWorkSpeedFactor>
     </statBases>
     <size>(1,1)</size>
-    <designationCategory>Production</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
@@ -204,7 +204,7 @@
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <fillPercent>0.2</fillPercent>
-    <designationCategory>Furniture</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
     <rotatable>false</rotatable>
   </ThingDef>
 
@@ -236,7 +236,7 @@
       <WorkTableWorkSpeedFactor>1.0</WorkTableWorkSpeedFactor>
     </statBases>
     <size>(2,1)</size>
-    <designationCategory>Production</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
@@ -298,7 +298,7 @@
       <WorkTableWorkSpeedFactor>0.9</WorkTableWorkSpeedFactor>
     </statBases>
     <size>(1,1)</size>
-    <designationCategory>Production</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>

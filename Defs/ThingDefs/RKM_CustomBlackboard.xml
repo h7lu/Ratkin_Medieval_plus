@@ -42,7 +42,7 @@
     </comps>
     <!-- Use the south-facing texture as the UI icon. -->
     <uiIconPath>Things/Building/grandlecturn/RkM_grandlecturn_south</uiIconPath>
-    <designationCategory>Misc</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
   </ThingDef>
 
   <!-- ===== Blackboard ===== -->
@@ -86,7 +86,7 @@
       </li>
     </comps>
     <uiIconPath>Things/Building/blackboard/RkM_blackboard_south</uiIconPath>
-    <designationCategory>Misc</designationCategory>
+    <designationCategory>RkM_Medieval</designationCategory>
   </ThingDef>
 
 </Defs>
