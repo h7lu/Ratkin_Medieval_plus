@@ -1,206 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <!-- ================================================================ -->
-  <!-- IDEOLOGY (soft dep) — all operations guarded by PatchOperationFindMod -->
+  <!-- IDEOLOGY (hard dependency) -->
   <!-- ================================================================ -->
 
   <!-- 1. Give the vanilla Lectern AffectedByFacilities so our blackboard/seats link to it. -->
-  <Operation Class="PatchOperationFindMod">
-    <mods><li>Ideology</li></mods>
-    <match Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
-      <value>
-        <li Class="CompProperties_AffectedByFacilities">
-          <linkableFacilities>
-            <li>RKM_Blackboard</li>
-            <li>Stool</li>
-            <li>DiningChair</li>
-            <li>Armchair</li>
-            <li>Couch</li>
-          </linkableFacilities>
-        </li>
-      </value>
-    </match>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
+    <value>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>RKM_Blackboard</li>
+          <li>Stool</li>
+          <li>DiningChair</li>
+          <li>Armchair</li>
+          <li>Couch</li>
+        </linkableFacilities>
+      </li>
+    </value>
   </Operation>
 
-  <!-- 2. Let Stool link to the vanilla Lectern (only when Ideology is loaded). -->
-  <Operation Class="PatchOperationFindMod">
-    <mods><li>Ideology</li></mods>
-    <match Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[defName='Stool']/comps</xpath>
-      <value>
-        <li Class="CompProperties_Facility">
-          <linkableBuildings>
-            <li>Lectern</li>
-            <li>RKM_GrandLectern</li>
-          </linkableBuildings>
-          <maxSimultaneous>1</maxSimultaneous>
-        </li>
-      </value>
-    </match>
+  <!-- 2. Let Stool link to both the vanilla Lectern and RKM_GrandLectern. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName='Stool']/comps</xpath>
+    <value>
+      <li Class="CompProperties_Facility">
+        <linkableBuildings>
+          <li>Lectern</li>
+          <li>RKM_GrandLectern</li>
+        </linkableBuildings>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </value>
   </Operation>
 
-  <!-- 3. Let DiningChair link to the vanilla Lectern (only when Ideology is loaded). -->
-  <Operation Class="PatchOperationFindMod">
-    <mods><li>Ideology</li></mods>
-    <match Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[defName='DiningChair']/comps</xpath>
-      <value>
-        <li Class="CompProperties_Facility">
-          <linkableBuildings>
-            <li>Lectern</li>
-            <li>RKM_GrandLectern</li>
-          </linkableBuildings>
-          <maxSimultaneous>1</maxSimultaneous>
-        </li>
-      </value>
-    </match>
+  <!-- 3. Let DiningChair link to both the vanilla Lectern and RKM_GrandLectern. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName='DiningChair']/comps</xpath>
+    <value>
+      <li Class="CompProperties_Facility">
+        <linkableBuildings>
+          <li>Lectern</li>
+          <li>RKM_GrandLectern</li>
+        </linkableBuildings>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </value>
   </Operation>
 
-  <!-- 4. Let Armchair link to the vanilla Lectern (only when Ideology is loaded).       -->
+  <!-- 4. Let Armchair link to both the vanilla Lectern and RKM_GrandLectern.            -->
   <!-- Armchair has no <comps> by default — create it first if missing.                 -->
-  <Operation Class="PatchOperationFindMod">
-    <mods><li>Ideology</li></mods>
-    <match Class="PatchOperationSequence">
-      <success>Always</success>
-      <operations>
-        <li Class="PatchOperationConditional">
-          <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
-          <nomatch Class="PatchOperationAdd">
-            <xpath>/Defs/ThingDef[defName='Armchair']</xpath>
-            <value><comps /></value>
-          </nomatch>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
-          <value>
-            <li Class="CompProperties_Facility">
-              <linkableBuildings>
-                <li>Lectern</li>
-                <li>RKM_GrandLectern</li>
-              </linkableBuildings>
-              <maxSimultaneous>1</maxSimultaneous>
-            </li>
-          </value>
-        </li>
-      </operations>
-    </match>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName='Armchair']</xpath>
+          <value><comps /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+              <li>RKM_GrandLectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>1</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
   </Operation>
 
-  <!-- 5. Let Couch link to the vanilla Lectern (only when Ideology is loaded).         -->
+  <!-- 5. Let Couch link to both the vanilla Lectern and RKM_GrandLectern.               -->
   <!-- Couch has no <comps> by default — create it first if missing.                    -->
-  <Operation Class="PatchOperationFindMod">
-    <mods><li>Ideology</li></mods>
-    <match Class="PatchOperationSequence">
-      <success>Always</success>
-      <operations>
-        <li Class="PatchOperationConditional">
-          <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
-          <nomatch Class="PatchOperationAdd">
-            <xpath>/Defs/ThingDef[defName='Couch']</xpath>
-            <value><comps /></value>
-          </nomatch>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
-          <value>
-            <li Class="CompProperties_Facility">
-              <linkableBuildings>
-                <li>Lectern</li>
-                <li>RKM_GrandLectern</li>
-              </linkableBuildings>
-              <maxSimultaneous>3</maxSimultaneous>
-            </li>
-          </value>
-        </li>
-      </operations>
-    </match>
-  </Operation>
-
-  <!-- ================================================================ -->
-  <!-- NO-DLC seat links — only fires when Ideology is NOT loaded.      -->
-  <!-- When Ideology IS loaded, ops 2-5 already add both buildings.     -->
-  <!-- ================================================================ -->
-
-  <!-- 6. No-DLC fallback: seats link to RKM_GrandLectern only.                        -->
-  <!-- Armchair and Couch have no <comps> by default — create each if missing.          -->
-  <Operation Class="PatchOperationFindMod">
-    <mods><li>Ideology</li></mods>
-    <nomatch Class="PatchOperationSequence">
-      <success>Always</success>
-      <operations>
-        <!-- Stool (has <comps> by default) -->
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/ThingDef[defName='Stool']/comps</xpath>
-          <value>
-            <li Class="CompProperties_Facility">
-              <linkableBuildings>
-                <li>RKM_GrandLectern</li>
-              </linkableBuildings>
-              <maxSimultaneous>1</maxSimultaneous>
-            </li>
-          </value>
-        </li>
-        <!-- DiningChair (has <comps> by default) -->
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/ThingDef[defName='DiningChair']/comps</xpath>
-          <value>
-            <li Class="CompProperties_Facility">
-              <linkableBuildings>
-                <li>RKM_GrandLectern</li>
-              </linkableBuildings>
-              <maxSimultaneous>1</maxSimultaneous>
-            </li>
-          </value>
-        </li>
-        <!-- Armchair: create <comps> if missing, then inject -->
-        <li Class="PatchOperationConditional">
-          <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
-          <nomatch Class="PatchOperationAdd">
-            <xpath>/Defs/ThingDef[defName='Armchair']</xpath>
-            <value><comps /></value>
-          </nomatch>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>/Defs/ThingDef[defName='Armchair']/comps</xpath>
-          <value>
-            <li Class="CompProperties_Facility">
-              <linkableBuildings>
-                <li>RKM_GrandLectern</li>
-              </linkableBuildings>
-              <maxSimultaneous>1</maxSimultaneous>
-            </li>
-          </value>
-        </li>
-        <!-- Couch: create <comps> if missing, then inject (ONLY if Couch exists) -->
-        <li Class="PatchOperationConditional">
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
+        <nomatch Class="PatchOperationAdd">
           <xpath>/Defs/ThingDef[defName='Couch']</xpath>
-          <match Class="PatchOperationSequence">
-            <success>Always</success>
-            <operations>
-              <li Class="PatchOperationConditional">
-                <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
-                <nomatch Class="PatchOperationAdd">
-                  <xpath>/Defs/ThingDef[defName='Couch']</xpath>
-                  <value><comps /></value>
-                </nomatch>
-              </li>
-              <li Class="PatchOperationAdd">
-                <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
-                <value>
-                  <li Class="CompProperties_Facility">
-                    <linkableBuildings>
-                      <li>RKM_GrandLectern</li>
-                    </linkableBuildings>
-                    <maxSimultaneous>3</maxSimultaneous>
-                  </li>
-                </value>
-              </li>
-            </operations>
-          </match>
-        </li>
-      </operations>
-    </nomatch>
+          <value><comps /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName='Couch']/comps</xpath>
+        <value>
+          <li Class="CompProperties_Facility">
+            <linkableBuildings>
+              <li>Lectern</li>
+              <li>RKM_GrandLectern</li>
+            </linkableBuildings>
+            <maxSimultaneous>3</maxSimultaneous>
+          </li>
+        </value>
+      </li>
+    </operations>
   </Operation>
 
   <!-- ================================================================ -->

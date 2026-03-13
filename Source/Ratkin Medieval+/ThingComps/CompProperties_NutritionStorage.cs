@@ -274,7 +274,7 @@ public class CompNutritionStorge : ThingComp_VacuumAware
 		    stringBuilder.Append(GetIngredientsString(true, out var flag));
 		    if (flag) stringBuilder.Append(" (* " + "OnlyStacksWithCompatibleMeals".Translate().Resolve() + ")");
 	    }
-	    if (ModsConfig.IdeologyActive) stringBuilder.AppendLineIfNotEmpty().Append(GetFoodKindInspectString());
+	    stringBuilder.AppendLineIfNotEmpty().Append(GetFoodKindInspectString());
 	    var result = "";
 	    if (Props.useCookingProgress)
 	    {

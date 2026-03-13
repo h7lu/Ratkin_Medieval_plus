@@ -11,8 +11,7 @@ namespace RkM
     ///   Vanilla JobGiver_GiveSpeech requires duty.focusSecond to be a
     ///   Building_Throne assigned to the pawn — it always returns null otherwise,
     ///   leaving the teacher with no job and causing them to wander.
-    ///   JobGiver_GiveSpeechFacingTarget (the Ideology fix) may not be present
-    ///   without the DLC.
+    ///   JobGiver_GiveSpeechFacingTarget is not needed for this flow.
     ///
     /// How it works:
     ///   The RKM_TeachAtLectern DutyDef first sends the pawn to their exact
@@ -24,7 +23,7 @@ namespace RkM
     ///
     ///   JobDriver_GiveSpeech supports a plain cell as TargetA (not just a
     ///   throne) and automatically faces RitualUtility.RitualCrowdCenterFor,
-    ///   shows speech bubbles, and plays lecturer sounds when Ideology is active.
+    ///   shows speech bubbles, and plays lecturer sounds.
     /// </summary>
     public class JobGiver_TeachAtLectern : ThinkNode_JobGiver
     {

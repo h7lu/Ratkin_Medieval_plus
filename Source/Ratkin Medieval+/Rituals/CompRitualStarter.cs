@@ -47,12 +47,8 @@ namespace RkM
         /// primary ideo so the vanilla ritual system can manage it normally.
         ///
         /// Why init:false + manual Fill?
-        ///   Precept_Ritual.Init → base Precept.Init → RegenerateId → GenerateNameRaw
-        ///   crashes at runtime because the vanilla GenerateNameRaw uses ideo grammar
-        ///   (memes / style.RitualNameMaker) that is null for non-Ideology ideos.
-        ///   Our Precept_TeachingRitual override fixes this, but as an extra safety
-        ///   net we skip Init entirely and let RitualPatternDef.Fill() do the setup
-        ///   (it is the same method the vanilla game uses to populate ritual fields).
+        ///   We keep ritual initialization explicit and stable by skipping Init and
+        ///   letting RitualPatternDef.Fill() populate ritual fields.
         /// </summary>
         private Precept_Ritual FindOrCreateRitual()
         {
@@ -106,12 +102,9 @@ namespace RkM
             {
                 var newRitual = (Precept_Ritual)PreceptMaker.MakePrecept(preceptDef);
 
-                // Use init:false to skip Precept_Ritual.Init (which crashes via
-                // GenerateNameRaw using ideo grammar unavailable at runtime).
-                // Pass fillWith so AddPrecept calls RitualPatternDef.Fill internally
-                // (same as the vanilla world-gen path), setting behavior, triggers,
-                // isAnytime, outcome, etc.  Fall back to a direct Fill call in case
-                // the engine version doesn't use fillWith when init is false.
+                // Use init:false and pass fillWith so AddPrecept applies
+                // RitualPatternDef.Fill internally; this sets behavior, triggers,
+                // isAnytime, outcome, etc. Fall back to direct Fill if needed.
                 primaryIdeo.AddPrecept(newRitual, init: false,
                     generatingFor: null,
                     fillWith: preceptDef.ritualPatternBase);

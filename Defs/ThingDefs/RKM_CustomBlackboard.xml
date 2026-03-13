@@ -83,9 +83,8 @@
     </costList>
     <comps>
       <li Class="CompProperties_Facility">
-        <!-- RKM_GrandLectern is always listed (our own building, no DLC needed). -->
-        <!-- Lectern (Ideology) and SchoolDesk (Biotech) are added via conditional -->
-        <!-- patches in ThingComps_RkM_Patch.xml when the relevant DLCs are loaded. -->
+        <!-- RKM_GrandLectern and vanilla Lectern are always listed. -->
+        <!-- SchoolDesk (Biotech) is added via conditional patch when Biotech is loaded. -->
         <linkableBuildings>
           <li>RKM_GrandLectern</li>
         </linkableBuildings>

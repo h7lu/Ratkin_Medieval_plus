@@ -9,7 +9,7 @@
       duty.focusSecond to be a Building_Throne assigned to the pawn.  Without a
       throne it always returns null, leaving the teacher with no job.
       Ideology's SpeakOnCell DutyDef uses JobGiver_GiveSpeechFacingTarget which
-      works without a throne, but that class may not be present without the DLC.
+      works without a throne.
 
     Solution:
       We define our own DutyDef using our RkM.JobGiver_TeachAtLectern — a thin
@@ -25,8 +25,7 @@
       3. RkM.JobGiver_TeachAtLectern
          → creates JobDefOf.GiveSpeech at the pawn's cell, facing students.
            JobDriver_GiveSpeech then: keeps pawn on spot, shows speech bubbles,
-           tracks facing toward the ritual crowd, plays lecture sounds if
-           Ideology is active.
+           tracks facing toward the ritual crowd and plays lecture sounds.
 
     ritualSpectateTarget=true tells LordToil_Ritual that this pawn's cell is
     the focal point that spectators/students should orient toward.

@@ -42,14 +42,12 @@
                  JobGiver_TeachAtLectern, which creates a plain-cell GiveSpeech
                  job — no Building_Throne required (unlike Core's GiveSpeech duty). -->
             <dutyDef>RKM_TeachAtLectern</dutyDef>
-            <!-- speakerInteraction removed: Speech_DateRitual is Ideology-only.
-                 The ritual functions correctly without a speaker interaction. -->
+              <!-- speakerInteraction removed intentionally; role behavior is handled
+                through our custom duty and position logic. -->
             <customPositions>
               <!-- RitualPosition_GrandLectern is our own class (mirrors vanilla
                    RitualPosition_Lectern but points at RKM_GrandLectern).
-                   It positions the teacher in front of the nearest Grand Lectern.
-                   If Ideology is also loaded and the vanilla Lectern is also nearby,
-                   a second customPosition entry can be added via patch. -->
+                   It positions the teacher in front of the nearest Grand Lectern. -->
               <li Class="RkM.RitualPosition_GrandLectern">
                 <maxDistanceToFocus>5</maxDistanceToFocus>
               </li>

@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <!-- ======================================================== -->
-  <!-- IDEOLOGY (soft dependency)                               -->
+  <!-- IDEOLOGY (hard dependency)                               -->
   <!-- ======================================================== -->
 
   <!-- 1. Add CompRitualStarter to the vanilla Lectern so it too can start teaching. -->
-  <Operation Class="PatchOperationFindMod">
-    <mods>
-      <li>Ideology</li>
-    </mods>
-    <match Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
-      <value>
-        <li Class="RkM.CompProperties_RitualStarter">
-          <ritualDefName>RKM_TeachingRitual_Base</ritualDefName>
-        </li>
-      </value>
-    </match>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName='Lectern']/comps</xpath>
+    <value>
+      <li Class="RkM.CompProperties_RitualStarter">
+        <ritualDefName>RKM_TeachingRitual_Base</ritualDefName>
+      </li>
+    </value>
   </Operation>
 
-  <!-- 2. Let our RKM_Blackboard also link to the vanilla Lectern when Ideology is loaded. -->
-  <Operation Class="PatchOperationFindMod">
-    <mods>
-      <li>Ideology</li>
-    </mods>
-    <match Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[defName='RKM_Blackboard']/comps/li[@Class='CompProperties_Facility']/linkableBuildings</xpath>
-      <value>
-        <li>Lectern</li>
-      </value>
-    </match>
+  <!-- 2. Let our RKM_Blackboard also link to the vanilla Lectern. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName='RKM_Blackboard']/comps/li[@Class='CompProperties_Facility']/linkableBuildings</xpath>
+    <value>
+      <li>Lectern</li>
+    </value>
   </Operation>
 
   <!-- ======================================================== -->
