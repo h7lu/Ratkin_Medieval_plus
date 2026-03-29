@@ -22,14 +22,8 @@ namespace RkM
     {
         public CompProperties_RitualStarter Props => (CompProperties_RitualStarter)props;
 
-        public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
-        {
-            // Always show the normal ritual options - ability check will be in dialog
-            foreach (var option in base.CompFloatMenuOptions(selPawn))
-            {
-                yield return option;
-            }
-        }
+        /// <summary>Cached ritual precept so we don't search every frame.</summary>
+        private Precept_Ritual cachedRitual;
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
@@ -38,82 +32,120 @@ namespace RkM
                 yield return g;
             }
 
-            // Always show the gizmo enabled
             var command = new Command_Action();
             command.defaultLabel = "Start lecture";
             command.defaultDesc = "Begin the teaching ritual at this lectern.";
-            // Use the lectern's icon as a safe fallback.
             command.icon = parent.def.uiIcon;
             command.action = () => TryOpenBeginRitualDialog();
-            
+
             yield return command;
         }
 
-        private bool CanPawnTeach(Pawn pawn)
+        /// <summary>
+        /// Find the teaching ritual on any player ideo.
+        /// If it doesn't exist yet, create it from the PreceptDef and add it to the
+        /// primary ideo so the vanilla ritual system can manage it normally.
+        ///
+        /// Why init:false + manual Fill?
+        ///   We keep ritual initialization explicit and stable by skipping Init and
+        ///   letting RitualPatternDef.Fill() populate ritual fields.
+        /// </summary>
+        private Precept_Ritual FindOrCreateRitual()
         {
-            if (pawn.skills == null)
-                return false;
+            // Return cached reference if still valid.
+            if (cachedRitual != null)
+                return cachedRitual;
 
-            // Check social skill (same requirement as RitualBehaviorWorker)
-            var social = pawn.skills.GetSkill(SkillDefOf.Social);
-            if (social == null || social.Level < 8)
-                return false;
-
-            // Check for at least one other skill >= 8 (same requirement as RitualBehaviorWorker)
-            bool hasOtherSkill = false;
-            foreach (var skillDef in DefDatabase<SkillDef>.AllDefs)
+            string targetDefName = Props.ritualDefName;
+            if (targetDefName.NullOrEmpty())
             {
-                if (skillDef == SkillDefOf.Social) continue;
-                
-                var skill = pawn.skills.GetSkill(skillDef);
-                if (skill != null && skill.Level >= 8)
+                Log.Error("[RkM] CompRitualStarter has no ritualDefName set.");
+                return null;
+            }
+
+            // --- 1. Search every player ideo (primary + minor) ---
+            var ideoTracker = Faction.OfPlayer?.ideos;
+            if (ideoTracker == null)
+            {
+                Log.Error("[RkM] Player faction has no ideo tracker.");
+                return null;
+            }
+
+            foreach (var ideo in ideoTracker.AllIdeos)
+            {
+                var found = ideo.PreceptsListForReading
+                    .OfType<Precept_Ritual>()
+                    .FirstOrDefault(p => p.def.defName == targetDefName);
+                if (found != null)
                 {
-                    hasOtherSkill = true;
-                    break;
+                    cachedRitual = found;
+                    return cachedRitual;
                 }
             }
 
-            return hasOtherSkill;
+            // --- 2. Not on any ideo — create from def and inject ---
+            var preceptDef = DefDatabase<PreceptDef>.GetNamed(targetDefName, errorOnFail: false);
+            if (preceptDef == null)
+            {
+                Log.Error($"[RkM] PreceptDef '{targetDefName}' not found in DefDatabase.");
+                return null;
+            }
+
+            var primaryIdeo = ideoTracker.PrimaryIdeo;
+            if (primaryIdeo == null)
+            {
+                Log.Error("[RkM] Player faction has no primary ideo — cannot add ritual.");
+                return null;
+            }
+
+            try
+            {
+                var newRitual = (Precept_Ritual)PreceptMaker.MakePrecept(preceptDef);
+
+                // Use init:false and pass fillWith so AddPrecept applies
+                // RitualPatternDef.Fill internally; this sets behavior, triggers,
+                // isAnytime, outcome, etc. Fall back to direct Fill if needed.
+                primaryIdeo.AddPrecept(newRitual, init: false,
+                    generatingFor: null,
+                    fillWith: preceptDef.ritualPatternBase);
+
+                // Fill sets behavior and flags; if it didn't set the name, do it now.
+                // Precept_TeachingRitual.GenerateNameRaw() returns def.label safely.
+                if (newRitual.Label.NullOrEmpty())
+                    newRitual.GenerateNewName();
+
+                // If Fill was not applied by AddPrecept (engine version difference),
+                // call it directly as a safety net.
+                if (newRitual.behavior == null && preceptDef.ritualPatternBase != null)
+                {
+                    preceptDef.ritualPatternBase.Fill(newRitual);
+                    Log.Message("[RkM] Called Fill() directly (AddPrecept did not apply fillWith).");
+                }
+
+                cachedRitual = newRitual;
+                Log.Message($"[RkM] Auto-added teaching ritual '{targetDefName}' to ideo '{primaryIdeo.name}'.");
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"[RkM] Failed to create ritual precept '{targetDefName}': {ex}");
+                return null;
+            }
+
+            return cachedRitual;
         }
 
         private void TryOpenBeginRitualDialog()
         {
-            if (parent == null || parent.Map == null)
-            {
+            if (parent?.Map == null)
                 return;
-            }
+
             var map = parent.Map;
-
-            // Try to find the ritual precept on the player's primary ideo"[RkM] Opening ritual dialog from building for {selectedPawn.LabelShort} at lectern {parent.Position}");
-            // Try to find the ritual precept on the player's primary ideo
-            Precept_Ritual ritual = null;
-            if (!Props.ritualDefName.NullOrEmpty())
-            {
-                ritual = Faction.OfPlayer.ideos.PrimaryIdeo?.PreceptsListForReading.OfType<Precept_Ritual>().FirstOrDefault(p => p.def.defName == Props.ritualDefName);
-            }
-            // Fallback: first ritual precept on the primary ideo
-            if (ritual == null)
-            {
-                ritual = Faction.OfPlayer.ideos.PrimaryIdeo?.PreceptsListForReading.OfType<Precept_Ritual>().FirstOrDefault();
-            }
+            var ritual = FindOrCreateRitual();
 
             if (ritual == null)
             {
-                Messages.Message("No teaching ritual precept found on the player's primary Ideo.", MessageTypeDefOf.RejectInput);
-                
-                // Try to create a temporary ritual from the def directly
-                var ritualDef = DefDatabase<PreceptDef>.GetNamed(Props.ritualDefName, false);
-                if (ritualDef != null)
-                {
-                    Log.Message("[RkM] Cannot create temporary ritual from def - Precept_Ritual constructor not available");
-                    Messages.Message("Teaching ritual precept not found. Please add it to your ideoligion.", MessageTypeDefOf.RejectInput);
-                    return;
-                }
-                else
-                {
-                    Log.Error("[RkM] Could not find ritual def in building either");
-                    return;
-                }
+                Messages.Message("Cannot start lecture — teaching ritual could not be initialised.", MessageTypeDefOf.RejectInput, historical: false);
+                return;
             }
 
             TargetInfo target = new TargetInfo(parent.Position, map, false);
@@ -122,36 +154,20 @@ namespace RkM
             {
                 try
                 {
-                    // Check if assigned teacher meets skill requirements
-                    var teacherPawn = assignments.FirstAssignedPawn("teacher");
-                    if (teacherPawn != null)
-                    {
-                        // Apply quality factor based on teacher's skills
-                        if (!CanPawnTeach(teacherPawn))
-                        {
-                            Messages.Message($"{teacherPawn.LabelShort} cannot teach - requires Social 8+ and another skill 8+.", MessageTypeDefOf.RejectInput);
-                            return false;
-                        }
-                    }
-
-                    // Try to execute via the ritual behavior worker. Use playerForced=true to bypass AI checks.
                     ritual.behavior.TryExecuteOn(target, null, ritual, null, assignments, playerForced: true);
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("Error while starting ritual from lectern gizmo: " + ex);
+                    Log.Error("[RkM] Error starting teaching ritual: " + ex);
                     return false;
                 }
                 return true;
             };
 
-            
-            // Ensure the dialog has an outcomeEffect definition even if the Precept_Ritual instance
-            // doesn't have its outcomeEffect instantiated yet. Pass the RitualPatternDef's
-            // ritualOutcomeEffect Def as a fallback to the Dialog constructor (it will use
-            // ritual.outcomeEffect.def ?? outcome).
-            var outcomeDefFallback = ritual?.def?.ritualPatternBase?.ritualOutcomeEffect;
-            Find.WindowStack.Add(new Dialog_BeginRitual(ritual.Label, ritual, target, map, action, null, null, null, null, null, null, outcomeDefFallback));
+            var outcomeDefFallback = ritual.def?.ritualPatternBase?.ritualOutcomeEffect;
+            Find.WindowStack.Add(new Dialog_BeginRitual(
+                ritual.Label, ritual, target, map, action,
+                null, null, null, null, null, null, outcomeDefFallback));
         }
     }
 }

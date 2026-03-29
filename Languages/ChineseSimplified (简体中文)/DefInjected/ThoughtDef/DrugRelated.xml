@@ -94,7 +94,7 @@
   <!-- EN: rat poison! -->
   <RatkinPoisonThought.stages.rat_poison.label>老鼠药...?老鼠药！</RatkinPoisonThought.stages.rat_poison.label>
   <!-- EN: Rat poison...? Rat poison! I feel terrible! -->
-  <RatkinPoisonThought.stages.rat_poison.description>老鼠药...？老鼠药！我感觉糟透了！</RatkinPoisonThought.stages.rat_poison.description>
+  <RatkinPoisonThought.stages.rat_poison.description>老鼠药...？老鼠药！我完了！</RatkinPoisonThought.stages.rat_poison.description>
   
   <!-- EN: accelerated metabolism -->
   <RatkinRecoveryHungerThought.stages.accelerated_metabolism.label>新陈代谢加速</RatkinRecoveryHungerThought.stages.accelerated_metabolism.label>

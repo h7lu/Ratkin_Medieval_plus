@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Big Pot UI Strings -->
+  <RkM_VegNutrition>Vegetable nutrition</RkM_VegNutrition>
+  <RkM_ProteinNutrition>Protein nutrition</RkM_ProteinNutrition>
+  <RkM_CookingStew>Cooking {0}</RkM_CookingStew>
+  <RkM_NeedsFuel>Needs fuel to cook</RkM_NeedsFuel>
+  <RkM_NeedsIngredients>Needs ingredients</RkM_NeedsIngredients>
+  <RkM_EatFromPot>Eat from pot</RkM_EatFromPot>
+  <RkM_CannotEatFromPot>Cannot eat from pot</RkM_CannotEatFromPot>
+  <RkM_NotReady>Not ready</RkM_NotReady>
+  <RkM_AddIngredients>Add ingredients to pot</RkM_AddIngredients>
+  
+  <!-- Stew type names -->
+  <RkM_StewType_Vegetable>vegetable stew</RkM_StewType_Vegetable>
+  <RkM_StewType_Meat>meat stew</RkM_StewType_Meat>
+  <RkM_StewType_Mixed>mixed stew</RkM_StewType_Mixed>
+
+</LanguageData>

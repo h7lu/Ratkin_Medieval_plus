@@ -2,15 +2,15 @@
 <Defs>  
      <ApparelLayerDef>
         <defName>RkM_chainmail</defName>
-        <label>贴身护甲</label>
+        <label>close-fitting armor</label>
         <drawOrder>200</drawOrder>
       </ApparelLayerDef>
 
 <!--================= 帝国铠甲 ================-->
      <ThingDef ParentName="ApparelMakeableBase">
     <defName>RkM_landsknecht_armor</defName>
-	<label>帝国之花铠甲</label>
-    <description>帝国之花铠甲</description>
+	<label>Imperial Landsknecht armor</label>
+    <description>A magnificent armor worn by the elite imperial Landsknecht guards. Its design combines protection with ceremonial grandeur.</description>
 	<techLevel>Medieval</techLevel>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
@@ -80,8 +80,8 @@
  
   <ThingDef ParentName="ApparelMakeableBase">
     <defName>RkM_landsknecht_hat</defName>
-    <label>帝国之花羽毛长帽</label>
-    <description>鼠族贵族千草·凤尾仙茶定做的蕾丝头饰，她出手向来阔绰，颇有古堡贵人的感觉</description>
+    <label>Imperial Landsknecht feathered hat</label>
+    <description>An ornate lace headdress custom-made for the ratkin noble Chigusa Hōbi Sencha. Her lavish spending and refined taste evoke the elegance of castle nobility.</description>
 	<techLevel>Medieval</techLevel>
 	<possessionCount>1</possessionCount>
      <recipeMaker>
@@ -152,8 +152,8 @@
   
   <ThingDef ParentName="ApparelMakeableBase">
     <defName>RkM_gambeson</defName>
-	<label>棉甲军服</label>
-    <description>厚重棉花与布料填充制成，舒适方便出行必备</description>
+	<label>gambeson military garment</label>
+    <description>Made from thick cotton and cloth padding, this comfortable garment is essential for convenient travel and daily wear.</description>
 	<techLevel>Medieval</techLevel>
 	<possessionCount>1</possessionCount>
     <recipeMaker>
@@ -221,8 +221,8 @@
   
   <ThingDef ParentName="ApparelMakeableBase">
     <defName>RkM_chainmail</defName>
-	<label>锁甲</label>  
-    <description>由金属煅烧穿环，一层一层在鼠族灵巧的工匠手中编制成坚固的锁甲</description>
+	<label>chainmail</label>  
+    <description>Forged metal rings interlocked layer by layer through the skilled hands of ratkin craftsmen, creating sturdy chainmail armor.</description>
 	<techLevel>Medieval</techLevel>
 	<possessionCount>1</possessionCount>
     <recipeMaker>

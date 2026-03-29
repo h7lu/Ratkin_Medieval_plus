@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    RKM_TeachAtLectern — DutyDef for the teacher/lecturer role in our teaching ritual.
+
+    Why this exists:
+      Core's GiveSpeech DutyDef uses JobGiver_GiveSpeech, which requires
+      duty.focusSecond to be a Building_Throne assigned to the pawn.  Without a
+      throne it always returns null, leaving the teacher with no job.
+      Ideology's SpeakOnCell DutyDef uses JobGiver_GiveSpeechFacingTarget which
+      works without a throne.
+
+    Solution:
+      We define our own DutyDef using our RkM.JobGiver_TeachAtLectern — a thin
+      wrapper that creates a plain-cell GiveSpeech job (supported by
+      JobDriver_GiveSpeech even without a throne).
+
+    Think-tree flow:
+      1. JobGiver_GotoTravelDestination (exactCell=true, Jog)
+         → pawn walks/jogs to the exact standing cell in front of the Grand
+           Lectern (set as duty.focus by RitualPosition_GrandLectern).
+      2. ThinkNode_ConditionalAtDutyLocation
+         → satisfied once pawn.Position == duty.focus.Cell
+      3. RkM.JobGiver_TeachAtLectern
+         → creates JobDefOf.GiveSpeech at the pawn's cell, facing students.
+           JobDriver_GiveSpeech then: keeps pawn on spot, shows speech bubbles,
+           tracks facing toward the ritual crowd and plays lecture sounds.
+
+    ritualSpectateTarget=true tells LordToil_Ritual that this pawn's cell is
+    the focal point that spectators/students should orient toward.
+  -->
+  <DutyDef>
+    <defName>RKM_TeachAtLectern</defName>
+    <hook>HighPriority</hook>
+    <socialModeMax>Off</socialModeMax>
+    <!-- Teacher's position becomes the spectate target for the students -->
+    <ritualSpectateTarget>true</ritualSpectateTarget>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <!-- Step 1: Go to exact lectern standing cell -->
+        <li Class="JobGiver_GotoTravelDestination">
+          <exactCell>true</exactCell>
+          <locomotionUrgency>Jog</locomotionUrgency>
+        </li>
+        <!-- Step 2: Once there, begin lecturing -->
+        <li Class="ThinkNode_ConditionalAtDutyLocation">
+          <subNodes>
+            <li Class="RkM.JobGiver_TeachAtLectern" />
+          </subNodes>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+</Defs>

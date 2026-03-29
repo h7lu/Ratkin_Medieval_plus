@@ -8,6 +8,9 @@
     <ritualExpectedDescNoAdjective>You can hold a teaching session for {PAWN_nameDef}.</ritualExpectedDescNoAdjective>
     <ritualBehavior>RKM_TeachingBehavior</ritualBehavior>
     <ritualOutcomeEffect>RKM_RitualOutcome_GiveClassXP</ritualOutcomeEffect>
+    <!-- alwaysStartAnytime: Fill() sets ritual.isAnytime = true unconditionally,
+         allowing the ritual to be triggered freely without a calendar obligation. -->
+    <alwaysStartAnytime>true</alwaysStartAnytime>
   </RitualPatternDef>
 
 </Defs>

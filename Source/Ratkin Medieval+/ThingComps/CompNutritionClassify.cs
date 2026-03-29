@@ -60,7 +60,7 @@ public class CompNutritionClassify : ThingComp
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         foreach (var gizmo in base.CompGetGizmosExtra()) yield return gizmo;
-        // Debug: Add nutrition
+        
         if (DebugSettings.godMode)
         {
             yield return new Command_Action
@@ -87,13 +87,13 @@ public class CompNutritionClassify : ThingComp
         {
             bool hasVeg = vegNutrition > 0f;
             bool hasProtein = proteinNutrition > 0f;
-            // Priority 1: Mixed (if ANY of both exist)
+            
             if (hasVeg && hasProtein)
                 return (byte)StewType.Mixed;
-            // Priority 2: Single type
+            
             if (hasVeg) return (byte)StewType.Vegetable;
             if (hasProtein) return (byte)StewType.Meat;
-            // Priority 3: Hot Water (when empty)
+            
             return (byte)StewType.HotWater;
         }
     }
@@ -109,7 +109,7 @@ public class CompNutritionClassify : ThingComp
                 vegNutrition -= half;
                 proteinNutrition -= half;
                 break;
-            case (int)StewType.HotWater: // Hot water consumes nothing
+            case (int)StewType.HotWater: 
                 break;
         }
         vegNutrition = Mathf.Max(0, vegNutrition);
@@ -130,11 +130,7 @@ public class CompNutritionClassify : ThingComp
         Mixed,
         HotWater
     }
-    /// <summary>
-    /// Determine display stew type.
-    /// If we have both, Mixed. If only one, that type.
-    /// If neither, it's None (which displays water mask).
-    /// </summary>
+
     public virtual byte DisplayStewType
     {
         get
@@ -155,31 +151,23 @@ public class CompNutritionClassify : ThingComp
         base.PostDraw();
         Vector3 drawPos = parent.DrawPos;
             
-        // Draw the appropriate mask based on stew type
         var maskToDraw = Props.stewDefs.FirstOrDefault(x => x.index == DisplayStewType).MaskGraphic(Props.maskDrawSize);
         if (maskToDraw != null&& maskToDraw.MatSingle != BaseContent.BadMat)
         {
-            // Rotate offset with the building
             Vector3 rotOffset = Props.maskDrawOffset.RotatedBy(parent.Rotation);
             Vector3 maskPos = drawPos + rotOffset;
-            maskPos.y += 0.01f; // Slightly above the base
+            maskPos.y += 0.01f;
             maskToDraw.Draw(maskPos, parent.Rotation, parent);
         }
     }
-    /// <summary>
-    /// Determines if a food item is protein-based (meat, eggs, fish) or vegetable-based.
-    /// </summary>
+
     public static bool IsProteinFood(ThingDef foodDef)
     {
         if (foodDef == null) return false;
-        // Check if it's raw meat
         if (foodDef.IsMeat) return true;
-        // Check if it's an egg
         if (foodDef.IsEgg) return true;
-        // Check for fish category (if Odyssey DLC is present)
         if (ThingCategoryDefOf.Fish != null && foodDef.IsWithinCategory(ThingCategoryDefOf.Fish))
             return true;
-        // Default: not protein
         return false;
     }
     public virtual float AddNutrition(float nutrition, List<Thing> foodItems)
@@ -194,7 +182,6 @@ public class CompNutritionClassify : ThingComp
             bool isProtein = IsProteinFood(foodItem.def);
             float nutritionAvailable = foodItem.GetStatValue(StatDefOf.Nutrition) * foodItem.stackCount;
             if (nutritionAvailable <= 0) continue;
-            // Apply nutrition change and dilution
             if (isProtein) proteinNut += nutritionAvailable;
             else vegNut += nutritionAvailable;
             
@@ -217,14 +204,31 @@ public class CompNutritionClassify : ThingComp
         if (isProtein) proteinNutrition += actualAdded;
         else vegNutrition += actualAdded;
     }
+    
+    public virtual float DecayNutrition(float amount)
+    {
+        float totalDecayed = 0f;
+        if (vegNutrition > 0)
+        {
+            float d = Mathf.Min(vegNutrition, amount);
+            vegNutrition -= d;
+            totalDecayed += d;
+        }
+        if (proteinNutrition > 0)
+        {
+            float d = Mathf.Min(proteinNutrition, amount);
+            proteinNutrition -= d;
+            totalDecayed += d;
+        }
+        return totalDecayed;
+    }
+
     public override string CompInspectStringExtra()
     {
         string result = "";
 
-        // Vegetable nutrition
         result += "RkM_VegNutrition".Translate() + ": " + vegNutrition.ToString("F1");
             
-        // Protein nutrition
         result += "\n" + "RkM_ProteinNutrition".Translate() + ": " + proteinNutrition.ToString("F1");
 
         return result;
@@ -234,10 +238,8 @@ public class CompProperties_NutritionClassify : CompProperties
 {
     public CompProperties_NutritionClassify() => compClass = typeof(CompNutritionClassify);
     public List<ThingDefAndPathIndexClass> stewDefs;
-    /// <summary>Draw size for the mask overlay.</summary>
     public Vector2 maskDrawSize = new Vector2(1f, 1f);
         
-    /// <summary>Draw offset for the mask overlay (x, y, z).</summary>
     public Vector3 maskDrawOffset = Vector3.zero;
 }
 

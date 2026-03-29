@@ -7,10 +7,19 @@
 	<supportedVersions>
       <li>1.6</li>
     </supportedVersions>
+    <modDependencies>
+      <li>
+        <packageId>Ludeon.RimWorld.Ideology</packageId>
+        <displayName>Ideology</displayName>
+      </li>
+    </modDependencies>
     <description>鼠鼠中世纪.</description>
 	<loadAfter>
-      <li>ceteam.combatextended</li>
+      <!-- Ratkin race mod must load first (we extend its xenotype). -->
 	  <li>Solaris.RatkinRaceMod</li>
+	  <!-- Ratkin Odyssey extension is optional; load after it when present. -->
 	  <li>fxz.Solaris.RatkinRaceMod.odyssey</li>
+      <!-- Ideology is a hard dependency; loading after it ensures patch order stability. -->
+      <li>Ludeon.RimWorld.Ideology</li>
     </loadAfter>
 </ModMetaData>

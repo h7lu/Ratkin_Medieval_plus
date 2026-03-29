@@ -46,7 +46,7 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                 return false;
             });
         }
-        // 添加结束条件：如果工作台被摧毁则无法完成
+        
             this.AddEndCondition(() =>
             {
                 Thing thing = this.GetActor().jobs.curJob.GetTarget(TargetIndex.A).Thing;
@@ -57,10 +57,8 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                 return JobCondition.Ongoing;
             });
             
-            // 失败条件：工作台起火
             this.FailOnBurningImmobile(TargetIndex.A);
             
-            // 失败条件：配方无效或工作台不可用
             this.FailOn(() =>
             {
                 IBillGiver billGiver = this.job.GetTarget(TargetIndex.A).Thing as IBillGiver;
@@ -78,14 +76,11 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                 return false;
             });
             
-            // 1. 前往工作台
             Toil gotoBillGiver = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell, false);
             
-            // 2. 初始化工作（绑定未完成物品等）
             Toil initToil = ToilMaker.MakeToil("MakeNewToils");
             initToil.initAction = () =>
             {
-                // 如果只有一个目标材料且是未完成物品，绑定到配方
                 if (this.job.targetQueueB is { Count: 1 })
                 {
                     if (this.job.targetQueueB[0].Thing is UnfinishedThing { Destroyed: false } unfinishedThing)
@@ -94,15 +89,12 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                     }
                 }
                 
-                // 通知配方开始
                 this.job.bill.Notify_DoBillStarted(this.pawn);
             };
             yield return initToil;
             
-            // 3. 如果没有材料需要收集，直接前往工作台
             yield return Toils_Jump.JumpIf(gotoBillGiver, () => this.job.GetTargetQueue(TargetIndex.B).NullOrEmpty());
             
-            // 4. 收集材料
             foreach (Toil toil in CollectIngredientsToils(
                 TargetIndex.B, 
                 TargetIndex.A, 
@@ -114,21 +106,16 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                 yield return toil;
             }
             
-            // 5. 前往工作台
             yield return gotoBillGiver;
             
-            // 6. 如果需要，创建未完成物品
             yield return Toils_Recipe.MakeUnfinishedThingIfNeeded();
             
-            // 7. 执行配方工作
             yield return Toils_Recipe.DoRecipeWork()
                 .FailOnDespawnedNullOrForbiddenPlacedThings(TargetIndex.A)
                 .FailOnCannotTouch(TargetIndex.A, PathEndMode.InteractionCell);
             
-            // 8. 检查配方是否可以完成
             yield return Toils_Recipe.CheckIfRecipeCanFinishNow();
             
-            // 9. 完成配方并开始存储产品
             yield return Toils_Recipe.FinishRecipeAndStartStoringProduct(TargetIndex.None);
     }
     public new static IEnumerable<Toil> CollectIngredientsToils(TargetIndex ingredientInd, TargetIndex billGiverInd, TargetIndex ingredientPlaceCellInd, bool subtractNumTakenFromJobCount = false, bool failIfStackCountLessThanJobCount = true, bool placeInBillGiver = false)
@@ -204,14 +191,12 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                     return;
                 }
                 
-                // 如果目标单元格是合法的存储位置，移除搬运标记
                 SlotGroup slotGroup = actor.Map.haulDestinationManager.SlotGroupAt(cell);
                 if (slotGroup != null && slotGroup.Settings.AllowedToAccept(actor.carryTracker.CarriedThing))
                 {
                     actor.Map.designationManager.TryRemoveDesignationOn(actor.carryTracker.CarriedThing, DesignationDefOf.Haul);
                 }
                 
-                // 设置放置回调（用于配方工作）
                 Action<Thing, int> placedAction = null;
                 if (curJob.def == JobDefOf.DoBill ||  curJob.def == RkMDefOf.RkM_DoBillFoodGetter ||
                     curJob.def == JobDefOf.RecolorApparel || 
@@ -221,11 +206,9 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                     placedAction = (th, added) => HaulAIUtility.UpdateJobWithPlacedThings(curJob, th, added);
                 }
                 
-                // 尝试放置物品
                 Thing placedThing;
                 if (!actor.carryTracker.TryDropCarriedThing(cell, ThingPlaceMode.Direct, out placedThing, placedAction))
                 {
-                    // 放置失败处理
                     if (storageMode)
                     {
                         HandleStoragePlacementFailure(actor, curJob, cellInd, nextToilOnPlaceFailOrIncomplete, tryStoreInSameStorageIfSpotCantHoldWholeStack);
@@ -246,7 +229,6 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
             Toil nextToilOnPlaceFailOrIncomplete, 
             bool tryStoreInSameStorageIfSpotCantHoldWholeStack)
         {
-            // 尝试寻找更好的存储位置
             if (nextToilOnPlaceFailOrIncomplete != null && 
                 ((tryStoreInSameStorageIfSpotCantHoldWholeStack && 
                   StoreUtility.TryFindBestBetterStoreCellForIn(
@@ -275,7 +257,6 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                 return;
             }
             
-            // 尝试在旁边放置
             if (!HaulAIUtility.CanHaulAside(actor, actor.carryTracker.CarriedThing, out var asideCell))
             {
                 Log.Warning($"Incomplete haul for {actor}: Could not find anywhere to put {actor.carryTracker.CarriedThing} near {actor.Position}. Destroying.");
@@ -283,7 +264,6 @@ public class JobDriver_DoBillFoodGetter : JobDriver_DoBill
                 return;
             }
             
-            // 更新工作参数
             curJob.SetTarget(cellInd, asideCell);
             curJob.count = int.MaxValue;
             curJob.haulOpportunisticDuplicates = false;

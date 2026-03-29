@@ -100,7 +100,7 @@ namespace RkM
 
         private void ClearCulturalMemoriesGradually(Pawn pawn)
         {
-            if (ModsConfig.IdeologyActive && Props.resetIdeology && pawn.ideo != null)
+            if (Props.resetIdeology && pawn.ideo != null)
             {
                 float reductionAmount = 0.1f;
                 pawn.ideo.OffsetCertainty(-reductionAmount);

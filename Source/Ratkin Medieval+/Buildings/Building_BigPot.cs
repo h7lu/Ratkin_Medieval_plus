@@ -5,10 +5,10 @@ using Verse.AI;
 
 namespace RkM
 {
-    /// <summary>
+    ///  
     /// Custom building class for the Big Pot that allows pawns to eat directly from it.
     /// Extends Building_WorkTable to maintain bill functionality while adding dispenser behavior.
-    /// </summary>
+    ///  
     // public class Building_BigPot : Building_WorkTable
     // {
     //     private CompAutoCookDispenser dispenserComp;
@@ -55,9 +55,9 @@ namespace RkM
     //         }
     //     }
     //
-    //     /// <summary>
+    //     ///  
     //     /// Dispenses food for a pawn to consume.
-    //     /// </summary>
+    //     ///  
     //     public Thing TryDispenseFood()
     //     {
     //         return DispenserComp?.DispenseFood();

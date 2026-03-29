@@ -26,10 +26,12 @@
 
         <!-- Podium is always present as the ritual starts on a lectern; no need to list podiumThingDefs. -->
 
-        <!-- Blackboard / school desk placeholders (Biotech): Blackboard and SchoolDesk. Add your custom names too. -->
+        <!-- RKM_Blackboard is our own building, always present. -->
+        <!-- The vanilla Blackboard (Biotech) is also counted if it happens to link     -->
+        <!-- to the Grand Lectern (that linkage is added via conditional patch).         -->
         <blackboardThingDefs>
+          <li>RKM_Blackboard</li>
           <li>Blackboard</li>
-          <li>RKM_CustomBlackboard</li>
         </blackboardThingDefs>
         
         <!-- Additional tunables exposed for designers -->

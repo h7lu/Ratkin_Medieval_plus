@@ -268,8 +268,6 @@
 	  <fertilitySensitivity>0.3</fertilitySensitivity>
 	  <minGrowthTemperature>-5</minGrowthTemperature>
       <maxGrowthTemperature>38</maxGrowthTemperature>
-      <leaflessTemperature>-20</leaflessTemperature>
-	  <wildOrder>2</wildOrder>
     </plant>
 	<comps>
 	  <li Class="RkM.CompProperties_AdditionalHarvestYield">
@@ -461,6 +459,44 @@
       <wildOrder>1</wildOrder>
       <purpose>Health</purpose>
       <humanFoodPlant>false</humanFoodPlant>
+    </plant>
+  </ThingDef>
+
+  <!-- ========== 鼠麦 / Rat Wheat ========== -->
+  <ThingDef ParentName="PlantBase">
+    <defName>RatkinPlant_RatWheat</defName>
+    <label>rat wheat</label>
+    <description>A short-stalked wheat variety common in ratkin farms, with plump golden grains that emit a rich wheat aroma. This highly adaptable crop is drought-resistant, cold-tolerant, and fast-growing, forming the backbone of ratkin agriculture. Harvesting also produces hay as a byproduct.</description>
+    <statBases>
+      <MaxHitPoints>85</MaxHitPoints>
+      <Nutrition>0.18</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/RatWheat</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1.5, 1.5)</drawSize>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>14</pathCost>
+    <ingestible />
+    <plant>
+      <immatureGraphicPath>Things/Plants/RatWheat_Immature</immatureGraphicPath>
+      <dieIfLeafless>false</dieIfLeafless>
+      <maxMeshCount>9</maxMeshCount>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>RkM_RatWheat</harvestedThingDef>
+      <harvestYield>18</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>20</growDays>
+      <fertilityMin>0.30</fertilityMin>
+      <fertilitySensitivity>0.3</fertilitySensitivity>
+      <visualSizeRange>0.3~1.0</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Food</purpose>
     </plant>
   </ThingDef>
 

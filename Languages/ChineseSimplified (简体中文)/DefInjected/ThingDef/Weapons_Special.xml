@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bard's lute -->
+  <RkM_BardLute.label>吟游诗人鲁特琴</RkM_BardLute.label>
+  <!-- EN: A beautifully crafted wooden lute with melodious tones. The ratkin use it to perform touching songs. -->
+  <RkM_BardLute.description>一把音色优美的木质鲁特琴。鼠鼠们用它演奏动人的歌曲。</RkM_BardLute.description>
+  
+  <!-- EN: Santier's Spear -->
+  <RkM_Santier.label>Santier's Spear</RkM_Santier.label>
+  <!-- EN: A spear that was embedded in a stone statue.\nAccording to an old local legend, a great spear was used to defeat Santier, the walking statue. Perhaps this is that very spear.\nBut it will be difficult to utilize such a thing in the manner of a spear. Your only choice is to swing it around, and smite foes about the head. -->
+  <RkM_Santier.description>A spear that was embedded in a stone statue.\nAccording to an old local legend, a great spear was used to defeat Santier, the walking statue. Perhaps this is that very spear.\nBut it will be difficult to utilize such a thing in the manner of a spear. Your only choice is to swing it around, and smite foes about the head.</RkM_Santier.description>
+  
+  <!-- EN: Santier's Spear (broken) -->
+  <RkM_Santier_broken.label>Santier's Spear (broken)</RkM_Santier_broken.label>
+  <!-- EN: The outer shell has shattered, revealing the true form within. It strikes with rapid twinblade slashes. \nA broken weapon never breaks again, like how a dead man never dies twice. -->
+  <RkM_Santier_broken.description>The outer shell has shattered, revealing the true form within. It strikes with rapid twinblade slashes. \nA broken weapon never breaks again, like how a dead man never dies twice.</RkM_Santier_broken.description>
+  
+</LanguageData>
