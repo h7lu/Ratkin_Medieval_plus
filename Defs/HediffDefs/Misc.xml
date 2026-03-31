@@ -9,7 +9,7 @@
         <hediffClass>HediffWithComps</hediffClass>
         <comps>
             <li Class="HediffCompProperties_Disappears">
-                <disappearsAfterTicks>360000</disappearsAfterTicks> <!-- 1小时 -->
+                <disappearsAfterTicks>2500</disappearsAfterTicks> <!-- 1小时 -->
             </li>
         </comps>
         <stages>

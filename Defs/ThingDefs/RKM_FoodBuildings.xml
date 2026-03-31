@@ -23,7 +23,7 @@
       </shadowData>
     </graphicData>
 	<inspectorTabs>
-      <li>RkM.ITab_NS</li>
+      <li>RkM.ITab_FoodGetter</li>
     </inspectorTabs>
 	<rotatable>false</rotatable>
     <altitudeLayer>Building</altitudeLayer>

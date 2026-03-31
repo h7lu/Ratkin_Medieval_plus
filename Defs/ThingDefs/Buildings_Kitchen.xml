@@ -49,7 +49,7 @@
       <destroySound>BuildingDestroyed_Metal_Big</destroySound>
     </building>
 	<inspectorTabs>
-      <li>RkM.ITab_NS</li>
+      <li>RkM.ITab_FoodGetter</li>
     </inspectorTabs>
     <size>(2,2)</size>
     <designationCategory>RkM_Medieval</designationCategory>

@@ -42,46 +42,15 @@
             <Gold>2</Gold>
         </costList>
         <alwaysHaulable>true</alwaysHaulable>
-        <comps>
-            <!-- Joyful Song -->
-            <li Class="RkM.CompProperties_SongAbility">
-                <label>joyful song</label>
-                <description>Play a cheerful tune that brings joy to people nearby.</description>
-                <iconPath>UI/Commands/SongJoyful</iconPath>
-                <radius>10</radius>
-                <castingTimeTicks>120</castingTimeTicks> <!-- 2秒 -->
-                <cooldownTicks>30000</cooldownTicks> <!-- 12小时 -->
-                <songEffect Class="RkM.SongEffect_AddJoy">
-					<joyAmount>0.5</joyAmount>
-				</songEffect>
-            </li>
-            <!-- Inspiring Song -->
-            <li Class="RkM.CompProperties_SongAbility">
-                <label>inspiring song</label>
-                <description>Play an encouraging melody that uplifts the mood of people nearby.</description>
-                <iconPath>UI/Commands/SongInspiring</iconPath>
-                <radius>10</radius>
-                <castingTimeTicks>180</castingTimeTicks> 
-                <cooldownTicks>30000</cooldownTicks> 
-                <songEffect Class="RkM.SongEffect_AddThought">
-                    <thoughtDef>RkM_BardSong_Inspiring</thoughtDef>
-                    <durationTicks>30000</durationTicks> 
-                </songEffect>
-            </li>
-            <!-- Battle Frenzy Song -->
-            <li Class="RkM.CompProperties_SongAbility">
-                <label>battle frenzy song</label>
-                <description>Play a rousing war song that increases the movement and attack speed of nearby people.</description>
-                <iconPath>UI/Commands/SongBattle</iconPath>
-                <radius>15</radius>
-                <castingTimeTicks>240</castingTimeTicks> <!-- 4秒 -->
-                <cooldownTicks>30000</cooldownTicks> <!-- 12小时 -->
-                <songEffect Class="RkM.SongEffect_AddHediff">
-                    <hediffDef>RkM_BardSong_BattleFrenzy</hediffDef>
-                    <durationTicks>30000</durationTicks> <!-- 1小时 -->
-                </songEffect>
-            </li>
-        </comps>
+        <comps Inherit="False">
+			<li Class="RkM.CompProperties_EquippableAbilities">
+				<abilityDefs>
+					<li>RkM_JoyfulSong</li>
+					<li>RkM_InspiringSong</li>
+					<li>RkM_BattleFrenzySong</li>
+				</abilityDefs>
+			</li>
+		</comps>
         <!--recipeMaker>
             <recipeUsers>
                 <li>Smithy</li>

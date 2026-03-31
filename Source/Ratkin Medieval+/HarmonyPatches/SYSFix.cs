@@ -29,13 +29,13 @@ namespace RkM.HarmonyPatches;
 
 				float num = 0f;
 				if ((a - pawn.DrawPos).MagnitudeHorizontalSquared() > 0.001f) num = (a - pawn.DrawPos).AngleFlat();
-				if (comp != null && comp.littleDown) vector.z += -0.2f;
+				if (comp is { LittleDown: true }) vector.z += -0.2f;
 				vector += new Vector3(0f, 0f, 0.4f).RotatedBy(num);
 				vector.y += 0.0390625f;
 				PawnRenderUtility.DrawEquipmentAiming(pawn.equipment.Primary, vector, num);
 				DrawWornExtras(pawn.apparel);
 			}
-			else if ((pawn.carryTracker == null || pawn.carryTracker.CarriedThing == null) && (pawn.Drafted || (pawn.CurJob != null && pawn.CurJob.def.alwaysShowWeapon) || (pawn.mindState.duty != null && pawn.mindState.duty.def.alwaysShowWeapon)))
+			else if ((pawn.carryTracker?.CarriedThing == null) && (pawn.Drafted || (pawn.CurJob != null && pawn.CurJob.def.alwaysShowWeapon) || (pawn.mindState.duty != null && pawn.mindState.duty.def.alwaysShowWeapon)))
 			{
 				Vector3 vector = drawPos;
 				if (true)
@@ -64,10 +64,8 @@ namespace RkM.HarmonyPatches;
 					}
 				}
 			}
-			else
-			{
-				DrawWornExtras(pawn.apparel);
-			}
+			else DrawWornExtras(pawn.apparel);
+
 			return false;
 		}
 
@@ -84,10 +82,4 @@ namespace RkM.HarmonyPatches;
 			if (isFlip) Graphics.DrawMesh(MeshPool.plane10Flip, matrix, material, 0);
 			else Graphics.DrawMesh(MeshPool.plane10, matrix, material, 0);
 		}
-
-		public const float drawYPosition = 0.0390625f;
-
-		public const float drawSYSYPosition = 0.03904f;
-
-		public const float littleDown = -0.2f;
 	}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <AbilityDef Name="RkM_PlaySongBase" Abstract="True">
+    <cooldownTicksRange>30000</cooldownTicksRange>
+	<targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+	<hasExternallyHandledCooldown>true</hasExternallyHandledCooldown>
+    <verbProperties>
+	  <verbClass>Verb_CastAbility</verbClass>
+      <label>playing song</label>
+      <violent>false</violent>
+      <warmupTime>0</warmupTime>
+      <range>15</range>
+	  <requireLineOfSight>false</requireLineOfSight>
+      <soundCast>Longjump_Jump</soundCast>
+      <soundLanding>Longjump_Land</soundLanding>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetEntities>False</canTargetEntities>
+        <canTargetSubhumans>False</canTargetSubhumans>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+	<statBases>
+      <Ability_EffectRadius>15</Ability_EffectRadius>
+    </statBases>
+    <jobDef>RkM_PlaySong</jobDef>
+	<comps>
+	  <li Class="CompProperties_AbilityEffect">
+        <compClass>RkM.CompAbilityEffect_OnlyTargetNotHostiles</compClass>
+      </li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="RkM_PlaySongBase">
+    <defName>RkM_JoyfulSong</defName>
+    <label>joyful song</label>
+    <description>Play a cheerful tune that brings joy to people nearby.</description>
+    <iconPath>UI/Commands/SongJoyful</iconPath>
+    <comps>
+      <li Class="RkM.CompProperties_AbilityGiveJoy">
+	    <compClass>RkM.CompAbilityEffect_GiveJoy</compClass>
+        <joyAmount>0.5</joyAmount>
+      </li>
+    </comps>
+  </AbilityDef>
+  
+  <AbilityDef ParentName="RkM_PlaySongBase">
+    <defName>RkM_InspiringSong</defName>
+    <label>inspiring song</label>
+    <description>Play an encouraging melody that uplifts the mood of people nearby.</description>
+    <iconPath>UI/Commands/SongInspiring</iconPath>
+	<comps>
+      <li Class="RkM.CompProperties_AbilityGiveThought">
+	    <compClass>RkM.CompAbilityEffect_GiveThought</compClass>
+        <thoughtDef>RkM_BardSong_Inspiring</thoughtDef> 
+      </li>
+    </comps>
+  </AbilityDef>
+  
+  <AbilityDef ParentName="RkM_PlaySongBase">
+    <defName>RkM_BattleFrenzySong</defName>
+    <label>battle frenzy song</label>
+    <description>Play a rousing war song that increases the movement and attack speed of nearby people.</description>
+	<iconPath>UI/Commands/SongBattle</iconPath>
+	<statBases>
+      <Ability_EffectRadius>15</Ability_EffectRadius>
+    </statBases>
+	<comps>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>RkM_BardSong_BattleFrenzy</hediffDef>
+        <durationSecondsOverride>3000~3000</durationSecondsOverride>
+      </li>
+    </comps>
+  </AbilityDef>
+  
+</Defs>

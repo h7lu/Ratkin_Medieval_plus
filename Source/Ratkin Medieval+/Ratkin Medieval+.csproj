@@ -72,14 +72,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbilityComps\CompAbilityEffect_OnlyTargetNotHostiles.cs" />
+    <Compile Include="AbilityComps\CompProperties_AbilityGiveJoy.cs" />
+    <Compile Include="AbilityComps\CompProperties_AbilityGiveThought.cs" />
+    <Compile Include="Bin\11.cs" />
+    <Compile Include="Bin\CompMusicalInstrument.cs" />
+    <Compile Include="Bin\CompSongAbility.cs" />
     <Compile Include="Buildings\Building_BigPot.cs" />
     <Compile Include="Buildings\Building_FoodGetter.cs" />
+    <Compile Include="DefModExtension\ModExtension_RandomProductsWithEffectRecipe.cs" />
     <Compile Include="DefModExtension\ModExtension_NutritionStorageRecipe.cs" />
     <Compile Include="DefModExtension\ModExtension_FoodGetter.cs" />
-    <Compile Include="ITab\ITab_NS.cs" />
+    <Compile Include="Def\AccidentDef.cs" />
+    <Compile Include="ITab\ITab_FoodGetter.cs" />
     <Compile Include="Jobs\JobDriver_DoBillFoodGetter.cs" />
     <Compile Include="Jobs\JobDriver_EatFromBigPot.cs" />
     <Compile Include="Jobs\JobDriver_FillBigPot.cs" />
+    <Compile Include="ThingComps\CompEquippableAbilities.cs" />
     <Compile Include="ThingComps\CompDrawGlowMote.cs" />
     <Compile Include="HarmonyPatches\CompProperties_WeaponExtention.cs" />
     <Compile Include="HarmonyPatches\FoodGetter.cs" />
@@ -110,7 +119,6 @@
     <Compile Include="ThingComps\CompAdditionalHarvestYield.cs" />
     <Compile Include="ThingComps\CompGiveHediffNearby.cs" />
     <Compile Include="ThingComps\CompGiveOnBreak.cs" />
-    <Compile Include="ThingComps\CompSongAbility.cs" />
     <Compile Include="ThingComps\CompProperties_GetEquipmentGizmo.cs" />
     <Compile Include="ThingComps\CompEquipmentWithGizmos.cs" />
     <Compile Include="Utilities.cs" />

@@ -10,7 +10,7 @@ using Verse.Sound;
 
 namespace RkM;
 
-public class ITab_NS : ITab
+public class ITab_FoodGetter : ITab
 	{
 		private float viewHeight = 1000f;
   private Vector2 scrollPosition;
@@ -25,7 +25,7 @@ public class ITab_NS : ITab
 
   protected Building_FoodGetter SelTable => (Building_FoodGetter) SelThing;
 
-  public ITab_NS()
+  public ITab_FoodGetter()
   {
     size = WinSize;
     labelKey = "TabBills";

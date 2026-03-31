@@ -17,11 +17,9 @@ public static class Building_NutrientPasteDispenser_CanDispenseNow
     {
         if (__instance is Building_FoodGetter getter)
         {
-            Log.Message("CanDispenseNow");
             __result = getter.CanDispenseNow_New;
             return false;
         }
-        Log.Message("[Harmony] MO.Getter: Building_NutrientPasteDispenser is not a Building_FoodGetter!");
         return true;
     }
 }

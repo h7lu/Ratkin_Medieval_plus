@@ -18,18 +18,92 @@ public static class GenRecipe_MakeRecipeProducts_Patch
         ref IEnumerable<Thing> __result, Thing dominantIngredient, IBillGiver billGiver,
         Precept_ThingStyle precept = null, ThingStyleDef style = null, int? overrideGraphicIndex = null)
     {
-        var tempExtension = recipeDef.GetModExtension<ModExtension_NutritionRecipe>();
-        if (tempExtension == null || !(billGiver is Building_FoodGetter foodGetter) ) return;
-        IEnumerable<Thing> productsToReplace = [];
+        DefModExtension tempExtension = recipeDef.GetModExtension<ModExtension_NutritionRecipe>();
+        if (tempExtension != null && billGiver is Building_FoodGetter foodGetter){
+            IEnumerable<Thing> productsToReplace = [];
 
-        productsToReplace = tempExtension switch
+            productsToReplace = tempExtension switch
+            {
+                ModExtension_NutritionConsumeRecipe extension => NutritionConsumeRecipe(recipeDef, foodGetter,
+                    extension),
+                ModExtension_NutritionStorageRecipe extension => NutritionStorageRecipe(recipeDef, foodGetter,
+                    extension, ingredients),
+                ModExtension_WithoutNutritionGetRecipe extension => WithoutNutritionGetRecipe(recipeDef, foodGetter,
+                    extension),
+                _ => __result,
+            };
+            __result = productsToReplace;
+        }
+        tempExtension = recipeDef.GetModExtension<ModExtension_RandomProductsWithEffectRecipe>();
+        if (tempExtension != null)
         {
-            ModExtension_NutritionConsumeRecipe extension => NutritionConsumeRecipe(recipeDef, foodGetter, extension),
-            ModExtension_NutritionStorageRecipe extension => NutritionStorageRecipe(recipeDef, foodGetter, extension, ingredients),
-            ModExtension_WithoutNutritionGetRecipe extension => WithoutNutritionGetRecipe(recipeDef, foodGetter, extension),
-            _ => __result,
-        };
-        __result = productsToReplace;
+            __result = RandomProductsRecipe((ModExtension_RandomProductsWithEffectRecipe)tempExtension,billGiver,worker);
+        }
+    }
+    
+    public static IEnumerable<Thing> RandomProductsRecipe(ModExtension_RandomProductsWithEffectRecipe tempExtension,
+        IBillGiver billGiver,
+        Pawn pawn)
+    {
+        if (!tempExtension.weightConfigurations.Any())
+        {
+            // 如果没有配置项但有默认产品，则返回默认产品
+            if (tempExtension.defaultProduct != null)
+            {
+                var thing = ThingMaker.MakeThing(tempExtension.defaultProduct);
+                thing.stackCount = tempExtension.count;
+                yield return thing;
+            }
+            yield break;
+        }
+        //(轮盘)按照权重随机选择.每项x.count份，共maximumWeight份,份数未满则填补默认项
+        // 计算所有奖项的总频数
+        var totalWeight = tempExtension.weightConfigurations.Sum(x => x.weight);
+        var totalDraws = Math.Max(totalWeight, tempExtension.maximumWeight);
+    
+        // 确保总抽取数至少为1，避免除零错误
+        if (totalDraws <= 0) yield break;
+
+        // 计算需要填充的默认项数量
+        var defaultCount = totalDraws - totalWeight;
+    
+        //随机数（0至totalDraws-1）
+        var random = Rand.Range(0, totalDraws);
+        ThingsWithAccidents result = null;
+    
+        foreach (var config in tempExtension.weightConfigurations)
+        {
+            if (random < config.weight)
+            {
+                result = config;
+                break;
+            }
+            random -= config.weight;
+        }
+    
+        // 如果没有找到匹配项且有默认项，则使用默认项
+        if (result == null && defaultCount > 0 && tempExtension.defaultProduct != null)
+        {
+            var thing = ThingMaker.MakeThing(tempExtension.defaultProduct);
+            thing.stackCount = tempExtension.count;
+            yield return thing;
+        }
+    
+        // 如果最终结果仍为null，不返回任何东西
+        if (result == null) yield break;
+        foreach (var accidentDef in result.accidents)
+        {
+            // 根据 accidentDef的workClass 创建一个 accident
+            var accident = (Accident)Activator.CreateInstance(accidentDef.workClass);
+            accident.def = accidentDef;
+            accident.Do( billGiver.Map, pawn.Position);
+        }
+        foreach (var thingItem in result.things)
+        {
+            var thing =ThingMaker.MakeThing(thingItem.thingDef);
+            thing.stackCount = thingItem.count;
+            yield return thing;
+        }
     }
 
     private static IEnumerable<Thing> WithoutNutritionGetRecipe(RecipeDef recipeDef, Building_FoodGetter foodGetter, ModExtension_WithoutNutritionGetRecipe extensionWithout)

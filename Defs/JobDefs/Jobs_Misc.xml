@@ -4,7 +4,8 @@
   <JobDef>
     <defName>RkM_PlaySong</defName>
 	<driverClass>RkM.JobDriver_PlaySong</driverClass>
-	<reportString>Playing songs。</reportString>
+	<reportString>Playing songsã€‚</reportString>
+	<abilityCasting>true</abilityCasting>
 	<playerInterruptible>true</playerInterruptible>
 	<!--checkOverrideOnDamage>OnlyIfInstigatorNotJobTarget</checkOverrideOnDamage-->
   </JobDef>
